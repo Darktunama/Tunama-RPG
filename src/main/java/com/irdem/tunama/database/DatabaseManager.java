@@ -269,23 +269,42 @@ public class DatabaseManager {
 
     public void saveNewPlayer(java.util.UUID uuid, String username, String raceId, String classId) {
         try {
-            String insertQuery = "INSERT INTO players (uuid, username, race, class) VALUES (?, ?, ?, ?)";
-            java.sql.PreparedStatement stmt = connection.prepareStatement(insertQuery);
-            stmt.setString(1, uuid.toString());
-            stmt.setString(2, username);
-            stmt.setString(3, raceId);
-            stmt.setString(4, classId);
-            stmt.executeUpdate();
+            // Usar UPDATE si existe, INSERT si no
+            String updateQuery = "UPDATE players SET race = ?, class = ? WHERE uuid = ?";
+            java.sql.PreparedStatement updateStmt = connection.prepareStatement(updateQuery);
+            updateStmt.setString(1, raceId);
+            updateStmt.setString(2, classId);
+            updateStmt.setString(3, uuid.toString());
+            int updated = updateStmt.executeUpdate();
             
-            // También insertar estadísticas por defecto
-            String statsQuery = "INSERT INTO player_stats (player_uuid) VALUES (?)";
-            java.sql.PreparedStatement statsStmt = connection.prepareStatement(statsQuery);
-            statsStmt.setString(1, uuid.toString());
-            statsStmt.executeUpdate();
+            if (updated == 0) {
+                // El jugador no existe, crearlo
+                String insertQuery = "INSERT INTO players (uuid, username, race, class, subclass, level, experience, clan_name) " +
+                                    "VALUES (?, ?, ?, ?, '', 1, 0, NULL)";
+                java.sql.PreparedStatement stmt = connection.prepareStatement(insertQuery);
+                stmt.setString(1, uuid.toString());
+                stmt.setString(2, username);
+                stmt.setString(3, raceId);
+                stmt.setString(4, classId);
+                stmt.executeUpdate();
+            }
             
-            plugin.getLogger().info("Nuevo jugador guardado: " + username);
+            // También insertar estadísticas por defecto si no existen
+            String checkStatsQuery = "SELECT player_uuid FROM player_stats WHERE player_uuid = ?";
+            java.sql.PreparedStatement checkStmt = connection.prepareStatement(checkStatsQuery);
+            checkStmt.setString(1, uuid.toString());
+            java.sql.ResultSet rs = checkStmt.executeQuery();
+            
+            if (!rs.next()) {
+                String statsQuery = "INSERT INTO player_stats (player_uuid) VALUES (?)";
+                java.sql.PreparedStatement statsStmt = connection.prepareStatement(statsQuery);
+                statsStmt.setString(1, uuid.toString());
+                statsStmt.executeUpdate();
+            }
+            
+            plugin.getLogger().info("Jugador guardado: " + username);
         } catch (Exception e) {
-            plugin.getLogger().severe("Error al guardar nuevo jugador: " + e.getMessage());
+            plugin.getLogger().severe("Error al guardar jugador: " + e.getMessage());
         }
     }
 
