@@ -1,0 +1,62 @@
+name: TunameRPG
+version: 0.0.1
+description: Un plugin RPG completo para Paper Minecraft
+author: Irdem
+main: com.irdem.tunama.TunameRPG
+
+depend:
+  - Vault
+
+softdepend:
+  - Essentials
+
+commands:
+  rpg:
+    description: Comando principal del plugin RPG
+    usage: /rpg <subcomando>
+    aliases: [tunama]
+  
+  clase:
+    description: Gestionar tu clase
+    usage: /clase <subcomando>
+  
+  raza:
+    description: Ver información de tu raza
+    usage: /raza
+  
+  subclase:
+    description: Gestionar tu subclase
+    usage: /subclase <subcomando>
+  
+  habilidad:
+    description: Ver tus habilidades
+    usage: /habilidad
+  
+  mision:
+    description: Ver tus misiones
+    usage: /mision <subcomando>
+  
+  logro:
+    description: Ver tus logros
+    usage: /logro
+  
+  estadisticas:
+    description: Ver tus estadísticas
+    usage: /estadisticas [jugador]
+  
+  top:
+    description: Ver el top de usuarios
+    usage: /top <tipo>
+  
+  clan:
+    description: Gestionar tu clan
+    usage: /clan <subcomando>
+
+permissions:
+  rpg.admin:
+    description: Permiso de administrador del plugin
+    default: op
+  
+  rpg.user:
+    description: Permiso de usuario del plugin
+    default: true
