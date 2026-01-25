@@ -4,19 +4,19 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import com.irdem.tunama.TunameRPG;
+import com.irdem.tunama.TunamaRPG;
 
 public class PlayerListener implements Listener {
 
-    private TunameRPG plugin;
+    private TunamaRPG plugin;
 
-    public PlayerListener(TunameRPG plugin) {
+    public PlayerListener(TunamaRPG plugin) {
         this.plugin = plugin;
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().sendMessage("§a¡Bienvenido a TunameRPG!");
+        event.getPlayer().sendMessage("§a¡Bienvenido a TunamaRPG!");
         event.getPlayer().sendMessage("§7Usa /rpg help para ver los comandos disponibles");
     }
 

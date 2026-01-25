@@ -1,5 +1,6 @@
 com\irdem\tunama\data\RaceManager.class
 com\irdem\tunama\App.class
+com\irdem\tunama\TunamaRPG.class
 com\irdem\tunama\data\PlayerData.class
 com\irdem\tunama\commands\RPGCommand.class
 com\irdem\tunama\data\RPGClass.class
@@ -7,7 +8,6 @@ com\irdem\tunama\data\PlayerStats.class
 com\irdem\tunama\data\Subclass.class
 com\irdem\tunama\listeners\PlayerListener.class
 com\irdem\tunama\data\Race.class
-com\irdem\tunama\TunameRPG.class
 com\irdem\tunama\data\ClassManager.class
 com\irdem\tunama\database\DatabaseManager.class
 com\irdem\tunama\config\ConfigManager.class

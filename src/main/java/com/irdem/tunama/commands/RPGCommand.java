@@ -4,16 +4,16 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import com.irdem.tunama.TunameRPG;
+import com.irdem.tunama.TunamaRPG;
 import com.irdem.tunama.data.Race;
 import com.irdem.tunama.data.RPGClass;
 import com.irdem.tunama.data.Subclass;
 
 public class RPGCommand implements CommandExecutor {
 
-    private TunameRPG plugin;
+    private TunamaRPG plugin;
 
-    public RPGCommand(TunameRPG plugin) {
+    public RPGCommand(TunamaRPG plugin) {
         this.plugin = plugin;
     }
 
@@ -58,7 +58,7 @@ public class RPGCommand implements CommandExecutor {
     }
 
     private void sendHelp(Player player) {
-        player.sendMessage("§6========== TunameRPG ==========");
+        player.sendMessage("§6========== TunamaRPG ==========");
         player.sendMessage("§f/rpg razas §7- Ver todas las razas disponibles");
         player.sendMessage("§f/rpg clases §7- Ver todas las clases disponibles");
         player.sendMessage("§f/rpg info <raza|clase|subclase> §7- Ver información detallada");

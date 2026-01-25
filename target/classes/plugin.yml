@@ -1,8 +1,8 @@
-name: TunameRPG
+name: TunamaRPG
 version: 0.0.1
 description: Un plugin RPG completo para Paper Minecraft
 author: Irdem
-main: com.irdem.tunama.TunameRPG
+main: com.irdem.tunama.TunamaRPG
 
 depend:
   - Vault

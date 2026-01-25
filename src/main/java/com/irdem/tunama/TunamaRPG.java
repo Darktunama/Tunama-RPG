@@ -10,9 +10,9 @@ import com.irdem.tunama.data.RaceManager;
 import com.irdem.tunama.data.ClassManager;
 import com.irdem.tunama.data.SubclassManager;
 
-public class TunameRPG extends JavaPlugin {
+public class TunamaRPG extends JavaPlugin {
 
-    private static TunameRPG instance;
+    private static TunamaRPG instance;
     private ConfigManager configManager;
     private DatabaseManager databaseManager;
     private RaceManager raceManager;
@@ -50,7 +50,7 @@ public class TunameRPG extends JavaPlugin {
         registerListeners();
         
         getLogger().info("================================");
-        getLogger().info("TunameRPG v" + getDescription().getVersion() + " ha sido activado!");
+        getLogger().info("TunamaRPG v" + getDescription().getVersion() + " ha sido activado!");
         getLogger().info("================================");
     }
 
@@ -59,7 +59,7 @@ public class TunameRPG extends JavaPlugin {
         if (databaseManager != null) {
             databaseManager.disconnect();
         }
-        getLogger().info("TunameRPG ha sido desactivado!");
+        getLogger().info("TunamaRPG ha sido desactivado!");
     }
 
     private void createDirectories() {
@@ -89,7 +89,7 @@ public class TunameRPG extends JavaPlugin {
         pm.registerEvents(new PlayerListener(this), this);
     }
 
-    public static TunameRPG getInstance() {
+    public static TunamaRPG getInstance() {
         return instance;
     }
 

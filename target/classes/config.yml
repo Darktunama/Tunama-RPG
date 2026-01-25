@@ -1,4 +1,4 @@
-# TunameRPG - Configuración Principal
+# TunamaRPG - Configuración Principal
 
 # Tipo de base de datos: sqlite o mysql
 database:
@@ -6,7 +6,7 @@ database:
   
   # Configuración SQLite
   sqlite:
-    file: plugins/TunameRPG/rpg.db
+    file: plugins/TunamaRPG/rpg.db
   
   # Configuración MySQL
   mysql:
@@ -51,5 +51,5 @@ plugins:
 
 # Mensajes del Plugin
 messages:
-  welcome: "¡Bienvenido a TunameRPG!"
+  welcome: "¡Bienvenido a TunamaRPG!"
   help-command: "Usa /rpg help para ver los comandos disponibles"

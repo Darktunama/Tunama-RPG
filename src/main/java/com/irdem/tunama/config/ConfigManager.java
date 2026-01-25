@@ -30,7 +30,7 @@ public class ConfigManager {
         
         // Configuración de Base de Datos
         config.set("database.type", "sqlite"); // sqlite o mysql
-        config.set("database.sqlite.file", "plugins/TunameRPG/rpg.db");
+        config.set("database.sqlite.file", "plugins/TunamaRPG/rpg.db");
         
         config.set("database.mysql.host", "localhost");
         config.set("database.mysql.port", 3306);
@@ -84,7 +84,7 @@ public class ConfigManager {
     }
 
     public String getSQLitePath() {
-        return config.getString("database.sqlite.file", "plugins/TunameRPG/rpg.db");
+        return config.getString("database.sqlite.file", "plugins/TunamaRPG/rpg.db");
     }
 
     public String getMySQLHost() {
