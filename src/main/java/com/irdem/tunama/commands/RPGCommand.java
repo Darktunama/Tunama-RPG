@@ -46,6 +46,13 @@ public class RPGCommand implements CommandExecutor {
                 return true;
             }
 
+            // Si no tiene clase seleccionada, abrir menú de clases
+            if (playerData.getPlayerClass() == null || playerData.getPlayerClass().isEmpty()) {
+                com.irdem.tunama.menus.ClassMenu classMenu = new com.irdem.tunama.menus.ClassMenu(plugin, playerData.getRace());
+                classMenu.open(player);
+                return true;
+            }
+
             MainMenuGUI mainMenu = new MainMenuGUI(plugin, player, playerData);
             mainMenu.open();
             return true;
