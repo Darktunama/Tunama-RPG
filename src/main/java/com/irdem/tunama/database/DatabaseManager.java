@@ -231,4 +231,43 @@ public class DatabaseManager {
             return false;
         }
     }
+
+    public boolean isNewPlayer(java.util.UUID uuid) {
+        try {
+            String query = "SELECT COUNT(*) as count FROM players WHERE uuid = ?";
+            java.sql.PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, uuid.toString());
+            java.sql.ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt("count") == 0;
+            }
+            return true;
+        } catch (Exception e) {
+            plugin.getLogger().severe("Error al verificar si es nuevo jugador: " + e.getMessage());
+            return true;
+        }
+    }
+
+    public void saveNewPlayer(java.util.UUID uuid, String username, String raceId, String classId) {
+        try {
+            String insertQuery = "INSERT INTO players (uuid, username, race, class) VALUES (?, ?, ?, ?)";
+            java.sql.PreparedStatement stmt = connection.prepareStatement(insertQuery);
+            stmt.setString(1, uuid.toString());
+            stmt.setString(2, username);
+            stmt.setString(3, raceId);
+            stmt.setString(4, classId);
+            stmt.executeUpdate();
+            
+            // También insertar estadísticas por defecto
+            String statsQuery = "INSERT INTO player_stats (player_uuid) VALUES (?)";
+            java.sql.PreparedStatement statsStmt = connection.prepareStatement(statsQuery);
+            statsStmt.setString(1, uuid.toString());
+            statsStmt.executeUpdate();
+            
+            plugin.getLogger().info("Nuevo jugador guardado: " + username);
+        } catch (Exception e) {
+            plugin.getLogger().severe("Error al guardar nuevo jugador: " + e.getMessage());
+        }
+    }
 }

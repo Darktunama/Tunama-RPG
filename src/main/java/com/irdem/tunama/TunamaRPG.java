@@ -87,6 +87,7 @@ public class TunamaRPG extends JavaPlugin {
     private void registerListeners() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new PlayerListener(this), this);
+        pm.registerEvents(new com.irdem.tunama.listeners.PlayerMenuListener(this), this);
     }
 
     public static TunamaRPG getInstance() {

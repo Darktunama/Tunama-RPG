@@ -1,12 +1,15 @@
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\data\PlayerData.java
+C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\menus\ClassMenu.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\data\Subclass.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\listeners\PlayerListener.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\data\RaceManager.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\data\SubclassManager.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\data\PlayerStats.java
+C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\listeners\PlayerMenuListener.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\commands\RPGCommand.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\config\ConfigManager.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\database\DatabaseManager.java
+C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\menus\RaceMenu.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\App.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\TunamaRPG.java
 C:\Users\Kais_\PluginRPG\rpg\src\main\java\com\irdem\tunama\data\RPGClass.java

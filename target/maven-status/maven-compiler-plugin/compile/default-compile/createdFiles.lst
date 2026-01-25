@@ -1,8 +1,10 @@
+com\irdem\tunama\menus\ClassMenu.class
 com\irdem\tunama\data\RaceManager.class
 com\irdem\tunama\App.class
 com\irdem\tunama\TunamaRPG.class
 com\irdem\tunama\data\PlayerData.class
 com\irdem\tunama\commands\RPGCommand.class
+com\irdem\tunama\listeners\PlayerMenuListener.class
 com\irdem\tunama\data\RPGClass.class
 com\irdem\tunama\data\PlayerStats.class
 com\irdem\tunama\data\Subclass.class
@@ -12,3 +14,4 @@ com\irdem\tunama\data\ClassManager.class
 com\irdem\tunama\database\DatabaseManager.class
 com\irdem\tunama\config\ConfigManager.class
 com\irdem\tunama\data\SubclassManager.class
+com\irdem\tunama\menus\RaceMenu.class
