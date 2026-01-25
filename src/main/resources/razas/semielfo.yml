@@ -1,0 +1,17 @@
+id: semielfo
+name: Semielfo
+description: Una raza híbrida que combina lo mejor de humanos y elfos
+
+advantages: Bonificación balanceada en inteligencia y agilidad, adaptabilidad
+disadvantages: No es especialista en ninguna área
+
+multipliers:
+  agility: 1.05
+  intelligence: 1.1
+  life: 1.0
+  strength: 1.0
+
+costs:
+  corrupt-power: 1.05
+  sagrado-power: 1.0
+  nature-power: 0.9

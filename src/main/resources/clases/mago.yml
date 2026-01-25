@@ -1,0 +1,10 @@
+id: mago
+name: Mago
+description: Poderoso hechicero con alto daño mágico
+
+advantages: Alto daño mágico, variedad de hechizos, ataca a distancia
+disadvantages: Baja defensa, débil en combate cuerpo a cuerpo
+
+subclasses:
+  - elementalista
+  - mago-de-combate

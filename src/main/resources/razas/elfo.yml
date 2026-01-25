@@ -1,0 +1,17 @@
+id: elfo
+name: Elfo
+description: Una raza mágica y antigua con afinidad por la naturaleza y la magia
+
+advantages: Alta inteligencia, conexión con la naturaleza, resistencia mágica
+disadvantages: Menor vida inicial, débiles en defensa física
+
+multipliers:
+  agility: 1.1
+  intelligence: 1.3
+  life: 0.8
+  strength: 0.9
+
+costs:
+  corrupt-power: 1.2
+  sagrado-power: 0.9
+  nature-power: 0.7

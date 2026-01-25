@@ -1,0 +1,10 @@
+id: picaro
+name: Pícaro
+description: Luchador hábil con alta posibilidad de hacer golpes críticos
+
+advantages: Alta posibilidad de crítico, alta movilidad, hace más daño si golpea por la espalda
+disadvantages: Baja defensa y nula habilidad a distancia
+
+subclasses:
+  - asesino
+  - asaltante

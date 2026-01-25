@@ -47,6 +47,13 @@ public class RPGCommand implements CommandExecutor {
                     player.sendMessage("§c/rpg info <raza|clase|subclase>");
                 }
                 break;
+            case "reload":
+                if (player.hasPermission("rpg.reload") || player.isOp()) {
+                    reloadConfigs(player);
+                } else {
+                    player.sendMessage("§cNo tienes permisos para usar este comando");
+                }
+                break;
             case "help":
                 sendHelp(player);
                 break;
@@ -62,6 +69,7 @@ public class RPGCommand implements CommandExecutor {
         player.sendMessage("§f/rpg razas §7- Ver todas las razas disponibles");
         player.sendMessage("§f/rpg clases §7- Ver todas las clases disponibles");
         player.sendMessage("§f/rpg info <raza|clase|subclase> §7- Ver información detallada");
+        player.sendMessage("§f/rpg reload §7- Recargar configuraciones (Requiere permisos)");
         player.sendMessage("§f/rpg help §7- Ver esta ayuda");
         player.sendMessage("§6================================");
     }
@@ -127,5 +135,19 @@ public class RPGCommand implements CommandExecutor {
         }
 
         player.sendMessage("§cNo se encontró información para: " + name);
+    }
+
+    private void reloadConfigs(Player player) {
+        try {
+            plugin.getRaceManager().loadRaces();
+            plugin.getClassManager().loadClasses();
+            player.sendMessage("§a✓ Configuraciones recargadas exitosamente");
+            player.sendMessage("§7Razas: §f" + plugin.getRaceManager().getAllRaces().size());
+            player.sendMessage("§7Clases: §f" + plugin.getClassManager().getAllClasses().size());
+        } catch (Exception e) {
+            player.sendMessage("§c✗ Error al recargar las configuraciones");
+            player.sendMessage("§c" + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }

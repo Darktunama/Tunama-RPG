@@ -1,0 +1,10 @@
+id: cazador
+name: Cazador
+description: Pelea junto a su mascota compañera
+
+advantages: Disponibilidad de mascota y buena velocidad de movimiento
+disadvantages: Baja defensa y vida
+
+subclasses:
+  - maestro-de-la-manada
+  - combatiente-primigenio

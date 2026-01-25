@@ -1,0 +1,17 @@
+id: humano
+name: Humano
+description: Una raza versátil y adaptable con gran potencial en todas las áreas
+
+advantages: Versátiles, pueden aprender cualquier habilidad, bonificación en experiencia
+disadvantages: Sin bonificaciones especiales iniciales
+
+multipliers:
+  agility: 1.0
+  intelligence: 1.0
+  life: 1.0
+  strength: 1.0
+
+costs:
+  corrupt-power: 1.0
+  sagrado-power: 1.0
+  nature-power: 1.0
