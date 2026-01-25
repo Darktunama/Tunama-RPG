@@ -10,13 +10,13 @@ public class PlayerStats {
     private int naturePower;
 
     public PlayerStats() {
-        this.health = 100;
-        this.strength = 10;
-        this.agility = 10;
-        this.intelligence = 10;
-        this.sacredPower = 10;
-        this.corruptPower = 10;
-        this.naturePower = 10;
+        this.health = 10;
+        this.strength = 1;
+        this.agility = 1;
+        this.intelligence = 1;
+        this.sacredPower = 1;
+        this.corruptPower = 1;
+        this.naturePower = 1;
     }
 
     // Getters y Setters

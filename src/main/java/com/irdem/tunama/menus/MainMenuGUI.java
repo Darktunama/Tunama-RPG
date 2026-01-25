@@ -27,24 +27,46 @@ public class MainMenuGUI implements InventoryHolder {
     }
 
     private void setupItems() {
+        // Obtener nombres de raza y clase
+        String raceName = "No asignada";
+        String className = "No asignada";
+        
+        if (playerData.getRace() != null && !playerData.getRace().isEmpty()) {
+            com.irdem.tunama.data.Race race = plugin.getRaceManager().getRace(playerData.getRace());
+            if (race != null) {
+                raceName = race.getName();
+            }
+        }
+        
+        if (playerData.getPlayerClass() != null && !playerData.getPlayerClass().isEmpty()) {
+            com.irdem.tunama.data.RPGClass rpgClass = plugin.getClassManager().getClass(playerData.getPlayerClass());
+            if (rpgClass != null) {
+                className = rpgClass.getName();
+            }
+        }
+        
         // Info del Jugador (slot 11)
         inventory.setItem(11, createItem(Material.PLAYER_HEAD, "§6Información", 
             "§7Jugador: §f" + playerData.getUsername(),
-            "§7Raza: §f" + (playerData.getRace() != null ? playerData.getRace() : "No asignada"),
-            "§7Clase: §f" + (playerData.getPlayerClass() != null ? playerData.getPlayerClass() : "No asignada"),
+            "§7Raza: §f" + raceName,
+            "§7Clase: §f" + className,
             "§7Nivel: §f" + playerData.getLevel(),
             "§7EXP: §f" + playerData.getExperience()
         ));
 
-        // Razas (slot 12)
-        inventory.setItem(12, createItem(Material.YELLOW_DYE, "§eRazas", 
-            "§7Haz clic para seleccionar tu raza"
-        ));
+        // Razas (slot 12) - Solo si no tiene raza
+        if (playerData.getRace() == null || playerData.getRace().isEmpty()) {
+            inventory.setItem(12, createItem(Material.YELLOW_DYE, "§eRazas", 
+                "§7Haz clic para seleccionar tu raza"
+            ));
+        }
 
-        // Clases (slot 13)
-        inventory.setItem(13, createItem(Material.BLUE_DYE, "§9Clases", 
-            "§7Haz clic para seleccionar tu clase"
-        ));
+        // Clases (slot 13) - Solo si no tiene clase
+        if (playerData.getPlayerClass() == null || playerData.getPlayerClass().isEmpty()) {
+            inventory.setItem(13, createItem(Material.BLUE_DYE, "§9Clases", 
+                "§7Haz clic para seleccionar tu clase"
+            ));
+        }
 
         // Subclases (slot 14)
         inventory.setItem(14, createItem(Material.PURPLE_DYE, "§5Subclases", 
