@@ -151,9 +151,18 @@ public class RPGCommand implements CommandExecutor {
         try {
             plugin.getRaceManager().loadRaces();
             plugin.getClassManager().loadClasses();
-            player.sendMessage("§a✓ Configuraciones recargadas exitosamente");
+            plugin.getSubclassManager().loadSubclasses();
+            plugin.getMissionManager().loadMissions();
+            plugin.getAchievementManager().loadAchievements();
+            plugin.getAbilityManager().loadAbilities();
+            
+            player.sendMessage("§a✓ Todas las configuraciones recargadas exitosamente");
             player.sendMessage("§7Razas: §f" + plugin.getRaceManager().getAllRaces().size());
             player.sendMessage("§7Clases: §f" + plugin.getClassManager().getAllClasses().size());
+            player.sendMessage("§7Subclases: §f" + plugin.getSubclassManager().getAllSubclasses().size());
+            player.sendMessage("§7Misiones: §f" + plugin.getMissionManager().getAllMissions().size());
+            player.sendMessage("§7Logros: §f" + plugin.getAchievementManager().getAllAchievements().size());
+            player.sendMessage("§7Habilidades: §f" + plugin.getAbilityManager().getAllAbilities().size());
         } catch (Exception e) {
             player.sendMessage("§c✗ Error al recargar las configuraciones");
             player.sendMessage("§c" + e.getMessage());

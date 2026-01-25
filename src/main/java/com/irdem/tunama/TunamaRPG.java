@@ -9,6 +9,9 @@ import com.irdem.tunama.listeners.PlayerListener;
 import com.irdem.tunama.data.RaceManager;
 import com.irdem.tunama.data.ClassManager;
 import com.irdem.tunama.data.SubclassManager;
+import com.irdem.tunama.data.MissionManager;
+import com.irdem.tunama.data.AchievementManager;
+import com.irdem.tunama.data.AbilityManager;
 
 public class TunamaRPG extends JavaPlugin {
 
@@ -18,6 +21,9 @@ public class TunamaRPG extends JavaPlugin {
     private RaceManager raceManager;
     private ClassManager classManager;
     private SubclassManager subclassManager;
+    private MissionManager missionManager;
+    private AchievementManager achievementManager;
+    private AbilityManager abilityManager;
 
     @Override
     public void onEnable() {
@@ -42,6 +48,9 @@ public class TunamaRPG extends JavaPlugin {
         raceManager = new RaceManager(this);
         classManager = new ClassManager(this);
         subclassManager = new SubclassManager(this);
+        missionManager = new MissionManager(this);
+        achievementManager = new AchievementManager(this);
+        abilityManager = new AbilityManager(this);
         
         // Registrar comandos
         registerCommands();
@@ -113,5 +122,17 @@ public class TunamaRPG extends JavaPlugin {
 
     public SubclassManager getSubclassManager() {
         return subclassManager;
+    }
+
+    public MissionManager getMissionManager() {
+        return missionManager;
+    }
+
+    public AchievementManager getAchievementManager() {
+        return achievementManager;
+    }
+
+    public AbilityManager getAbilityManager() {
+        return abilityManager;
     }
 }
