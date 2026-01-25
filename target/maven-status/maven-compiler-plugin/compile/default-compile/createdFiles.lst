@@ -16,6 +16,7 @@ com\irdem\tunama\menus\AbilitiesMenu.class
 com\irdem\tunama\data\RaceManager.class
 com\irdem\tunama\menus\AchievementsMenu.class
 com\irdem\tunama\TunamaRPG.class
+com\irdem\tunama\listeners\EquipmentListener.class
 com\irdem\tunama\menus\MissionsMenu.class
 com\irdem\tunama\menus\StatsMenu.class
 com\irdem\tunama\data\Subclass.class

@@ -29,14 +29,12 @@ public class RPGCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length == 0) {
-            // Abrir menú principal
-            PlayerData playerData = plugin.getDatabaseManager().getPlayerData(player.getUniqueId());
+            // Obtener o crear datos del jugador
+            PlayerData playerData = plugin.getDatabaseManager().getOrCreatePlayerData(player.getUniqueId(), player.getName());
             
             if (playerData == null) {
-                // Crear nuevo jugador con datos por defecto
-                playerData = new PlayerData(player.getUniqueId(), player.getName());
-                plugin.getDatabaseManager().createPlayerIfNotExists(player.getUniqueId(), player.getName());
-                playerData = plugin.getDatabaseManager().getPlayerData(player.getUniqueId());
+                player.sendMessage("§c✗ Error: No se pudo obtener tus datos. Contacta al administrador.");
+                return true;
             }
 
             // Si no tiene raza seleccionada, abrir menú de razas

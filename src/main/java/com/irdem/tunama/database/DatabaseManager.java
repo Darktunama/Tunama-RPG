@@ -365,4 +365,24 @@ public class DatabaseManager {
             plugin.getLogger().severe("Error al crear nuevo jugador: " + e.getMessage());
         }
     }
+
+    public com.irdem.tunama.data.PlayerData getOrCreatePlayerData(java.util.UUID uuid, String username) {
+        try {
+            // Intentar obtener
+            com.irdem.tunama.data.PlayerData playerData = getPlayerData(uuid);
+            
+            // Si no existe, crear y obtener
+            if (playerData == null) {
+                createPlayerIfNotExists(uuid, username);
+                // Pequeña pausa para asegurar que se guardó
+                Thread.sleep(100);
+                playerData = getPlayerData(uuid);
+            }
+            
+            return playerData;
+        } catch (Exception e) {
+            plugin.getLogger().severe("Error al obtener/crear datos del jugador: " + e.getMessage());
+            return null;
+        }
+    }
 }
