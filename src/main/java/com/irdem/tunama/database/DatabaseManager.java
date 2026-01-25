@@ -77,6 +77,14 @@ public class DatabaseManager {
                 "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
             ")");
 
+            // Migración: agregar clan_name si no existe
+            try {
+                stmt.execute("ALTER TABLE players ADD COLUMN clan_name TEXT");
+                plugin.getLogger().info("Columna clan_name agregada a tabla players");
+            } catch (Exception e) {
+                // Columna ya existe, ignorar
+            }
+
             // Tabla de Estadísticas
             stmt.execute("CREATE TABLE IF NOT EXISTS player_stats (" +
                 "id INTEGER PRIMARY KEY," +
@@ -151,6 +159,14 @@ public class DatabaseManager {
                 "clan_name VARCHAR(255)," +
                 "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
             ")");
+
+            // Migración: agregar clan_name si no existe
+            try {
+                stmt.execute("ALTER TABLE players ADD COLUMN clan_name VARCHAR(255)");
+                plugin.getLogger().info("Columna clan_name agregada a tabla players (MySQL)");
+            } catch (Exception e) {
+                // Columna ya existe, ignorar
+            }
 
             // Tabla de Estadísticas
             stmt.execute("CREATE TABLE IF NOT EXISTS player_stats (" +
