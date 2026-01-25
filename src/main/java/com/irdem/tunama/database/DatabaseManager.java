@@ -335,4 +335,19 @@ public class DatabaseManager {
             plugin.getLogger().severe("Error al actualizar datos del jugador: " + e.getMessage());
         }
     }
+
+    public void createPlayerIfNotExists(java.util.UUID uuid, String username) {
+        try {
+            String query = "INSERT OR IGNORE INTO players (uuid, username, race, class, subclass, level, experience, clan_name) " +
+                          "VALUES (?, ?, '', '', '', 1, 0, NULL)";
+            java.sql.PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, uuid.toString());
+            stmt.setString(2, username);
+            stmt.executeUpdate();
+            
+            plugin.getLogger().info("Nuevo jugador creado: " + username);
+        } catch (Exception e) {
+            plugin.getLogger().severe("Error al crear nuevo jugador: " + e.getMessage());
+        }
+    }
 }

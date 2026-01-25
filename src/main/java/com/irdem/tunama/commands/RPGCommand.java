@@ -33,7 +33,16 @@ public class RPGCommand implements CommandExecutor {
             PlayerData playerData = plugin.getDatabaseManager().getPlayerData(player.getUniqueId());
             
             if (playerData == null) {
-                player.sendMessage("§c✗ Error: No se encontraron tus datos. Contacta al administrador.");
+                // Crear nuevo jugador con datos por defecto
+                playerData = new PlayerData(player.getUniqueId(), player.getName());
+                plugin.getDatabaseManager().createPlayerIfNotExists(player.getUniqueId(), player.getName());
+                playerData = plugin.getDatabaseManager().getPlayerData(player.getUniqueId());
+            }
+
+            // Si no tiene raza seleccionada, abrir menú de razas
+            if (playerData.getRace() == null || playerData.getRace().isEmpty()) {
+                com.irdem.tunama.menus.RaceMenu raceMenu = new com.irdem.tunama.menus.RaceMenu(plugin);
+                raceMenu.open(player);
                 return true;
             }
 
