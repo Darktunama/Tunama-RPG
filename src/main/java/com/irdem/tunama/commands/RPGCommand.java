@@ -8,6 +8,8 @@ import com.irdem.tunama.TunamaRPG;
 import com.irdem.tunama.data.Race;
 import com.irdem.tunama.data.RPGClass;
 import com.irdem.tunama.data.Subclass;
+import com.irdem.tunama.data.PlayerData;
+import com.irdem.tunama.menus.MainMenuGUI;
 
 public class RPGCommand implements CommandExecutor {
 
@@ -27,7 +29,16 @@ public class RPGCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (args.length == 0) {
-            sendHelp(player);
+            // Abrir menú principal
+            PlayerData playerData = plugin.getDatabaseManager().getPlayerData(player.getUniqueId());
+            
+            if (playerData == null) {
+                player.sendMessage("§c✗ Error: No se encontraron tus datos. Contacta al administrador.");
+                return true;
+            }
+
+            MainMenuGUI mainMenu = new MainMenuGUI(plugin, player, playerData);
+            mainMenu.open();
             return true;
         }
 
@@ -60,7 +71,6 @@ public class RPGCommand implements CommandExecutor {
             default:
                 player.sendMessage("§cComando desconocido. Usa /rpg help para ver los comandos disponibles");
         }
-
         return true;
     }
 

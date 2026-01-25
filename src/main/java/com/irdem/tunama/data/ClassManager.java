@@ -88,6 +88,56 @@ public class ClassManager {
             "Baja defensa, débil en combate cuerpo a cuerpo",
             java.util.Arrays.asList("elementalista", "mago-de-combate"));
         
+        createClassFile("invocador", "Invocador", "Hechicero que invoca criaturas para que luchen por él",
+            "Invoca criaturas, las criaturas pelean por ti, puede invocar varias criaturas",
+            "Débil en habilidades melé, defensa baja, débil en habilidades de distancia",
+            java.util.Arrays.asList("brujo", "chaman"));
+        
+        createClassFile("arquero", "Arquero", "Un preciso luchador a distancia con alta movilidad",
+            "Alta velocidad de movimiento, daño fuerte a distancia, golpea a los enemigos a distancia",
+            "Baja defensa y débil en habilidad a melé",
+            java.util.Arrays.asList("francotirador", "guardabosques"));
+        
+        createClassFile("picaro", "Pícaro", "Luchador hábil con alta posibilidad de hacer golpes críticos",
+            "Alta posibilidad de crítico, alta movilidad, hace más daño si golpea por la espalda",
+            "Baja defensa y nula habilidad a distancia",
+            java.util.Arrays.asList("asesino", "asaltante"));
+        
+        createClassFile("paladin", "Paladín", "Luchador balanceado en combate que puede curar tanto a sí mismo como a aliados",
+            "Alta defensa y vida, curaciones y habilidades variadas",
+            "Débil tanto en habilidades melé como distancia",
+            java.util.Arrays.asList("paladin-sagrado", "paladin-del-caos"));
+        
+        createClassFile("nigromante", "Nigromante", "Hechicero oscuro con invocación de muertos y habilidades de putrefacción",
+            "Invoca no muertos, alto daño mágico, debilita a los enemigos",
+            "Baja defensa, débil en habilidades a melé",
+            java.util.Arrays.asList("lich", "caballero-de-la-muerte"));
+        
+        createClassFile("druida", "Druida", "Usa magia de naturaleza y transformaciones",
+            "Se transforma en animales, se puede curar a sí mismo, magia de naturaleza",
+            "Baja defensa en formas de animales, débil en habilidades a melé",
+            java.util.Arrays.asList("licantropo", "archidruida"));
+        
+        createClassFile("evocador", "Evocador", "Usa magia para apoyar a los aliados",
+            "Magias de soporte y daño a distancia decente",
+            "Baja vida y débil daño a melé",
+            java.util.Arrays.asList("salvaguarda", "destructor"));
+        
+        createClassFile("cazador", "Cazador", "Pelea junto a su mascota compañera",
+            "Disponibilidad de mascota y buena velocidad de movimiento",
+            "Baja defensa y vida",
+            java.util.Arrays.asList("maestro-de-la-manada", "combatiente-primigenio"));
+        
+        createClassFile("sacerdote", "Sacerdote", "Enfocado a curar a tus compañeros a cambio de tener poco daño",
+            "Alta curación propia y de los aliados, habilidades de escudo",
+            "No tiene daño a melé y daño a distancia débil",
+            java.util.Arrays.asList("primarca", "sacerdote-corrupto"));
+        
+        createClassFile("trampero", "Trampero", "Pelea basándose en sus trampas",
+            "Alto daño en trampas y torretas",
+            "No puede usar combate cuerpo a cuerpo ni a distancia",
+            java.util.Arrays.asList("maestro-de-las-trampas", "ingeniero"));
+        
         loadClasses();
     }
 

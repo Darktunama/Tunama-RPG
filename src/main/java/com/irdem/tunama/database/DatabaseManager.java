@@ -270,4 +270,51 @@ public class DatabaseManager {
             plugin.getLogger().severe("Error al guardar nuevo jugador: " + e.getMessage());
         }
     }
+
+    public com.irdem.tunama.data.PlayerData getPlayerData(java.util.UUID uuid) {
+        try {
+            String query = "SELECT uuid, username, race, class, subclass, level, experience, clan_name " +
+                          "FROM players WHERE uuid = ?";
+            java.sql.PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, uuid.toString());
+            java.sql.ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                com.irdem.tunama.data.PlayerData playerData = new com.irdem.tunama.data.PlayerData(
+                    uuid, rs.getString("username")
+                );
+                playerData.setRace(rs.getString("race"));
+                playerData.setPlayerClass(rs.getString("class"));
+                playerData.setSubclass(rs.getString("subclass"));
+                playerData.setLevel(rs.getInt("level"));
+                playerData.addExperience(rs.getLong("experience"));
+                playerData.setClanName(rs.getString("clan_name"));
+                return playerData;
+            }
+            return null;
+        } catch (Exception e) {
+            plugin.getLogger().severe("Error al obtener datos del jugador: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public void updatePlayerData(com.irdem.tunama.data.PlayerData playerData) {
+        try {
+            String query = "UPDATE players SET race = ?, class = ?, subclass = ?, level = ?, " +
+                          "experience = ?, clan_name = ? WHERE uuid = ?";
+            java.sql.PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, playerData.getRace());
+            stmt.setString(2, playerData.getPlayerClass());
+            stmt.setString(3, playerData.getSubclass());
+            stmt.setInt(4, playerData.getLevel());
+            stmt.setLong(5, playerData.getExperience());
+            stmt.setString(6, playerData.getClanName());
+            stmt.setString(7, playerData.getUUID().toString());
+            stmt.executeUpdate();
+            
+            plugin.getLogger().info("Datos del jugador actualizados: " + playerData.getUsername());
+        } catch (Exception e) {
+            plugin.getLogger().severe("Error al actualizar datos del jugador: " + e.getMessage());
+        }
+    }
 }

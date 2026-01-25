@@ -1,17 +1,17 @@
 id: elfo
 name: Elfo
-description: Una raza mágica y antigua con afinidad por la naturaleza y la magia
+description: Raza débil en vitalidad pero de alto daño
 
-advantages: Alta inteligencia, conexión con la naturaleza, resistencia mágica
-disadvantages: Menor vida inicial, débiles en defensa física
+advantages: Cada punto invertido en Agilidad o Inteligencia suma 2 en vez de 1
+disadvantages: Para subir 1 punto de Poder Corrupto requiere 2 puntos, No puede ser las clases Trampero, Sacerdote ni Evocador
 
 multipliers:
-  agility: 1.1
-  intelligence: 1.3
-  life: 0.8
-  strength: 0.9
+  agility: 2.0
+  intelligence: 2.0
+  life: 1.0
+  strength: 1.0
 
 costs:
-  corrupt-power: 1.2
-  sagrado-power: 0.9
-  nature-power: 0.7
+  corrupt-power: 2.0
+  sagrado-power: 1.0
+  nature-power: 1.0

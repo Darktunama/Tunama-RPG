@@ -1,0 +1,17 @@
+id: enano
+name: Enano
+description: Raza muy Orgullosa, sobre todo por que le llega hasta las rodillas su ejem.... Su barba, su barba
+
+advantages: Cada punto Invertido en Vida y Fuerza suma 2 en vez de 1
+disadvantages: Cada punto invertido en Inteligencia o Agilidad requiere 2 puntos, no puede usar clases Cazador, Pícaro, Druida, Evocador
+
+multipliers:
+  agility: 2.0
+  intelligence: 0.5
+  life: 2.0
+  strength: 2.0
+
+costs:
+  corrupt-power: 1.0
+  sagrado-power: 1.0
+  nature-power: 1.0

@@ -1,9 +1,9 @@
 id: humano
 name: Humano
-description: Una raza versátil y adaptable con gran potencial en todas las áreas
+description: Raza Versátil pero sin destacar en nada
 
-advantages: Versátiles, pueden aprender cualquier habilidad, bonificación en experiencia
-disadvantages: Sin bonificaciones especiales iniciales
+advantages: Puede usar todas las clases excepto Evocador y Druida, no tiene debilidades
+disadvantages: no tiene bonus de Estadísticas
 
 multipliers:
   agility: 1.0

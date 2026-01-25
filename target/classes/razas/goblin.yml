@@ -1,0 +1,17 @@
+id: goblin
+name: Goblin
+description: Son grandes acaparadores de fortunas pero difíciles de tratar
+
+advantages: Cada punto Invertido en Agilidad, Inteligencia o Poder Corrupto dan 2 puntos
+disadvantages: Cada punto invertido en vida o poder sagrado requiere 2 puntos, no puede usar clases, Evocador, Paladín, Guerrero y Druida
+
+multipliers:
+  agility: 2.0
+  intelligence: 2.0
+  life: 0.5
+  strength: 1.0
+
+costs:
+  corrupt-power: 2.0
+  sagrado-power: 2.0
+  nature-power: 1.0
