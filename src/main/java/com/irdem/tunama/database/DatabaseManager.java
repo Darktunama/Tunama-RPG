@@ -338,14 +338,29 @@ public class DatabaseManager {
 
     public void createPlayerIfNotExists(java.util.UUID uuid, String username) {
         try {
-            String query = "INSERT OR IGNORE INTO players (uuid, username, race, class, subclass, level, experience, clan_name) " +
-                          "VALUES (?, ?, '', '', '', 1, 0, NULL)";
-            java.sql.PreparedStatement stmt = connection.prepareStatement(query);
-            stmt.setString(1, uuid.toString());
-            stmt.setString(2, username);
-            stmt.executeUpdate();
+            // Verificar si el jugador ya existe
+            String checkQuery = "SELECT uuid FROM players WHERE uuid = ?";
+            java.sql.PreparedStatement checkStmt = connection.prepareStatement(checkQuery);
+            checkStmt.setString(1, uuid.toString());
+            java.sql.ResultSet rs = checkStmt.executeQuery();
             
-            plugin.getLogger().info("Nuevo jugador creado: " + username);
+            if (!rs.next()) {
+                // El jugador no existe, crearlo
+                String query;
+                if (databaseType.equalsIgnoreCase("sqlite")) {
+                    query = "INSERT INTO players (uuid, username, race, class, subclass, level, experience, clan_name) " +
+                           "VALUES (?, ?, '', '', '', 1, 0, NULL)";
+                } else {
+                    query = "INSERT INTO players (uuid, username, race, class, subclass, level, experience, clan_name) " +
+                           "VALUES (?, ?, '', '', '', 1, 0, NULL)";
+                }
+                java.sql.PreparedStatement stmt = connection.prepareStatement(query);
+                stmt.setString(1, uuid.toString());
+                stmt.setString(2, username);
+                stmt.executeUpdate();
+                
+                plugin.getLogger().info("Nuevo jugador creado: " + username);
+            }
         } catch (Exception e) {
             plugin.getLogger().severe("Error al crear nuevo jugador: " + e.getMessage());
         }

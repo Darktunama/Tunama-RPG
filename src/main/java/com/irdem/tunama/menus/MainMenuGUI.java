@@ -83,6 +83,28 @@ public class MainMenuGUI implements InventoryHolder {
             "§7Haz clic para ver el ranking"
         ));
 
+        // ========== SECCIÓN DE EQUIPO ==========
+        // Anillo 1 (slot 36)
+        inventory.setItem(36, createEquipmentItem(Material.PAPER, "§6Anillo 1", playerData.getRing1()));
+        
+        // Anillo 2 (slot 37)
+        inventory.setItem(37, createEquipmentItem(Material.PAPER, "§6Anillo 2", playerData.getRing2()));
+        
+        // Collar (slot 38)
+        inventory.setItem(38, createEquipmentItem(Material.AMETHYST_SHARD, "§bCollar", playerData.getNecklace()));
+        
+        // Anillo 3 (slot 39)
+        inventory.setItem(39, createEquipmentItem(Material.PAPER, "§6Anillo 3", playerData.getRing3()));
+        
+        // Anillo 4 (slot 40)
+        inventory.setItem(40, createEquipmentItem(Material.PAPER, "§6Anillo 4", playerData.getRing4()));
+        
+        // Amuleto 1 (slot 43)
+        inventory.setItem(43, createEquipmentItem(Material.EMERALD, "§2Amuleto 1", playerData.getAmulet1()));
+        
+        // Amuleto 2 (slot 44)
+        inventory.setItem(44, createEquipmentItem(Material.EMERALD, "§2Amuleto 2", playerData.getAmulet2()));
+
         // Cerrar (slot 49)
         inventory.setItem(49, createItem(Material.BARRIER, "§cCerrar", 
             "§7Haz clic para cerrar el menú"
@@ -100,6 +122,25 @@ public class MainMenuGUI implements InventoryHolder {
                 loreList.add(line);
             }
             meta.setLore(loreList);
+            item.setItemMeta(meta);
+        }
+        
+        return item;
+    }
+
+    private ItemStack createEquipmentItem(Material material, String name, String equipped) {
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        
+        if (meta != null) {
+            meta.setDisplayName(name);
+            List<String> lore = new ArrayList<>();
+            if (equipped != null && !equipped.isEmpty()) {
+                lore.add("§f" + equipped);
+            } else {
+                lore.add("§7Vacío");
+            }
+            meta.setLore(lore);
             item.setItemMeta(meta);
         }
         
