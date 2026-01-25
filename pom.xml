@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.irdem.tunama</groupId>
   <artifactId>rpg</artifactId>
-  <version>0.0.9</version>
+  <version>0.0.5</version>
   <name>RPG</name>
   <description>Un plugin RPG para Paper</description>
 
