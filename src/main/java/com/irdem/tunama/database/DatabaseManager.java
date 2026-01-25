@@ -338,47 +338,42 @@ public class DatabaseManager {
 
     public void createPlayerIfNotExists(java.util.UUID uuid, String username) {
         try {
-            // Verificar si el jugador ya existe
-            String checkQuery = "SELECT uuid FROM players WHERE uuid = ?";
-            java.sql.PreparedStatement checkStmt = connection.prepareStatement(checkQuery);
-            checkStmt.setString(1, uuid.toString());
-            java.sql.ResultSet rs = checkStmt.executeQuery();
+            String query;
+            if (databaseType.equalsIgnoreCase("sqlite")) {
+                query = "INSERT OR IGNORE INTO players (uuid, username, race, class, subclass, level, experience, clan_name) " +
+                       "VALUES (?, ?, '', '', '', 1, 0, NULL)";
+            } else {
+                query = "INSERT INTO players (uuid, username, race, class, subclass, level, experience, clan_name) " +
+                       "VALUES (?, ?, '', '', '', 1, 0, NULL) " +
+                       "ON DUPLICATE KEY UPDATE uuid=uuid";
+            }
             
-            if (!rs.next()) {
-                // El jugador no existe, crearlo
-                String query;
-                if (databaseType.equalsIgnoreCase("sqlite")) {
-                    query = "INSERT INTO players (uuid, username, race, class, subclass, level, experience, clan_name) " +
-                           "VALUES (?, ?, '', '', '', 1, 0, NULL)";
-                } else {
-                    query = "INSERT INTO players (uuid, username, race, class, subclass, level, experience, clan_name) " +
-                           "VALUES (?, ?, '', '', '', 1, 0, NULL)";
-                }
-                java.sql.PreparedStatement stmt = connection.prepareStatement(query);
-                stmt.setString(1, uuid.toString());
-                stmt.setString(2, username);
-                stmt.executeUpdate();
-                
+            java.sql.PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, uuid.toString());
+            stmt.setString(2, username);
+            int result = stmt.executeUpdate();
+            
+            if (result > 0) {
                 plugin.getLogger().info("Nuevo jugador creado: " + username);
             }
         } catch (Exception e) {
-            plugin.getLogger().severe("Error al crear nuevo jugador: " + e.getMessage());
+            // Ignorar si ya existe (puede ocurrir por race condition)
+            if (!e.getMessage().contains("UNIQUE")) {
+                plugin.getLogger().severe("Error al crear nuevo jugador: " + e.getMessage());
+            }
         }
     }
 
     public com.irdem.tunama.data.PlayerData getOrCreatePlayerData(java.util.UUID uuid, String username) {
         try {
-            // Intentar obtener
+            // Intentar crear si no existe (atomic operation)
+            createPlayerIfNotExists(uuid, username);
+            
+            // Pequeña pausa para asegurar que se guardó
+            Thread.sleep(50);
+            
+            // Obtener datos
             com.irdem.tunama.data.PlayerData playerData = getPlayerData(uuid);
-            
-            // Si no existe, crear y obtener
-            if (playerData == null) {
-                createPlayerIfNotExists(uuid, username);
-                // Pequeña pausa para asegurar que se guardó
-                Thread.sleep(100);
-                playerData = getPlayerData(uuid);
-            }
-            
             return playerData;
         } catch (Exception e) {
             plugin.getLogger().severe("Error al obtener/crear datos del jugador: " + e.getMessage());

@@ -73,10 +73,10 @@ public class RPGCommand implements CommandExecutor {
                 }
                 break;
             case "reload":
-                if (player.hasPermission("rpg.reload") || player.isOp()) {
-                    reloadConfigs(player);
+                if (sender.hasPermission("rpg.reload") || sender.isOp()) {
+                    reloadConfigs(sender);
                 } else {
-                    player.sendMessage("§cNo tienes permisos para usar este comando");
+                    sender.sendMessage("§cNo tienes permisos para usar este comando");
                 }
                 break;
             case "help":
@@ -161,7 +161,7 @@ public class RPGCommand implements CommandExecutor {
         player.sendMessage("§cNo se encontró información para: " + name);
     }
 
-    private void reloadConfigs(Player player) {
+    private void reloadConfigs(CommandSender sender) {
         try {
             plugin.getRaceManager().loadRaces();
             plugin.getClassManager().loadClasses();
@@ -170,16 +170,16 @@ public class RPGCommand implements CommandExecutor {
             plugin.getAchievementManager().loadAchievements();
             plugin.getAbilityManager().loadAbilities();
             
-            player.sendMessage("§a✓ Todas las configuraciones recargadas exitosamente");
-            player.sendMessage("§7Razas: §f" + plugin.getRaceManager().getAllRaces().size());
-            player.sendMessage("§7Clases: §f" + plugin.getClassManager().getAllClasses().size());
-            player.sendMessage("§7Subclases: §f" + plugin.getSubclassManager().getAllSubclasses().size());
-            player.sendMessage("§7Misiones: §f" + plugin.getMissionManager().getAllMissions().size());
-            player.sendMessage("§7Logros: §f" + plugin.getAchievementManager().getAllAchievements().size());
-            player.sendMessage("§7Habilidades: §f" + plugin.getAbilityManager().getAllAbilities().size());
+            sender.sendMessage("§a✓ Todas las configuraciones recargadas exitosamente");
+            sender.sendMessage("§7Razas: §f" + plugin.getRaceManager().getAllRaces().size());
+            sender.sendMessage("§7Clases: §f" + plugin.getClassManager().getAllClasses().size());
+            sender.sendMessage("§7Subclases: §f" + plugin.getSubclassManager().getAllSubclasses().size());
+            sender.sendMessage("§7Misiones: §f" + plugin.getMissionManager().getAllMissions().size());
+            sender.sendMessage("§7Logros: §f" + plugin.getAchievementManager().getAllAchievements().size());
+            sender.sendMessage("§7Habilidades: §f" + plugin.getAbilityManager().getAllAbilities().size());
         } catch (Exception e) {
-            player.sendMessage("§c✗ Error al recargar las configuraciones");
-            player.sendMessage("§c" + e.getMessage());
+            sender.sendMessage("§c✗ Error al recargar las configuraciones");
+            sender.sendMessage("§c" + e.getMessage());
             e.printStackTrace();
         }
     }

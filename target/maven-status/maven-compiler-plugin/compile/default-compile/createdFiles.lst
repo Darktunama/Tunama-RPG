@@ -1,4 +1,5 @@
 com\irdem\tunama\menus\RankingMenu.class
+com\irdem\tunama\menus\EquipmentMenu.class
 com\irdem\tunama\data\RPGClass.class
 com\irdem\tunama\data\MissionManager.class
 com\irdem\tunama\config\ConfigManager.class

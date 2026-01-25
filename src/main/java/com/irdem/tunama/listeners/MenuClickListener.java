@@ -57,6 +57,9 @@ public class MenuClickListener implements Listener {
                 case 23: // Misiones
                     openMissionsMenu(player, playerData);
                     break;
+                case 24: // Equipo
+                    openEquipmentMenu(player, playerData);
+                    break;
                 case 29: // Logros
                     openAchievementsMenu(player, playerData);
                     break;
@@ -211,6 +214,11 @@ public class MenuClickListener implements Listener {
     private void openAbilitiesMenu(Player player, PlayerData playerData) {
         com.irdem.tunama.menus.AbilitiesMenu abilitiesMenu = new com.irdem.tunama.menus.AbilitiesMenu(plugin, player, playerData);
         abilitiesMenu.open();
+    }
+
+    private void openEquipmentMenu(Player player, PlayerData playerData) {
+        com.irdem.tunama.menus.EquipmentMenu equipmentMenu = new com.irdem.tunama.menus.EquipmentMenu(plugin, player, playerData);
+        equipmentMenu.open();
     }
 
     private String getSubclassFromSlot(Player player, int slot, String playerClass) {
