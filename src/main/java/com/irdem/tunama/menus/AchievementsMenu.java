@@ -29,86 +29,69 @@ public class AchievementsMenu implements InventoryHolder {
     private void setupItems() {
         int playerLevel = playerData.getLevel();
         int slot = 10;
+        int completedAchievements = 0;
 
-        // Logro: Primer Paso (nivel 1+)
-        inventory.setItem(slot++, createAchievementItem(true, "§6Primer Paso",
-            "§7Alcanza nivel 5",
-            playerLevel >= 5 ? "§a✓ Completado" : "§7Progreso: " + playerLevel + "/5"
-        ));
-
-        // Logro: Crecimiento (nivel 10+)
-        inventory.setItem(slot++, createAchievementItem(playerLevel >= 10, "§6Crecimiento",
-            "§7Alcanza nivel 10",
-            playerLevel >= 10 ? "§a✓ Completado" : "§7Progreso: " + playerLevel + "/10"
-        ));
-
-        // Logro: Guerrero (nivel 15+)
-        inventory.setItem(slot++, createAchievementItem(playerLevel >= 15, "§6Guerrero",
-            "§7Alcanza nivel 15",
-            playerLevel >= 15 ? "§a✓ Completado" : "§7Progreso: " + playerLevel + "/15"
-        ));
-
-        // Logro: Veterano (nivel 20+)
-        inventory.setItem(slot++, createAchievementItem(playerLevel >= 20, "§4Veterano",
-            "§7Alcanza nivel 20",
-            playerLevel >= 20 ? "§a✓ Completado" : "§7Progreso: " + playerLevel + "/20"
-        ));
-
-        // Logro: Maestro (nivel 30+)
-        inventory.setItem(slot++, createAchievementItem(playerLevel >= 30, "§5Maestro",
-            "§7Alcanza nivel 30",
-            playerLevel >= 30 ? "§a✓ Completado" : "§7Progreso: " + playerLevel + "/30"
-        ));
-
-        // Logro: Legenda (nivel 50+)
-        inventory.setItem(slot++, createAchievementItem(playerLevel >= 50, "§4Legenda",
-            "§7Alcanza nivel 50",
-            playerLevel >= 50 ? "§a✓ Completado" : "§7Progreso: " + playerLevel + "/50"
-        ));
-
-        // Logro: Selección de Raza
-        boolean hasRace = playerData.getRace() != null && !playerData.getRace().isEmpty();
-        inventory.setItem(slot++, createAchievementItem(hasRace, "§6Elegido de Razas",
-            "§7Selecciona una raza",
-            hasRace ? "§a✓ Completado" : "§cNo completado"
-        ));
-
-        // Logro: Selección de Clase
-        boolean hasClass = playerData.getPlayerClass() != null && !playerData.getPlayerClass().isEmpty();
-        inventory.setItem(slot++, createAchievementItem(hasClass, "§6Profesional",
-            "§7Selecciona una clase",
-            hasClass ? "§a✓ Completado" : "§cNo completado"
-        ));
-
-        // Logro: Selección de Subclase
-        boolean hasSubclass = playerData.getSubclass() != null && !playerData.getSubclass().isEmpty();
-        inventory.setItem(slot++, createAchievementItem(hasSubclass, "§5Especialista",
-            "§7Selecciona una subclase",
-            hasSubclass ? "§a✓ Completado" : "§cNo completado"
-        ));
+        // Cargar logros desde el AchievementManager
+        java.util.Map<String, com.irdem.tunama.data.Achievement> allAchievements = plugin.getAchievementManager().getAllAchievements();
+        
+        for (com.irdem.tunama.data.Achievement achievement : allAchievements.values()) {
+            boolean isCompleted = checkAchievementCompleted(achievement, playerLevel);
+            
+            inventory.setItem(slot++, createAchievementItem(isCompleted, "§6" + achievement.getName(),
+                "§7" + achievement.getDescription(),
+                "§7Categoría: §f" + achievement.getCategory(),
+                "§7Requisito: §f" + achievement.getRequirement(),
+                isCompleted ? "§a✓ Completado" : "§7Progreso: " + getProgressText(achievement, playerLevel)
+            ));
+            
+            if (isCompleted) {
+                completedAchievements++;
+            }
+            
+            if (slot > 35) break;
+        }
 
         // Info de logros (slot 29)
-        int totalAchievements = 9;
-        int completedAchievements = 0;
-        if (playerLevel >= 5) completedAchievements++;
-        if (playerLevel >= 10) completedAchievements++;
-        if (playerLevel >= 15) completedAchievements++;
-        if (playerLevel >= 20) completedAchievements++;
-        if (playerLevel >= 30) completedAchievements++;
-        if (playerLevel >= 50) completedAchievements++;
-        if (hasRace) completedAchievements++;
-        if (hasClass) completedAchievements++;
-        if (hasSubclass) completedAchievements++;
+        int totalAchievements = allAchievements.size();
 
         inventory.setItem(29, createInfoItem("§6Info de Logros",
             "§7Completados: §f" + completedAchievements + "§7/§f" + totalAchievements,
-            "§7Porcentaje: §f" + (completedAchievements * 100 / totalAchievements) + "%"
+            "§7Porcentaje: §f" + (completedAchievements * 100 / totalAchievements) + "%",
+            "§7Nivel: §f" + playerLevel
         ));
 
         // Botón Volver (slot 49)
         inventory.setItem(49, createAchievementItem(Material.BARRIER, false, "§cVolver", 
             "§7Haz clic para volver al menú anterior"
         ));
+    }
+
+    private boolean checkAchievementCompleted(com.irdem.tunama.data.Achievement achievement, int playerLevel) {
+        String category = achievement.getCategory().toLowerCase();
+        int requirement = achievement.getRequirement();
+        
+        if (category.equals("nivel")) {
+            return playerLevel >= requirement;
+        } else if (category.equals("selección")) {
+            if (achievement.getId().contains("raza")) {
+                return playerData.getRace() != null && !playerData.getRace().isEmpty();
+            } else if (achievement.getId().contains("clase")) {
+                return playerData.getPlayerClass() != null && !playerData.getPlayerClass().isEmpty();
+            } else if (achievement.getId().contains("subclase")) {
+                return playerData.getSubclass() != null && !playerData.getSubclass().isEmpty();
+            }
+        }
+        return false;
+    }
+
+    private String getProgressText(com.irdem.tunama.data.Achievement achievement, int playerLevel) {
+        String category = achievement.getCategory().toLowerCase();
+        int requirement = achievement.getRequirement();
+        
+        if (category.equals("nivel")) {
+            return playerLevel + "/" + requirement;
+        }
+        return "No completado";
     }
 
     private ItemStack createAchievementItem(boolean completed, String name, String... lore) {

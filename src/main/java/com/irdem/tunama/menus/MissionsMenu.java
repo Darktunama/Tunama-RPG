@@ -30,56 +30,44 @@ public class MissionsMenu implements InventoryHolder {
         int playerLevel = playerData.getLevel();
         int slot = 10;
 
-        // Misiones básicas (nivel 1+)
-        if (playerLevel >= 1) {
-            inventory.setItem(slot++, createMissionItem("§6Derrota 5 Zombies", 
-                "§7Recompensa: 50 EXP",
-                "§7Nivel requerido: §f1",
-                "§eEstado: §aActiva"
-            ));
-        }
-
-        // Misiones intermedias (nivel 10+)
-        if (playerLevel >= 10) {
-            inventory.setItem(slot++, createMissionItem("§6Recauda 10 Cristales", 
-                "§7Recompensa: 150 EXP",
-                "§7Nivel requerido: §f10",
-                "§eEstado: §aActiva"
-            ));
-        }
-
-        // Misiones avanzadas (nivel 20+)
-        if (playerLevel >= 20) {
-            inventory.setItem(slot++, createMissionItem("§6Derrota al Jefe Esqueleto", 
-                "§7Recompensa: 500 EXP + Cofre de Recompensas",
-                "§7Nivel requerido: §f20",
-                "§eEstado: §aActiva"
-            ));
-        }
-
-        // Misiones épicas (nivel 30+)
-        if (playerLevel >= 30) {
-            inventory.setItem(slot++, createMissionItem("§4Derrota al Señor del Caos", 
-                "§7Recompensa: 2000 EXP + Objeto Legendario",
-                "§7Nivel requerido: §f30",
-                "§eEstado: §aActiva"
-            ));
-        }
-
-        // Misiones bloqueadas
-        if (playerLevel < 50) {
-            inventory.setItem(slot++, createMissionItem(Material.BARRIER, "§cMisión Bloqueada",
-                "§7Derrota al Titán Oscuro",
-                "§7Nivel requerido: §f50",
-                "§cEstado: §cBloqueada"
-            ));
+        // Cargar misiones desde el MissionManager
+        java.util.Map<String, com.irdem.tunama.data.Mission> allMissions = plugin.getMissionManager().getAllMissions();
+        
+        for (com.irdem.tunama.data.Mission mission : allMissions.values()) {
+            if (playerLevel >= mission.getRequiredLevel()) {
+                // Misión disponible
+                inventory.setItem(slot++, createMissionItem("§6" + mission.getName(), 
+                    "§7" + mission.getDescription(),
+                    "§7Nivel requerido: §f" + mission.getRequiredLevel(),
+                    "§7Recompensa: §f" + mission.getRewardExp() + " EXP",
+                    "§eEstado: §aActiva"
+                ));
+            } else {
+                // Misión bloqueada
+                if (slot <= 35) {
+                    inventory.setItem(slot++, createMissionItem(Material.BARRIER, "§c" + mission.getName(),
+                        "§7" + mission.getDescription(),
+                        "§7Nivel requerido: §f" + mission.getRequiredLevel(),
+                        "§cEstado: §cBloqueada"
+                    ));
+                }
+            }
+            if (slot > 35) break;
         }
 
         // Info de misiones (slot 29)
+        int totalMissions = allMissions.size();
         int completedMissions = (playerLevel / 10);
+        int availableMissions = 0;
+        for (com.irdem.tunama.data.Mission mission : allMissions.values()) {
+            if (playerLevel >= mission.getRequiredLevel()) {
+                availableMissions++;
+            }
+        }
+        
         inventory.setItem(29, createMissionInfo("§6Info de Misiones",
             "§7Misiones completadas: §f" + completedMissions,
-            "§7Misiones disponibles: §f" + (slot - 10),
+            "§7Misiones disponibles: §f" + availableMissions + "§7/§f" + totalMissions,
             "§7Nivel: §f" + playerLevel
         ));
 

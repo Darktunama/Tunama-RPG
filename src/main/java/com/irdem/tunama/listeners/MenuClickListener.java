@@ -52,7 +52,7 @@ public class MenuClickListener implements Listener {
                     player.sendMessage("§6Clan: [Sistema en desarrollo]");
                     break;
                 case 22: // Habilidades
-                    player.sendMessage("§6Habilidades: [Sistema en desarrollo]");
+                    openAbilitiesMenu(player, playerData);
                     break;
                 case 23: // Misiones
                     openMissionsMenu(player, playerData);
@@ -147,6 +147,20 @@ public class MenuClickListener implements Listener {
                 }
             }
         }
+
+        // Manejar clicks en AbilitiesMenu
+        if (holder instanceof com.irdem.tunama.menus.AbilitiesMenu) {
+            event.setCancelled(true);
+            int slot = event.getRawSlot();
+            
+            if (slot == 49) { // Botón Volver
+                PlayerData playerData = plugin.getDatabaseManager().getPlayerData(player.getUniqueId());
+                if (playerData != null) {
+                    MainMenuGUI mainMenu = new MainMenuGUI(plugin, player, playerData);
+                    mainMenu.open();
+                }
+            }
+        }
     }
 
     private void openRaceMenu(Player player) {
@@ -192,6 +206,11 @@ public class MenuClickListener implements Listener {
     private void openRankingMenu(Player player) {
         com.irdem.tunama.menus.RankingMenu rankingMenu = new com.irdem.tunama.menus.RankingMenu(plugin, player);
         rankingMenu.open();
+    }
+
+    private void openAbilitiesMenu(Player player, PlayerData playerData) {
+        com.irdem.tunama.menus.AbilitiesMenu abilitiesMenu = new com.irdem.tunama.menus.AbilitiesMenu(plugin, player, playerData);
+        abilitiesMenu.open();
     }
 
     private String getSubclassFromSlot(Player player, int slot, String playerClass) {

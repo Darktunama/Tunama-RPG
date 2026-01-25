@@ -12,6 +12,7 @@ com\irdem\tunama\data\AbilityManager.class
 com\irdem\tunama\data\Race.class
 com\irdem\tunama\data\ClassManager.class
 com\irdem\tunama\menus\SubclassSelectionMenu.class
+com\irdem\tunama\menus\AbilitiesMenu.class
 com\irdem\tunama\data\RaceManager.class
 com\irdem\tunama\menus\AchievementsMenu.class
 com\irdem\tunama\TunamaRPG.class
