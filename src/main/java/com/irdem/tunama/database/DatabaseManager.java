@@ -73,6 +73,7 @@ public class DatabaseManager {
                 "subclass TEXT," +
                 "level INTEGER DEFAULT 1," +
                 "experience LONG DEFAULT 0," +
+                "clan_name TEXT," +
                 "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
             ")");
 
@@ -147,6 +148,7 @@ public class DatabaseManager {
                 "subclass VARCHAR(50)," +
                 "level INT DEFAULT 1," +
                 "experience BIGINT DEFAULT 0," +
+                "clan_name VARCHAR(255)," +
                 "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP" +
             ")");
 
