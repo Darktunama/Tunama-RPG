@@ -3,6 +3,15 @@
 .github/
 .vscode/
 
+# Código fuente Java (privado)
+src/main/java/
+src/test/
+
+# Archivos de compilación y configuración
+pom.xml
+build.bat
+build.ps1
+
 # Compilados y dependencias Maven
 target/
 

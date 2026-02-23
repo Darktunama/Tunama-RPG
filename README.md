@@ -375,23 +375,9 @@ experience:
 
 ---
 
-## 🏗️ Compilación
-
-```bash
-# Clonar el repositorio
-git clone https://github.com/Darktunama/Tunama-RPG.git
-cd Tunama-RPG
-
-# Compilar con Maven (requiere Java 21)
-mvn clean package
-
-# El JAR se genera en target/rpg-<version>.jar
-```
-
----
 
 <div align="center">
 
-**Desarrollado por Tunama** · Paper 1.21 · Java 21
+**Desarrollado por [Tunama](https://github.com/Darktunama/) · Paper 1.21 · Java 21
 
 </div>
