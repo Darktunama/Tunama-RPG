@@ -1,5 +1,6 @@
 id: dragoneante
 name: Dragoneante
+order: 8
 description: Son los nacidos del Dragon
 
 advantages: Cada punto Invertido en Inteligencia, Agilidad o Poder Sagrado da 2 puntos

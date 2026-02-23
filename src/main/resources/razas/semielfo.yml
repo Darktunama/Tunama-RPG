@@ -1,5 +1,6 @@
 id: semielfo
 name: SemiElfo
+order: 6
 description: Es lo que pasa cuando un Elfo y un Humano se juntan
 
 advantages: Puede usar todas las clases excepto Trampero, Evocador, Monje y Nigromante, Cada punto invertido en Agilidad o Inteligencia suma 2 en vez de 1

@@ -4,8 +4,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RaceManager {
 
@@ -66,7 +66,9 @@ public class RaceManager {
             race.setCorruptPowerCost(config.getDouble("costs.corrupt-power", 1.0));
             race.setSagradoPowerCost(config.getDouble("costs.sagrado-power", 1.0));
             race.setNaturePowerCost(config.getDouble("costs.nature-power", 1.0));
-            
+            race.setOrder(config.getInt("order", 999)); // 999 por defecto para que aparezcan al final
+            race.setRestrictedClasses(config.getStringList("restricted-classes"));
+
             races.put(id, race);
         } catch (Exception e) {
             plugin.getLogger().severe("Error al cargar raza desde " + file.getName() + ": " + e.getMessage());
@@ -76,70 +78,94 @@ public class RaceManager {
     private void createDefaultRaces() {
         // Humano
         createRaceFile("humano", "Humano", "Raza Versátil pero sin destacar en nada",
-            "Puede usar todas las clases excepto Evocador y Druida, no tiene debilidades",
-            "no tiene bonus de Estadísticas",
-            1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-        
+            "No tiene debilidades",
+            "No tiene bonus de Estadísticas",
+            1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+            java.util.Arrays.asList("evocador", "druida"));
+
         // Elfo
         createRaceFile("elfo", "Elfo", "Raza débil en vitalidad pero de alto daño",
             "Cada punto invertido en Agilidad o Inteligencia suma 2 en vez de 1",
-            "Para subir 1 punto de Poder Corrupto requiere 2 puntos, No puede ser las clases Trampero, Sacerdote ni Evocador",
-            2.0, 2.0, 1.0, 1.0, 2.0, 1.0, 1.0);
-        
+            "Para subir 1 punto de Poder Corrupto requiere 2 puntos",
+            2.0, 2.0, 1.0, 1.0, 2.0, 1.0, 1.0,
+            java.util.Arrays.asList("trampero", "sacerdote", "evocador"));
+
         // SemiElfo
         createRaceFile("semielfo", "SemiElfo", "Es lo que pasa cuando un Elfo y un Humano se juntan",
-            "Puede usar todas las clases excepto Trampero, Evocador, Monje y Nigromante, Cada punto invertido en Agilidad o Inteligencia suma 2 en vez de 1",
+            "Cada punto invertido en Agilidad o Inteligencia suma 2 en vez de 1",
             "Para subir 1 punto de Poder Corrupto requiere 2 puntos",
-            2.0, 2.0, 1.0, 1.0, 2.0, 1.0, 1.0);
-        
+            2.0, 2.0, 1.0, 1.0, 2.0, 1.0, 1.0,
+            java.util.Arrays.asList("trampero", "evocador", "monje", "nigromante"));
+
         // Orco
         createRaceFile("orco", "Orco", "Nadie donde sabe de donde vinieron estas bestias salvajes y joder que son feas",
             "Cada punto invertido en Vida o Fuerza suma 2 en vez de 1",
-            "Para subir 1 punto de Agilidad Poder sagrado o Poder Naturaleza requiere 2 puntos, No puede usar las clases Pícaro y Evocador",
-            2.0, 1.0, 2.0, 2.0, 1.0, 2.0, 2.0);
-        
+            "Para subir 1 punto de Agilidad, Poder Sagrado o Poder Naturaleza requiere 2 puntos",
+            2.0, 1.0, 2.0, 2.0, 1.0, 2.0, 2.0,
+            java.util.Arrays.asList("picaro", "evocador"));
+
         // Tiflyn
         createRaceFile("tiflyn", "Tiflyn", "Nacidos de humanos maldecidos por el Infierno",
-            "Cada punto invertido en Vida, Fuerza, Agilidad o Poder Corrupto soma 2 en vez de 1",
-            "Cada punto Invertido en Poder Sagrado o Poder Naturaleza requiere 2 puntos, no puede usar las clases Monje, Sacerdote ni Druida",
-            2.0, 1.0, 2.0, 2.0, 2.0, 2.0, 2.0);
-        
+            "Cada punto invertido en Vida, Fuerza, Agilidad o Poder Corrupto suma 2 en vez de 1",
+            "Cada punto Invertido en Poder Sagrado o Poder Naturaleza requiere 2 puntos",
+            2.0, 1.0, 2.0, 2.0, 2.0, 2.0, 2.0,
+            java.util.Arrays.asList("monje", "sacerdote", "druida"));
+
         // Enano
         createRaceFile("enano", "Enano", "Raza muy Orgullosa, sobre todo por que le llega hasta las rodillas su ejem.... Su barba, su barba",
             "Cada punto Invertido en Vida y Fuerza suma 2 en vez de 1",
-            "Cada punto invertido en Inteligencia o Agilidad requiere 2 puntos, no puede usar clases Cazador, Pícaro, Druida, Evocador",
-            2.0, 0.5, 2.0, 2.0, 1.0, 1.0, 1.0);
-        
+            "Cada punto invertido en Inteligencia o Agilidad requiere 2 puntos",
+            2.0, 0.5, 2.0, 2.0, 1.0, 1.0, 1.0,
+            java.util.Arrays.asList("cazador", "picaro", "druida", "evocador"));
+
         // Dragoneante
         createRaceFile("dragoneante", "Dragoneante", "Son los nacidos del Dragon",
             "Cada punto Invertido en Inteligencia, Agilidad o Poder Sagrado da 2 puntos",
-            "Cada punto invertido en Vida Poder Corrupto requiere 2 puntos, no puede usar clases Nigromante, Invocador, Paladín, Guerrero",
-            2.0, 2.0, 0.5, 1.0, 2.0, 2.0, 1.0);
-        
+            "Cada punto invertido en Vida o Poder Corrupto requiere 2 puntos",
+            2.0, 2.0, 0.5, 1.0, 2.0, 2.0, 1.0,
+            java.util.Arrays.asList("nigromante", "invocador", "paladin", "guerrero"));
+
         // Goblin
         createRaceFile("goblin", "Goblin", "Son grandes acaparadores de fortunas pero difíciles de tratar",
             "Cada punto Invertido en Agilidad, Inteligencia o Poder Corrupto dan 2 puntos",
-            "Cada punto invertido en vida o poder sagrado requiere 2 puntos, no puede usar clases, Evocador, Paladín, Guerrero y Druida",
-            2.0, 2.0, 0.5, 1.0, 2.0, 2.0, 1.0);
-        
+            "Cada punto invertido en Vida o Poder Sagrado requiere 2 puntos",
+            2.0, 2.0, 0.5, 1.0, 2.0, 2.0, 1.0,
+            java.util.Arrays.asList("evocador", "paladin", "guerrero", "druida"));
+
         // No Muerto
         createRaceFile("nomuerto", "No Muerto", "La nunca los freno por eso siempre vuelven",
             "Cada punto Invertido en Vida o Poder Corrupto da 2 puntos",
-            "Cada punto invertido en Agilidad o Poder Naturaleza requiere 2 puntos, no puede usar clases Evocador, Sacerdote, Monje",
-            0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 2.0);
-        
+            "Cada punto invertido en Agilidad o Poder Naturaleza requiere 2 puntos",
+            0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 2.0,
+            java.util.Arrays.asList("evocador", "sacerdote", "monje"));
+
         loadRaces();
     }
 
     private void createRaceFile(String id, String name, String description, String advantages, String disadvantages,
                                 double agility, double intelligence, double life, double strength,
-                                double corruptPower, double sagradoPower, double naturePower) {
+                                double corruptPower, double sagradoPower, double naturePower, List<String> restrictedClasses) {
         try {
             File file = new File(racesFolder, id + ".yml");
             if (!file.exists()) {
+                // Asignar un orden basado en el ID para mantener consistencia
+                int order = 999; // Por defecto
+                switch (id) {
+                    case "humano": order = 1; break;
+                    case "elfo": order = 2; break;
+                    case "enano": order = 3; break;
+                    case "orco": order = 4; break;
+                    case "goblin": order = 5; break;
+                    case "semielfo": order = 6; break;
+                    case "tiflyn": order = 7; break;
+                    case "dragoneante": order = 8; break;
+                    case "nomuerto": order = 9; break;
+                }
+
                 FileConfiguration config = new YamlConfiguration();
                 config.set("id", id);
                 config.set("name", name);
+                config.set("order", order);
                 config.set("description", description);
                 config.set("advantages", advantages);
                 config.set("disadvantages", disadvantages);
@@ -150,6 +176,7 @@ public class RaceManager {
                 config.set("costs.corrupt-power", corruptPower);
                 config.set("costs.sagrado-power", sagradoPower);
                 config.set("costs.nature-power", naturePower);
+                config.set("restricted-classes", restrictedClasses);
                 config.save(file);
             }
         } catch (Exception e) {
@@ -162,7 +189,15 @@ public class RaceManager {
     }
 
     public Map<String, Race> getAllRaces() {
-        return new HashMap<>(races);
+        // Ordenar las razas por el campo order
+        return races.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.comparingInt(Race::getOrder)))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                ));
     }
 
     public boolean isValidRace(String id) {

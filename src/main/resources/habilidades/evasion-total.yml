@@ -1,0 +1,23 @@
+id: evasion-total
+name: Evasion Total
+description: Evita todos los ataques durante un tiempo
+class: picaro
+required-level: 12
+mana-cost: "45"
+material: FEATHER
+custom-model-data: 0
+particle: CLOUD
+particle-count: 20
+particle-speed: 0.3
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

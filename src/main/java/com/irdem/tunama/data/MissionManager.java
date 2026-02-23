@@ -33,7 +33,9 @@ public class MissionManager {
         if (files == null || files.length == 0) {
             plugin.getLogger().warning("No se encontraron archivos de misiones. Creando misiones por defecto...");
             createDefaultMissions();
-            return;
+            // Recargar los archivos recién creados
+            files = missionsFolder.listFiles((dir, name) -> name.endsWith(".yml"));
+            if (files == null || files.length == 0) return;
         }
         
         for (File file : files) {

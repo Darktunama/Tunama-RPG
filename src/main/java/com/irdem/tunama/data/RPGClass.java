@@ -11,6 +11,9 @@ public class RPGClass {
     private String disadvantages;
     private Set<String> allowedRaces;
     private Set<String> subclasses;
+    private int order;
+    private boolean hasPets;
+    private int maxPets;
 
     public RPGClass(String id, String name, String description) {
         this.id = id;
@@ -18,6 +21,8 @@ public class RPGClass {
         this.description = description;
         this.allowedRaces = new HashSet<>();
         this.subclasses = new HashSet<>();
+        this.hasPets = false;
+        this.maxPets = 1;
     }
 
     // Getters y Setters
@@ -53,4 +58,13 @@ public class RPGClass {
     public boolean hasSubclass(String subclass) {
         return subclasses.contains(subclass.toLowerCase());
     }
+
+    public int getOrder() { return order; }
+    public void setOrder(int order) { this.order = order; }
+
+    public boolean hasPets() { return hasPets; }
+    public void setHasPets(boolean hasPets) { this.hasPets = hasPets; }
+
+    public int getMaxPets() { return maxPets; }
+    public void setMaxPets(int maxPets) { this.maxPets = maxPets; }
 }

@@ -1,0 +1,27 @@
+id: disparo-al-corazon
+name: Disparo al Corazon
+description: Aumenta el dano y el critico del lanzador durante 30 segundos
+class: arquero
+required-level: 30
+mana-cost: "70"
+material: HEART_OF_THE_SEA
+custom-model-data: 0
+particle: TOTEM_OF_UNDYING
+particle-count: 30
+particle-speed: 0.5
+required-weapon: BOW
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 30.0
+crit-bonus: 0.5
+crit-duration: 30.0
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

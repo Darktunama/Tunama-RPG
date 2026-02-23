@@ -8,9 +8,11 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import com.irdem.tunama.TunamaRPG;
-import com.irdem.tunama.data.PlayerData;
+import com.irdem.tunama.data.Race;
+import com.irdem.tunama.data.RPGClass;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class RankingMenu implements InventoryHolder {
     private Inventory inventory;
@@ -20,77 +22,76 @@ public class RankingMenu implements InventoryHolder {
     public RankingMenu(TunamaRPG plugin, Player player) {
         this.plugin = plugin;
         this.player = player;
-        this.inventory = Bukkit.createInventory(this, 54, "§6Mejores Jugadores");
+        this.inventory = Bukkit.createInventory(this, 54, "§6Top Jugadores");
         setupItems();
     }
 
     private void setupItems() {
-        // Simulamos un ranking de jugadores
-        // En producción, esto vendría de la base de datos
-        
+        // Top 5 Nivel (slots 10-14)
+        List<Map<String, Object>> topLevel = plugin.getDatabaseManager().getTopPlayersByLevel(5);
         int slot = 10;
-
-        // Puesto 1
-        inventory.setItem(slot++, createRankingItem("§6⭐ Posición 1", 
-            "§7Jugador: §fKaiser",
-            "§7Nivel: §f50",
-            "§7EXP: §f500,000",
-            "§7Raza: §fDragoneante",
-            "§7Clase: §fGuerrero"
-        ));
-
-        // Puesto 2
-        inventory.setItem(slot++, createRankingItem("§e⭐ Posición 2", 
-            "§7Jugador: §fLunastar",
-            "§7Nivel: §f47",
-            "§7EXP: §f450,000",
-            "§7Raza: §fElfo",
-            "§7Clase: §fMago"
-        ));
-
-        // Puesto 3
-        inventory.setItem(slot++, createRankingItem("§c⭐ Posición 3", 
-            "§7Jugador: §fDarkShadow",
-            "§7Nivel: §f45",
-            "§7EXP: §f400,000",
-            "§7Raza: §fSemielfo",
-            "§7Clase: §fPícaro"
-        ));
-
-        // Puesto 4
-        inventory.setItem(slot++, createRankingItem("§7Posición 4", 
-            "§7Jugador: §fThunderStrike",
-            "§7Nivel: §f42",
-            "§7EXP: §f350,000",
-            "§7Raza: §fEnano",
-            "§7Clase: §fArquero"
-        ));
-
-        // Puesto 5
-        inventory.setItem(slot++, createRankingItem("§7Posición 5", 
-            "§7Jugador: §fMysticDream",
-            "§7Nivel: §f40",
-            "§7EXP: §f320,000",
-            "§7Raza: §fHumano",
-            "§7Clase: §fSacerdote"
-        ));
-
-        // Tu Posición
-        PlayerData playerData = plugin.getDatabaseManager().getPlayerData(player.getUniqueId());
-        if (playerData != null) {
-            inventory.setItem(29, createRankingItem(Material.PLAYER_HEAD, "§b📍 Tu Posición",
-                "§7Jugador: §f" + playerData.getUsername(),
-                "§7Nivel: §f" + playerData.getLevel(),
-                "§7EXP: §f" + playerData.getExperience(),
-                "§7Raza: §f" + (playerData.getRace() != null ? playerData.getRace() : "Sin asignar"),
-                "§7Clase: §f" + (playerData.getPlayerClass() != null ? playerData.getPlayerClass() : "Sin asignar")
+        for (int i = 0; i < topLevel.size() && i < 5; i++) {
+            Map<String, Object> playerInfo = topLevel.get(i);
+            String position = getPositionColor(i + 1) + "⭐ Posición " + (i + 1);
+            String raceId = (String) playerInfo.get("race");
+            String classId = (String) playerInfo.get("class");
+            Race r = raceId != null && !raceId.isEmpty() ? plugin.getRaceManager().getRace(raceId.toLowerCase()) : null;
+            RPGClass c = classId != null && !classId.isEmpty() ? plugin.getClassManager().getClass(classId.toLowerCase()) : null;
+            String raceDisplay = r != null ? r.getName() : (raceId != null ? raceId : "Sin asignar");
+            String classDisplay = c != null ? c.getName() : (classId != null ? classId : "Sin asignar");
+            inventory.setItem(slot++, createRankingItem(position,
+                "§7Jugador: §f" + playerInfo.get("username"),
+                "§7Nivel: §f" + playerInfo.get("level"),
+                "§7EXP: §f" + playerInfo.get("experience"),
+                "§7Raza: §f" + raceDisplay,
+                "§7Clase: §f" + classDisplay
             ));
         }
+
+        // Top 5 Kills Mobs (slots 19-23)
+        List<Map<String, Object>> topMobKills = plugin.getDatabaseManager().getTopPlayersByMobKills(5);
+        slot = 19;
+        for (int i = 0; i < topMobKills.size() && i < 5; i++) {
+            Map<String, Object> playerInfo = topMobKills.get(i);
+            String position = getPositionColor(i + 1) + "⭐ Posición " + (i + 1);
+            inventory.setItem(slot++, createRankingItem(Material.ZOMBIE_HEAD, position, 
+                "§7Jugador: §f" + playerInfo.get("username"),
+                "§7Kills de Mobs: §f" + playerInfo.get("mob_kills"),
+                "§7Nivel: §f" + playerInfo.get("level")
+            ));
+        }
+
+        // Top 5 Kills Jugadores (slots 28-32)
+        List<Map<String, Object>> topPlayerKills = plugin.getDatabaseManager().getTopPlayersByPlayerKills(5);
+        slot = 28;
+        for (int i = 0; i < topPlayerKills.size() && i < 5; i++) {
+            Map<String, Object> playerInfo = topPlayerKills.get(i);
+            String position = getPositionColor(i + 1) + "⭐ Posición " + (i + 1);
+            inventory.setItem(slot++, createRankingItem(Material.PLAYER_HEAD, position, 
+                "§7Jugador: §f" + playerInfo.get("username"),
+                "§7Kills de Jugadores: §f" + playerInfo.get("player_kills"),
+                "§7Nivel: §f" + playerInfo.get("level")
+            ));
+        }
+
+        // Títulos de secciones
+        inventory.setItem(9, createRankingItem(Material.GOLD_BLOCK, "§6Top 5 Nivel", "§7Jugadores con mayor nivel"));
+        inventory.setItem(18, createRankingItem(Material.ZOMBIE_HEAD, "§cTop 5 Kills Mobs", "§7Jugadores con más kills de mobs"));
+        inventory.setItem(27, createRankingItem(Material.PLAYER_HEAD, "§4Top 5 Kills Jugadores", "§7Jugadores con más kills de jugadores"));
 
         // Botón Volver (slot 49)
         inventory.setItem(49, createRankingItem(Material.BARRIER, "§cVolver", 
             "§7Haz clic para volver al menú anterior"
         ));
+    }
+
+    private String getPositionColor(int position) {
+        switch (position) {
+            case 1: return "§6";
+            case 2: return "§e";
+            case 3: return "§c";
+            default: return "§7";
+        }
     }
 
     private ItemStack createRankingItem(String name, String... lore) {

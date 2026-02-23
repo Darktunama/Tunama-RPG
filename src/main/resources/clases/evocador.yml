@@ -1,5 +1,6 @@
 id: evocador
 name: Evocador
+order: 9
 description: Usa magia para apoyar a los aliados
 
 advantages: Magias de soporte y daño a distancia decente

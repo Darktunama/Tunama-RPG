@@ -1,0 +1,9 @@
+id: maestro-de-las-trampas
+name: Maestro de las Trampas
+order: 1
+description: "Pelea basándose en sus trampas explosivas"
+parent-class: trampero
+advantages:
+  - Alto daño en trampas
+disadvantages:
+  - No puede usar combate cuerpo a cuerpo ni a distancia

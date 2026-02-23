@@ -33,7 +33,9 @@ public class AchievementManager {
         if (files == null || files.length == 0) {
             plugin.getLogger().warning("No se encontraron archivos de logros. Creando logros por defecto...");
             createDefaultAchievements();
-            return;
+            // Recargar los archivos recién creados
+            files = achievementsFolder.listFiles((dir, name) -> name.endsWith(".yml"));
+            if (files == null || files.length == 0) return;
         }
         
         for (File file : files) {

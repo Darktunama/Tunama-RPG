@@ -1,0 +1,27 @@
+id: revertir-forma
+name: Volver a Forma Normal
+description: Revierte la transformación y vuelve a tu forma de druida
+class: druida
+required-level: 1
+mana-cost: "0"
+material: BARRIER
+custom-model-data: 0
+particle: CAMPFIRE_COSY_SMOKE
+particle-count: 30
+particle-speed: 0.3
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 0
+form-only: true
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

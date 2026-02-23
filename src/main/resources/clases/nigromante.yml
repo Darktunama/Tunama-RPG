@@ -1,5 +1,6 @@
 id: nigromante
 name: Nigromante
+order: 11
 description: Hechicero oscuro con invocación de muertos y habilidades de putrefacción
 
 advantages: Invoca no muertos, alto daño mágico, debilita a los enemigos

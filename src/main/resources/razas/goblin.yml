@@ -1,5 +1,6 @@
 id: goblin
 name: Goblin
+order: 5
 description: Son grandes acaparadores de fortunas pero difíciles de tratar
 
 advantages: Cada punto Invertido en Agilidad, Inteligencia o Poder Corrupto dan 2 puntos

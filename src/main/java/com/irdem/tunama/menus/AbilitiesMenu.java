@@ -9,9 +9,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import com.irdem.tunama.TunamaRPG;
 import com.irdem.tunama.data.PlayerData;
+import com.irdem.tunama.data.RPGClass;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class AbilitiesMenu implements InventoryHolder {
     private Inventory inventory;
@@ -42,7 +46,47 @@ public class AbilitiesMenu implements InventoryHolder {
         }
 
         // Obtener habilidades de la clase del jugador
-        Map<String, com.irdem.tunama.data.Ability> classAbilities = plugin.getAbilityManager().getAbilitiesByClass(playerClass);
+        Map<String, com.irdem.tunama.data.Ability> allClassAbilities = plugin.getAbilityManager().getAbilitiesByClass(playerClass);
+
+        // Lista blanca de habilidades permitidas para el Druida
+        Set<String> druidaAllowedAbilities = new HashSet<>(Arrays.asList(
+            "cura-natural",
+            "forma-de-arana",
+            "forma-de-lobo",
+            "forma-de-oso",
+            "forma-de-warden",
+            "forma-de-panda",
+            "forma-de-zorro",
+            "fuerza-de-la-naturaleza"
+        ));
+
+        // Crear nueva lista filtrada (no modificar la original)
+        Map<String, com.irdem.tunama.data.Ability> classAbilities = new java.util.HashMap<>();
+
+        boolean isDruida = playerClass.equalsIgnoreCase("druida");
+        plugin.getLogger().info("[AbilitiesMenu] Clase: " + playerClass + ", isDruida: " + isDruida);
+
+        for (Map.Entry<String, com.irdem.tunama.data.Ability> entry : allClassAbilities.entrySet()) {
+            String id = entry.getValue().getId().toLowerCase();
+
+            if (isDruida) {
+                // Para el Druida: solo incluir las habilidades de la lista blanca
+                if (druidaAllowedAbilities.contains(id)) {
+                    classAbilities.put(entry.getKey(), entry.getValue());
+                    plugin.getLogger().info("[AbilitiesMenu] Druida - Incluyendo: " + id);
+                } else {
+                    plugin.getLogger().info("[AbilitiesMenu] Druida - Excluyendo: " + id);
+                }
+            } else {
+                // Para otras clases: excluir solo las que tienen formOnly=true
+                if (!entry.getValue().isFormOnly()) {
+                    classAbilities.put(entry.getKey(), entry.getValue());
+                }
+            }
+        }
+
+        plugin.getLogger().info("[AbilitiesMenu] Habilidades finales para mostrar: " + classAbilities.size());
+
         int slot = 10;
 
         if (classAbilities.isEmpty()) {
@@ -52,17 +96,20 @@ public class AbilitiesMenu implements InventoryHolder {
         } else {
             for (com.irdem.tunama.data.Ability ability : classAbilities.values()) {
                 boolean isUnlocked = playerLevel >= ability.getRequiredLevel();
-                
+                RPGClass abilityClass = ability.getRpgClass() != null ?
+                    plugin.getClassManager().getClass(ability.getRpgClass().toLowerCase()) : null;
+                String classDisplayName = abilityClass != null ? abilityClass.getName() : (ability.getRpgClass() != null ? ability.getRpgClass() : "?");
+
                 inventory.setItem(slot++, createAbilityItem(
                     isUnlocked ? Material.BLAZE_ROD : Material.STICK,
                     (isUnlocked ? "§c" : "§8") + ability.getName(),
                     "§7" + ability.getDescription(),
-                    "§7Clase: §f" + ability.getRpgClass(),
+                    "§7Clase: §f" + classDisplayName,
                     "§7Nivel requerido: §f" + ability.getRequiredLevel(),
                     "§7Costo de maná: §f" + ability.getManaCost(),
                     isUnlocked ? "§a✓ Desbloqueada" : "§c✗ Bloqueada"
                 ));
-                
+
                 if (slot > 35) break;
             }
         }
@@ -76,8 +123,10 @@ public class AbilitiesMenu implements InventoryHolder {
             }
         }
 
+        RPGClass playerRpgClass = plugin.getClassManager().getClass(playerClass.toLowerCase());
+        String classDisplayName = playerRpgClass != null ? playerRpgClass.getName() : playerClass;
         inventory.setItem(29, createAbilityInfo("§c⚔ Info de Habilidades",
-            "§7Clase: §f" + playerClass,
+            "§7Clase: §f" + classDisplayName,
             "§7Desbloqueadas: §f" + unlockedAbilities + "§7/§f" + totalAbilities,
             "§7Nivel: §f" + playerLevel
         ));

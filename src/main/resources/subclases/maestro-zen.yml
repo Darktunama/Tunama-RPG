@@ -1,0 +1,11 @@
+id: maestro-zen
+name: Maestro Zen
+order: 2
+description: Un luchador experimentado con mucha velocidad pero perdió la capacidad de stunear a los enemigos a cambio de mas daño
+parent-class: monje
+advantages:
+  - Movimiento alto
+  - Gran daño a melé
+disadvantages:
+  - Defensa baja
+  - débil en habilidades de rango tanto magias, trampas y arcos

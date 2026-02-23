@@ -1,5 +1,6 @@
 id: elfo
 name: Elfo
+order: 2
 description: Raza débil en vitalidad pero de alto daño
 
 advantages: Cada punto invertido en Agilidad o Inteligencia suma 2 en vez de 1

@@ -1,5 +1,6 @@
 id: mago
 name: Mago
+order: 3
 description: Poderoso hechicero con alto daño mágico
 
 advantages: Alto daño mágico, variedad de hechizos, ataca a distancia

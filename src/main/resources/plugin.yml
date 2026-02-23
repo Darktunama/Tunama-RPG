@@ -1,21 +1,21 @@
 name: TunamaRPG
-version: 0.0.5
+version: 0.1.08
 description: Un plugin RPG completo para Paper Minecraft
-author: Irdem
+author: Tunama
 main: com.irdem.tunama.TunamaRPG
-api-version: '1.13'
-
-depend:
-  - Vault
+api-version: '1.21'
 
 softdepend:
+  - Vault
   - Essentials
+  - PlaceholderAPI
+  - LuckPerms
 
 commands:
   rpg:
     description: Comando principal del plugin RPG
     usage: /rpg <subcomando>
-    aliases: [tunama]
+    aliases: [tunamarpg]
   
   clase:
     description: Gestionar tu clase
@@ -29,9 +29,10 @@ commands:
     description: Gestionar tu subclase
     usage: /subclase <subcomando>
   
-  habilidad:
-    description: Ver tus habilidades
-    usage: /habilidad
+  habilidades:
+    description: Activa la barra de habilidades
+    usage: /habilidades
+    aliases: [skills]
   
   mision:
     description: Ver tus misiones
@@ -52,12 +53,40 @@ commands:
   clan:
     description: Gestionar tu clan
     usage: /clan <subcomando>
+  
+  equipo:
+    description: Abrir el menú de equipo
+    usage: /equipo
 
 permissions:
   rpg.admin:
     description: Permiso de administrador del plugin
     default: op
-  
+
   rpg.user:
     description: Permiso de usuario del plugin
     default: true
+
+  rpg.characters.1:
+    description: Permite 1 personaje
+    default: true
+
+  rpg.characters.3:
+    description: Permite 3 personajes
+    default: false
+
+  rpg.characters.5:
+    description: Permite 5 personajes
+    default: false
+
+  rpg.characters.10:
+    description: Permite 10 personajes
+    default: false
+
+  rpg.characters.20:
+    description: Permite 20 personajes
+    default: false
+
+  rpg.pets:
+    description: Permite usar el sistema de mascotas
+    default: false

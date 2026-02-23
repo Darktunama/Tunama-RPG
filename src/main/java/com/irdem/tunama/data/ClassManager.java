@@ -4,9 +4,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ClassManager {
 
@@ -65,7 +64,13 @@ public class ClassManager {
             for (String subclass : subclasses) {
                 rpgClass.addSubclass(subclass);
             }
-            
+
+            rpgClass.setOrder(config.getInt("order", 999)); // 999 por defecto para que aparezcan al final
+
+            // Cargar configuración de mascotas
+            rpgClass.setHasPets(config.getBoolean("has-pets", false));
+            rpgClass.setMaxPets(config.getInt("max-pets", 1));
+
             classes.put(id, rpgClass);
         } catch (Exception e) {
             plugin.getLogger().severe("Error al cargar clase desde " + file.getName() + ": " + e.getMessage());
@@ -141,14 +146,33 @@ public class ClassManager {
         loadClasses();
     }
 
-    private void createClassFile(String id, String name, String description, 
+    private void createClassFile(String id, String name, String description,
                                 String advantages, String disadvantages, List<String> subclasses) {
         try {
             File file = new File(classesFolder, id + ".yml");
             if (!file.exists()) {
+                // Asignar un orden basado en el ID para mantener consistencia
+                int order = 999; // Por defecto
+                switch (id) {
+                    case "paladin": order = 1; break;
+                    case "guerrero": order = 2; break;
+                    case "mago": order = 3; break;
+                    case "arquero": order = 4; break;
+                    case "picaro": order = 5; break;
+                    case "sacerdote": order = 6; break;
+                    case "monje": order = 7; break;
+                    case "druida": order = 8; break;
+                    case "evocador": order = 9; break;
+                    case "invocador": order = 10; break;
+                    case "nigromante": order = 11; break;
+                    case "cazador": order = 12; break;
+                    case "trampero": order = 13; break;
+                }
+
                 FileConfiguration config = new YamlConfiguration();
                 config.set("id", id);
                 config.set("name", name);
+                config.set("order", order);
                 config.set("description", description);
                 config.set("advantages", advantages);
                 config.set("disadvantages", disadvantages);
@@ -165,7 +189,15 @@ public class ClassManager {
     }
 
     public Map<String, RPGClass> getAllClasses() {
-        return new HashMap<>(classes);
+        // Ordenar las clases por el campo order
+        return classes.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.comparingInt(RPGClass::getOrder)))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                ));
     }
 
     public boolean isValidClass(String id) {

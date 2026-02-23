@@ -1,0 +1,10 @@
+id: anillo_naturaleza
+name: "§2Anillo de la Naturaleza"
+type: ring
+description: "Un anillo conectado con las fuerzas naturales"
+material: GOLD_NUGGET
+lore:
+  - "§7Aumenta el poder de la naturaleza"
+  - "§7+5 Poder de la Naturaleza"
+stats:
+  nature_power: 5

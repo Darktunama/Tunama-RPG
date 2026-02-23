@@ -1,0 +1,14 @@
+# Carpetas de herramientas y entorno local
+.claude/
+.github/
+.vscode/
+
+# Compilados y dependencias Maven
+target/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

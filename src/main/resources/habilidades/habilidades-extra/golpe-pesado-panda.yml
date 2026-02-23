@@ -1,0 +1,27 @@
+id: golpe-pesado-panda
+name: Golpe de Panda
+description: Un golpe contundente que derriva al enemigo
+class: druida
+required-level: 10
+mana-cost: "25"
+material: HAY_BLOCK
+custom-model-data: 0
+particle: EXPLOSION_LARGE
+particle-count: 8
+particle-speed: 0.2
+required-weapon: ""
+range: 3
+area-of-effect: 0
+cast-time: 0.3
+cast-mode: mobile
+cooldown: 10
+form-only: true
+
+damage-scaling:
+  health: 0.3
+  strength: 1.4
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.5

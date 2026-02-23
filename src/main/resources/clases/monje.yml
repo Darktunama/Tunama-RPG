@@ -1,5 +1,6 @@
 id: monje
 name: Monje
+order: 7
 description: Un luchador experimentado con mucha velocidad
 
 advantages: Movimiento alto, fuerte daño a melé, puede stunear enemigos

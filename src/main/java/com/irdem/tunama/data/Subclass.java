@@ -7,6 +7,7 @@ public class Subclass {
     private String advantages;
     private String disadvantages;
     private String parentClass;
+    private int order;
 
     public Subclass(String id, String name, String description, String parentClass) {
         this.id = id;
@@ -25,4 +26,7 @@ public class Subclass {
     
     public void setAdvantages(String advantages) { this.advantages = advantages; }
     public void setDisadvantages(String disadvantages) { this.disadvantages = disadvantages; }
+
+    public int getOrder() { return order; }
+    public void setOrder(int order) { this.order = order; }
 }

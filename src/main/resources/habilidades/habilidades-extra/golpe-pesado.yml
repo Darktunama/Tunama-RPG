@@ -1,0 +1,27 @@
+id: golpe-pesado
+name: Golpe Pesado
+description: Un golpe contundente que aturde al enemigo brevemente
+class: druida
+required-level: 22
+mana-cost: "30"
+material: ANVIL
+custom-model-data: 0
+particle: EXPLOSION_LARGE
+particle-count: 10
+particle-speed: 0.2
+required-weapon: ""
+range: 3
+area-of-effect: 0
+cast-time: 0.5
+cast-mode: mobile
+cooldown: 8
+form-only: true
+
+damage-scaling:
+  health: 0.4
+  strength: 1.8
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.5

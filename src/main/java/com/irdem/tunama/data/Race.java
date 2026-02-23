@@ -1,5 +1,8 @@
 package com.irdem.tunama.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Race {
     private String id;
     private String name;
@@ -13,6 +16,8 @@ public class Race {
     private double corruptPowerCost;
     private double sagradoPowerCost;
     private double naturePowerCost;
+    private int order;
+    private List<String> restrictedClasses;
 
     public Race(String id, String name, String description) {
         this.id = id;
@@ -25,6 +30,7 @@ public class Race {
         this.corruptPowerCost = 1.0;
         this.sagradoPowerCost = 1.0;
         this.naturePowerCost = 1.0;
+        this.restrictedClasses = new ArrayList<>();
     }
 
     // Getters y Setters
@@ -51,4 +57,14 @@ public class Race {
     public void setCorruptPowerCost(double cost) { this.corruptPowerCost = cost; }
     public void setSagradoPowerCost(double cost) { this.sagradoPowerCost = cost; }
     public void setNaturePowerCost(double cost) { this.naturePowerCost = cost; }
+
+    public int getOrder() { return order; }
+    public void setOrder(int order) { this.order = order; }
+
+    public List<String> getRestrictedClasses() { return restrictedClasses; }
+    public void setRestrictedClasses(List<String> restrictedClasses) { this.restrictedClasses = restrictedClasses; }
+
+    public boolean isClassRestricted(String classId) {
+        return restrictedClasses != null && restrictedClasses.contains(classId.toLowerCase());
+    }
 }

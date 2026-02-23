@@ -9,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import com.irdem.tunama.TunamaRPG;
 import com.irdem.tunama.data.PlayerData;
+import com.irdem.tunama.data.Subclass;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,13 +53,30 @@ public class SubclassSelectionMenu implements InventoryHolder {
         int slot = 10;
 
         if (subclasses != null && !subclasses.isEmpty()) {
-            for (String subclassName : subclasses) {
-                if (plugin.getSubclassManager().isValidSubclass(subclassName)) {
-                    inventory.setItem(slot, createItem(Material.PURPLE_DYE, "§5" + subclassName, 
-                        "§7Haz clic para seleccionar"
-                    ));
-                    slot++;
-                    if (slot > 35) break; // Limitar a los slots disponibles
+            for (String subclassId : subclasses) {
+                if (plugin.getSubclassManager().isValidSubclass(subclassId)) {
+                    Subclass sub = plugin.getSubclassManager().getSubclass(subclassId);
+                    if (sub != null) {
+                        String displayName = sub.getName();
+                        String description = sub.getDescription() != null ? sub.getDescription() : "Sin descripción";
+                        String advantages = sub.getAdvantages() != null ? sub.getAdvantages() : "Sin ventajas";
+                        String disadvantages = sub.getDisadvantages() != null ? sub.getDisadvantages() : "Sin desventajas";
+
+                        inventory.setItem(slot, createItem(Material.PURPLE_DYE, "§5" + displayName,
+                            "",
+                            "§7" + description,
+                            "",
+                            "§a§lVentajas:",
+                            "§7" + advantages,
+                            "",
+                            "§c§lDesventajas:",
+                            "§7" + disadvantages,
+                            "",
+                            "§e§l» Haz clic para seleccionar"
+                        ));
+                        slot++;
+                        if (slot > 35) break; // Limitar a los slots disponibles
+                    }
                 }
             }
         }

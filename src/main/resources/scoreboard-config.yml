@@ -1,0 +1,23 @@
+scoreboard:
+  enabled: true
+  default-scoreboard: "lobby"
+  update-interval: 10
+
+  animated-colors:
+    colors:
+      - "&b"
+      - "&3"
+      - "&9"
+      - "&d"
+      - "&5"
+      - "&c"
+      - "&6"
+      - "&e"
+      - "&a"
+    speed: 2
+
+  conditions:
+    default-rank:
+      type: "placeholder-equals"
+      placeholder: "%luckperms_primary_group_name%"
+      value: "default"

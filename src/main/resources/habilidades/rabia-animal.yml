@@ -1,0 +1,32 @@
+id: rabia-animal
+name: Rabia Animal
+description: Aumenta el dano y velocidad de ataque de tu mascota
+class: cazador
+required-level: 12
+mana-cost: "45"
+material: BLAZE_POWDER
+custom-model-data: 0
+particle: FLAME
+particle-count: 15
+particle-speed: 0.3
+required-weapon: ""
+range: 10
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 45.0
+
+# Porcentaje de daño adicional para las mascotas
+damage-bonus: 50
+
+# Duración del buff en segundos
+buff-duration: 30
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

@@ -1,5 +1,6 @@
 id: druida
 name: Druida
+order: 8
 description: Usa magia de naturaleza y transformaciones
 
 advantages: Se transforma en animales, se puede curar a sí mismo, magia de naturaleza

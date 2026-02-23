@@ -1,0 +1,25 @@
+id: multi-disparo
+name: MultiDisparo
+description: Dispara varias flechas seguidas al mismo objetivo
+class: arquero
+required-level: 15
+mana-cost: "60"
+material: TRIDENT
+custom-model-data: 0
+particle: CRIT
+particle-count: 25
+particle-speed: 0.5
+required-weapon: BOW
+range: 12
+area-of-effect: 0
+cast-time: 1.5
+cast-mode: mobile
+cooldown: 5.0
+damage-scaling:
+  health: 0.0
+  strength: 0.1
+  agility: 0.4
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

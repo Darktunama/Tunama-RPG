@@ -4,8 +4,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class SubclassManager {
 
@@ -60,7 +60,8 @@ public class SubclassManager {
             Subclass subclass = new Subclass(id, name, description, parentClass);
             subclass.setAdvantages(config.getString("advantages", "Sin ventajas"));
             subclass.setDisadvantages(config.getString("disadvantages", "Sin desventajas"));
-            
+            subclass.setOrder(config.getInt("order", 999)); // 999 por defecto para que aparezcan al final
+
             subclasses.put(id, subclass);
         } catch (Exception e) {
             plugin.getLogger().severe("Error al cargar subclase desde " + file.getName() + ": " + e.getMessage());
@@ -180,9 +181,11 @@ public class SubclassManager {
         try {
             File file = new File(subclassesFolder, id + ".yml");
             if (!file.exists()) {
+                // Asignar un orden básico (las subclases se ordenarán por clase padre)
                 FileConfiguration config = new YamlConfiguration();
                 config.set("id", id);
                 config.set("name", name);
+                config.set("order", 1); // Por defecto, se puede ajustar manualmente
                 config.set("description", description);
                 config.set("parent-class", parentClass);
                 config.set("advantages", advantages);
@@ -199,7 +202,15 @@ public class SubclassManager {
     }
 
     public Map<String, Subclass> getAllSubclasses() {
-        return new HashMap<>(subclasses);
+        // Ordenar las subclases por el campo order
+        return subclasses.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.comparingInt(Subclass::getOrder)))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                ));
     }
 
     public boolean isValidSubclass(String id) {

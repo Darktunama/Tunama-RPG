@@ -1,5 +1,6 @@
 id: sacerdote
 name: Sacerdote
+order: 6
 description: Enfocado a curar a tus compañeros a cambio de tener poco daño
 
 advantages: Alta curación propia y de los aliados, habilidades de escudo

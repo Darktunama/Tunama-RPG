@@ -19,7 +19,6 @@ database:
 
 # Configuración del Plugin
 plugin:
-  debug: false
   language: es
 
 # Sistema de Experiencia
@@ -28,13 +27,13 @@ experience:
   quest-multiplier: 1.5
   achievement-multiplier: 1.2
 
-# Configuración de Estadísticas
+# Configuración de Estadísticas adicionales por nivel
 stats:
-  life-per-level: 5
-  mana-per-level: 3
-  strength-per-level: 2
-  agility-per-level: 2
-  intelligence-per-level: 2
+  life-per-level: 0
+  mana-per-level: 0
+  strength-per-level: 0
+  agility-per-level: 0
+  intelligence-per-level: 0
 
 # Configuración de Clanes
 clans:

@@ -1,0 +1,26 @@
+id: sifon-de-mana
+name: Sifon de Mana
+description: Canaliza energia arcana para recuperar el 60% de tu mana maximo
+class: mago
+required-level: 25
+mana-cost: "0"
+material: EXPERIENCE_BOTTLE
+custom-model-data: 0
+particle: ENCHANT
+particle-count: 30
+particle-speed: 0.5
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 60
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+mana-restore-percent: 60

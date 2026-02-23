@@ -1,0 +1,66 @@
+id: forma-de-warden
+name: Forma de Warden
+description: Te transforma en un warden y otorga las habilidades del warden y volver a forma druida
+class: druida
+required-level: 30
+mana-cost: "80"
+material: SCULK_CATALYST
+custom-model-data: 0
+particle: SCULK_CHARGE_POP
+particle-count: 30
+particle-speed: 0.5
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 1.5
+cast-mode: static
+cooldown: 60
+
+# Configuración de transformación
+transformation:
+  entity-type: WARDEN
+  duration: 180          # Duración LIMITADA a 3 minutos (forma muy poderosa)
+  stats:
+    health-bonus: 100    # Vida masiva fija
+    strength-bonus: 50   # Fuerza masiva fija
+    agility-bonus: -20   # Muy lento fijo
+    defense-bonus: 40    # Defensa muy alta fija
+  # Escalado dinámico - forma ultimate
+  player-scaling:
+    health:
+      stat: health           # Vida escala con vida
+      multiplier: 0.8        # 80% de la vida (máxima vida)
+    strength:
+      stat: strength         # Fuerza escala con fuerza
+      multiplier: 0.6        # 60% de fuerza (máxima fuerza)
+    armor:
+      stat: nature-power     # Armadura escala con naturaleza
+      multiplier: 0.5        # Máxima armadura
+    attack-speed:
+      stat: strength         # Velocidad de ataque lenta pero fuerte
+      multiplier: 0.01       # Bajo pero devastador
+    movement-speed:
+      stat: agility          # Muy lento
+      multiplier: 0.003      # Mínimo escalado
+  effects:
+    - type: RESISTANCE
+      amplifier: 2
+    - type: SLOWNESS
+      amplifier: 1
+    - type: STRENGTH
+      amplifier: 1
+    - type: DARKNESS
+      amplifier: 0
+  abilities:
+    - grito-sonico
+    - onda-de-choque
+    - sentido-vibracion
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

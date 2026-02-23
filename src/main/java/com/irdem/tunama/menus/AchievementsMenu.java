@@ -56,7 +56,7 @@ public class AchievementsMenu implements InventoryHolder {
 
         inventory.setItem(29, createInfoItem("§6Info de Logros",
             "§7Completados: §f" + completedAchievements + "§7/§f" + totalAchievements,
-            "§7Porcentaje: §f" + (completedAchievements * 100 / totalAchievements) + "%",
+            "§7Porcentaje: §f" + (totalAchievements > 0 ? (completedAchievements * 100 / totalAchievements) : 0) + "%",
             "§7Nivel: §f" + playerLevel
         ));
 

@@ -1,5 +1,6 @@
 id: arquero
 name: Arquero
+order: 4
 description: Un preciso luchador a distancia con alta movilidad
 
 advantages: Alta velocidad de movimiento, daño fuerte a distancia, golpea a los enemigos a distancia

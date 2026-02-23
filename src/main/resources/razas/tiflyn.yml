@@ -1,5 +1,6 @@
 id: tiflyn
 name: Tiflyn
+order: 7
 description: Nacidos de humanos maldecidos por el Infierno
 
 advantages: Cada punto invertido en Vida, Fuerza, Agilidad o Poder Corrupto soma 2 en vez de 1

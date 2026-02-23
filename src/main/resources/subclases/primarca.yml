@@ -1,0 +1,9 @@
+id: primarca
+name: Primarca
+order: 1
+description: Enfocado a curar a tus compañeros con magia de luz
+parent-class: sacerdote
+advantages:
+  - Alta curación propia a y a los aliados y habilidades de escudo
+disadvantages:
+  - No tiene daño a melé y tiene a distancia débil

@@ -37,10 +37,10 @@ public class RaceMenu implements InventoryHolder {
     private ItemStack createRaceItem(Race race) {
         ItemStack item = new ItemStack(Material.PLAYER_HEAD);
         ItemMeta meta = item.getItemMeta();
-        
+
         if (meta != null) {
             meta.setDisplayName("§6" + race.getName());
-            
+
             List<String> lore = new ArrayList<>();
             lore.add("§7" + race.getDescription());
             lore.add("");
@@ -50,12 +50,41 @@ public class RaceMenu implements InventoryHolder {
             lore.add("§cDesventajas:");
             lore.add("§f" + race.getDisadvantages());
             lore.add("");
+
+            // Obtener clases disponibles y restringidas
+            List<String> availableClasses = new ArrayList<>();
+            List<String> restrictedClasses = new ArrayList<>();
+
+            for (com.irdem.tunama.data.RPGClass rpgClass : plugin.getClassManager().getAllClasses().values()) {
+                if (race.isClassRestricted(rpgClass.getId())) {
+                    restrictedClasses.add(rpgClass.getName());
+                } else {
+                    availableClasses.add(rpgClass.getName());
+                }
+            }
+
+            // Mostrar clases disponibles
+            lore.add("§9Clases Disponibles:");
+            if (availableClasses.isEmpty()) {
+                lore.add("§7  Ninguna");
+            } else {
+                lore.add("§f  " + String.join("§7, §f", availableClasses));
+            }
+
+            // Mostrar clases bloqueadas
+            if (!restrictedClasses.isEmpty()) {
+                lore.add("");
+                lore.add("§4Clases Bloqueadas:");
+                lore.add("§8  " + String.join("§7, §8", restrictedClasses));
+            }
+
+            lore.add("");
             lore.add("§e→ Click para seleccionar");
-            
+
             meta.setLore(lore);
             item.setItemMeta(meta);
         }
-        
+
         return item;
     }
 

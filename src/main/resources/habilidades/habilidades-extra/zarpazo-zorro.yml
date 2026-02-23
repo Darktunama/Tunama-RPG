@@ -1,0 +1,27 @@
+id: zarpazo-zorro
+name: Zarpazo Rápido
+description: Un zarpazo veloz que causa daño
+class: druida
+required-level: 5
+mana-cost: "8"
+material: SWEET_BERRIES
+custom-model-data: 0
+particle: CRIT
+particle-count: 10
+particle-speed: 0.8
+required-weapon: ""
+range: 2
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 1.5
+form-only: true
+
+damage-scaling:
+  health: 0.0
+  strength: 0.8
+  agility: 1.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.2

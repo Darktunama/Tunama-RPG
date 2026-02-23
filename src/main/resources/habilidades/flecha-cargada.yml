@@ -1,0 +1,25 @@
+id: flecha-cargada
+name: Flecha Cargada
+description: Dispara una flecha cargada con gran poder que causa mucho dano
+class: arquero
+required-level: 5
+mana-cost: "50"
+material: SPECTRAL_ARROW
+custom-model-data: 0
+particle: CRIT
+particle-count: 20
+particle-speed: 0.4
+required-weapon: BOW
+range: 15
+area-of-effect: 0
+cast-time: 3
+cast-mode: mobile
+cooldown: 5.0
+damage-scaling:
+  health: 0.0
+  strength: 0.2
+  agility: 0.7
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

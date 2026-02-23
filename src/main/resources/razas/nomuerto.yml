@@ -1,6 +1,7 @@
 id: nomuerto
 name: No Muerto
-description: La nunca los freno por eso siempre vuelven
+order: 9
+description: La Muerte nunca los freno por eso siempre vuelven
 
 advantages: Cada punto Invertido en Vida o Poder Corrupto da 2 puntos
 disadvantages: Cada punto invertido en Agilidad o Poder Naturaleza requiere 2 puntos, no puede usar clases Evocador, Sacerdote, Monje

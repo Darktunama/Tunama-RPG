@@ -1,0 +1,9 @@
+id: ingeniero
+name: Ingeniero
+order: 2
+description: "Pelea basándose en sus torretas y trampas"
+parent-class: trampero
+advantages:
+  - Alto daño en torretas y trampas
+disadvantages:
+  - No puede usar combate cuerpo a cuerpo ni a distancia

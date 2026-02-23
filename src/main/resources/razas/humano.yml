@@ -1,5 +1,6 @@
 id: humano
 name: Humano
+order: 1
 description: Raza Versátil pero sin destacar en nada
 
 advantages: Puede usar todas las clases excepto Evocador y Druida, no tiene debilidades

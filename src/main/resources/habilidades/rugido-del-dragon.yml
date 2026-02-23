@@ -1,0 +1,27 @@
+id: rugido-del-dragon
+name: Rugido del Dragón
+description: Aumenta la vida y armadura de los aliados cercanos en un 200% durante 30 segundos
+class: evocador
+required-level: 20
+mana-cost: "60"
+material: DRAGON_HEAD
+custom-model-data: 0
+particle: EXPLOSION_LARGE
+particle-count: 20
+particle-speed: 0.3
+required-weapon: ""
+range: 0
+area-of-effect: 12
+cast-time: 1.0
+cast-mode: mobile
+cooldown: 120
+buff-duration: 30
+buff-multiplier: 2.0
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

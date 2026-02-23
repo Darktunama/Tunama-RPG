@@ -1,0 +1,11 @@
+id: maestro-de-armas
+name: Maestro de Armas
+order: 2
+description: Un maestro en el arte del combate con alta defensa que perdió la capacidad de absorber el daño
+parent-class: guerrero
+advantages:
+  - Buena defensa y vida
+  - fuerte daño a melé
+disadvantages:
+  - Movimiento lento
+  - débil en habilidades de rango

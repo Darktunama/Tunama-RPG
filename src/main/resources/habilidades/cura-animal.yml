@@ -1,0 +1,29 @@
+id: cura-animal
+name: Cura Animal
+description: Cura a tu mascota restaurando su vida
+class: cazador
+required-level: 3
+mana-cost: "30"
+material: GOLDEN_CARROT
+custom-model-data: 0
+particle: HEART
+particle-count: 10
+particle-speed: 0.2
+required-weapon: ""
+range: 10
+area-of-effect: 0
+cast-time: 0.5
+cast-mode: mobile
+cooldown: 5.0
+
+# Porcentaje de vida máxima que se cura (0-100)
+heal-percent: 30
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.2
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.5

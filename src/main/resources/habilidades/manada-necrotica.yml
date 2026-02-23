@@ -1,0 +1,24 @@
+id: manada-necrotica
+name: Manada Necrotica
+description: Las mascotas hacen dano de veneno durante 10 segundos
+class: cazador
+required-level: 30
+mana-cost: "65"
+material: WITHER_ROSE
+custom-model-data: 0
+particle: WITCH
+particle-count: 20
+particle-speed: 0.4
+required-weapon: ""
+range: 15
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.3
+  nature-power: 0.3

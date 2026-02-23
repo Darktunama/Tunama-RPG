@@ -1,0 +1,14 @@
+id: amuleto_maestro
+name: "§2Amuleto del Maestro"
+type: amulet
+description: "Un amuleto que otorga sabiduría y poder"
+material: EMERALD
+lore:
+  - "§7Aumenta significativamente las estadísticas"
+  - "§7+10 Inteligencia"
+  - "§7+5 Fuerza"
+  - "§7+10 Vida"
+stats:
+  intelligence: 10
+  strength: 5
+  health: 10

@@ -1,0 +1,56 @@
+# Mascota: Lobo
+id: lobo
+name: Lobo
+description: Un leal compañero canino que lucha a tu lado
+role: dps
+custom-model-data: 0
+entity-type: WOLF
+
+# Estadísticas base
+stats:
+  health: 40
+  defense: 5
+  attack: 8
+  attack-speed: 1.2
+  movement-speed: 1.3
+
+# Crecimiento por nivel
+growth:
+  health-per-level: 8
+  defense-per-level: 1
+  attack-per-level: 2
+  attack-speed-per-level: 0.02
+  movement-speed-per-level: 0.01
+
+# Escalado desde estadísticas del jugador (0.0 = 0%, 0.5 = 50%, 1.0 = 100%)
+# Estos valores se suman a las estadísticas base de la mascota
+# La agilidad del jugador afecta a defensa, velocidad de ataque y movimiento
+player-scaling:
+  health: 0.15         # 15% de la vida del jugador se añade a la mascota
+  attack: 0.20         # 20% de la fuerza del jugador se añade al ataque
+  defense: 0.01        # 10% de la agilidad del jugador se añade a la defensa
+  attack-speed: 0.01   # 1% de la agilidad del jugador se añade a velocidad de ataque
+  movement-speed: 0.02 # 2% de la agilidad del jugador se añade a velocidad de movimiento
+
+# Habilidades de la mascota
+abilities:
+  - id: mordisco-feroz
+    name: Mordisco Feroz
+    description: Muerde al enemigo causando daño extra
+    cooldown: 8
+    damage-multiplier: 2.5
+  - id: aullido-intimidante
+    name: Aullido Intimidante
+    description: Aterroriza a los enemigos cercanos haciéndolos huir
+    cooldown: 20
+    duration: 3
+
+# Configuración
+menu-icon: BONE
+required-level: 1
+allowed-classes:
+  - cazador
+
+# Tienda
+price: 500
+permission: rpg.pet.lobo

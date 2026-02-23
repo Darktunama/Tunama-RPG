@@ -1,5 +1,6 @@
 id: orco
 name: Orco
+order: 4
 description: Nadie donde sabe de donde vinieron estas bestias salvajes y joder que son feas
 
 advantages: Cada punto invertido en Vida o Fuerza suma 2 en vez de 1

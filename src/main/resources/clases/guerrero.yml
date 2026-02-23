@@ -1,5 +1,6 @@
 id: guerrero
 name: Guerrero
+order: 2
 description: Un maestro en el arte del combate con alta defensa
 
 advantages: Buena defensa y vida, fuerte daño a melé, puede absorber una parte del daño

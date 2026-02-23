@@ -1,0 +1,10 @@
+id: paladin-sagrado
+name: "Paladín Sagrado"
+order: 1
+description: Luchador balanceado en combate que puede curar tanto a si mismo como a aliados
+parent-class: paladin
+advantages:
+  - Alta defensa y vida
+  - curaciones y habilidades variadas
+disadvantages:
+  - "Débil tanto en habilidades melé como distancia"
