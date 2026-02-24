@@ -1,0 +1,29 @@
+id: onda-de-choque
+name: Onda de Choque
+description: Golpeas el suelo creando una onda que daña y empuja a los enemigos
+class: druida
+required-level: 30
+mana-cost: "40"
+material: SCULK_CATALYST
+custom-model-data: 0
+particle: EXPLOSION_LARGE
+particle-count: 25
+particle-speed: 0.5
+required-weapon: ""
+range: 0
+area-of-effect: 8
+cast-time: 0.5
+cast-mode: mobile
+cooldown: 10
+form-only: true
+
+damage-scaling:
+  health: 0.4
+  strength: 1.8
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.8
+
+# Habilidad exclusiva Warden: onda de choque en area amplia

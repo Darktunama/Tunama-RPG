@@ -1,0 +1,29 @@
+id: aullido-de-manada
+name: Aullido de Manada
+description: Un aullido que aumenta el daño de ti y tus aliados cercanos
+class: druida
+required-level: 15
+mana-cost: "30"
+material: NOTE_BLOCK
+custom-model-data: 0
+particle: NOTE
+particle-count: 25
+particle-speed: 0.5
+required-weapon: ""
+range: 0
+area-of-effect: 10
+cast-time: 0.5
+cast-mode: mobile
+cooldown: 30
+form-only: true
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad exclusiva Lobo: buff que potencia a aliados cercanos

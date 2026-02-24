@@ -1,0 +1,12 @@
+id: anillo_vida
+name: "§cAnillo de Vida"
+type: ring
+description: "Un anillo que aumenta tu salud máxima"
+material: GOLD_NUGGET
+lore:
+  - "§7Aumenta la vida del portador"
+  - "§7+10 Vida"
+stats:
+  health: 10
+
+# Anillo que aumenta la vida maxima del personaje

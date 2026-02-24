@@ -1,0 +1,62 @@
+id: forma-de-lobo
+name: Forma de Lobo
+description: Te transforma en un lobo y otorga habilidades zarpazo, mordisco infectado y volver a forma druida
+class: druida
+required-level: 15
+mana-cost: "50"
+material: BONE
+custom-model-data: 0
+particle: SMOKE
+particle-count: 20
+particle-speed: 0.3
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 1.0
+cast-mode: static
+
+# Configuración de transformación
+transformation:
+  entity-type: WOLF
+  duration: 300          # Duración en segundos (0 = permanente hasta cancelar)
+  stats:
+    health-bonus: 20     # Vida extra fija
+    strength-bonus: 15   # Fuerza extra fija
+    agility-bonus: 25    # Agilidad extra fija
+    defense-bonus: -5    # Defensa reducida fija
+  # Escalado dinámico desde stats del jugador
+  # Formato simple: health: 0.5 (usa stat por defecto)
+  # Formato avanzado: health: {stat: nature-power, multiplier: 0.3}
+  player-scaling:
+    health:
+      stat: health           # Qué stat del jugador usar
+      multiplier: 0.3        # 30% del stat de vida del jugador
+    attack-speed:
+      stat: agility          # Velocidad de ataque escala con agilidad
+      multiplier: 0.02       # +0.02 velocidad por punto de agilidad
+    movement-speed:
+      stat: agility          # Velocidad de movimiento escala con agilidad
+      multiplier: 0.015      # +1.5% velocidad por punto de agilidad
+    armor:
+      stat: nature-power     # Armadura escala con poder de naturaleza
+      multiplier: 0.2        # +0.2 armadura por punto de nature-power
+  effects:
+    - type: SPEED
+      amplifier: 1
+    - type: NIGHT_VISION
+      amplifier: 0
+  abilities:
+    - zarpazo-lobo
+    - mordisco-infectado
+    - aullido-de-manada
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Druida: transformacion en Lobo con habilidades propias

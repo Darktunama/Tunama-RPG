@@ -1,0 +1,30 @@
+id: llama-de-los-dragones
+name: Llama de los Dragones
+description: Golpe en área que daña a los enemigos y cura a los aliados
+class: evocador
+required-level: 1
+mana-cost: "30"
+material: BLAZE_POWDER
+custom-model-data: 0
+particle: FLAME
+particle-count: 40
+particle-speed: 0.3
+required-weapon: ""
+range: 8
+area-of-effect: 5
+cast-time: 0.5
+cast-mode: mobile
+cooldown: 8
+damage-scaling:
+  health: 0.2
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.6
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.1
+heal-scaling:
+  intelligence: 0.5
+  sacred-power: 0.3
+
+# Habilidad del Evocador: proyectil de fuego draconico

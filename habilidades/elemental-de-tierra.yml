@@ -1,0 +1,30 @@
+id: elemental-de-tierra
+name: Elemental de Tierra
+description: Invoca un poderoso golem de tierra que lucha a tu lado durante 60 segundos
+class: invocador
+required-level: 30
+mana-cost: "100"
+material: IRON_BLOCK
+custom-model-data: 0
+particle: BLOCK
+particle-count: 35
+particle-speed: 0.4
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 5
+cast-mode: stationary
+cooldown: 140
+summon-duration: 60
+summon-type: IRON_GOLEM
+summon-damage-scaling: 1.2
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 1.2
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Invocador: invoca un Golem de Hierro 60 segundos

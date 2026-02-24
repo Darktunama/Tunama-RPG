@@ -1,0 +1,13 @@
+id: guardabosques
+name: Guardabosques
+order: 2
+description: Un preciso luchador a distancia con alta movilidad
+parent-class: arquero
+advantages:
+  - Alta velocidad de movimiento
+  - daño fuerte a distancia
+  - puede golpear a los enemigos a distancia con su arco
+disadvantages:
+  - Baja defensa y débil en habilidad a melé
+
+# Subclase del Arquero con habilidades de supervivencia

@@ -1,0 +1,14 @@
+id: anillo_proteccion
+name: "§bAnillo de Protección"
+type: ring
+description: "Un anillo que otorga resistencia al daño"
+material: GOLD_NUGGET
+lore:
+  - "§7Reduce el daño recibido"
+  - "§7+3 Fuerza"
+  - "§7+3 Agilidad"
+stats:
+  strength: 3
+  agility: 3
+
+# Anillo que aumenta la proteccion del personaje

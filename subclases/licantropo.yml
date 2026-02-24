@@ -1,0 +1,13 @@
+id: licantropo
+name: Licantropo
+order: 1
+description: Usa magia de Naturaleza y transformaciones en animales fuertes
+parent-class: druida
+advantages:
+  - Se transforma en animales fuertes
+  - se puede curar a si mismo
+  - daño alto en forma animal
+disadvantages:
+  - Baja defensa en formas débiles de animales
+
+# Subclase del Druida con transformaciones animales potenciadas

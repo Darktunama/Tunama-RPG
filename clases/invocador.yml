@@ -1,0 +1,13 @@
+id: invocador
+name: Invocador
+order: 10
+description: Hechicero que invoca criaturas para que luchen por él
+
+advantages: Invoca criaturas, las criaturas pelean por ti, puede invocar varias criaturas
+disadvantages: Débil en habilidades melé, defensa baja, débil en habilidades de distancia
+
+subclasses:
+  - brujo
+  - chaman
+
+# Archivo de configuracion de la Clase Invocador

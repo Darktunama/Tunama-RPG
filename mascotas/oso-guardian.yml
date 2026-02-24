@@ -1,0 +1,58 @@
+# Mascota: Oso Guardián
+id: oso-guardian
+name: Oso Guardián
+description: Un poderoso oso que protege a su dueño con ferocidad
+role: bruiser
+custom-model-data: 0
+entity-type: POLAR_BEAR
+
+# Estadísticas base
+stats:
+  health: 80
+  defense: 12
+  attack: 10
+  attack-speed: 0.7
+  movement-speed: 0.8
+
+# Crecimiento por nivel
+growth:
+  health-per-level: 15
+  defense-per-level: 2.5
+  attack-per-level: 2
+  attack-speed-per-level: 0.01
+  movement-speed-per-level: 0.005
+
+# Escalado desde estadísticas del jugador (0.0 = 0%, 0.5 = 50%, 1.0 = 100%)
+player-scaling:
+  health: 0.22         # 22% de vida (bruiser robusto)
+  attack: 0.18         # 18% de la fuerza
+  defense: 0.15        # 15% defensa
+  attack-speed: 0.01
+  movement-speed: 0.01
+
+# Habilidades de la mascota
+abilities:
+  - id: zarpazo-brutal
+    name: Zarpazo Brutal
+    description: Un poderoso golpe que derriba al enemigo
+    cooldown: 10
+    damage-multiplier: 2.5
+    knockback: 3
+  - id: rugido-protector
+    name: Rugido Protector
+    description: Protege al dueño reduciendo el daño recibido
+    cooldown: 30
+    duration: 8
+    damage-reduction: 30
+
+# Configuración
+menu-icon: POLAR_BEAR_SPAWN_EGG
+required-level: 20
+allowed-classes:
+  - cazador
+
+# Tienda
+price: 3500
+permission: rpg.pet.oso-guardian
+
+# Mascota Oso Guardian con alta resistencia

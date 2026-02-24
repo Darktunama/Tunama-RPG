@@ -1,0 +1,13 @@
+id: evocador
+name: Evocador
+order: 9
+description: Usa magia para apoyar a los aliados
+
+advantages: Magias de soporte y daño a distancia decente
+disadvantages: Baja vida y débil daño a melé
+
+subclasses:
+  - salvaguarda
+  - destructor
+
+# Archivo de configuracion de la Clase Evocador

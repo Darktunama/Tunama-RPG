@@ -1,0 +1,12 @@
+id: anillo_inteligencia
+name: "§5Anillo de Inteligencia"
+type: ring
+description: "Un anillo que aumenta tu poder mágico"
+material: GOLD_NUGGET
+lore:
+  - "§7Aumenta la inteligencia del portador"
+  - "§7+5 Inteligencia"
+stats:
+  intelligence: 5
+
+# Anillo que aumenta la inteligencia del personaje

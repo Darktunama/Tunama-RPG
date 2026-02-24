@@ -1,0 +1,16 @@
+id: collar_equilibrio
+name: "§dCollar del Equilibrio"
+type: necklace
+description: "Un collar que equilibra todos los poderes"
+material: AMETHYST_SHARD
+lore:
+  - "§7Equilibra todos los poderes"
+  - "§7+3 Poder Sagrado"
+  - "§7+3 Poder Corrupto"
+  - "§7+3 Poder de la Naturaleza"
+stats:
+  sacred_power: 3
+  corrupt_power: 3
+  nature_power: 3
+
+# Collar que equilibra todas las estadisticas del personaje

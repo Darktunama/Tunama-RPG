@@ -1,0 +1,13 @@
+id: paladin-del-caos
+name: "Paladín del Caos"
+order: 2
+description: "Paladín que usa magia corrupta para potenciar su combate"
+parent-class: paladin
+advantages:
+  - Alto daño mágico
+  - curaciones poderosas
+  - buena defensa
+disadvantages:
+  - "Débil en combate a distancia"
+
+# Subclase del Paladin orientada al poder corrupto

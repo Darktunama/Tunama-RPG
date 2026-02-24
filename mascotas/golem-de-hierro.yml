@@ -1,0 +1,58 @@
+# Mascota: Gólem de Hierro
+id: golem-de-hierro
+name: Gólem de Hierro
+description: Un guardián de hierro inquebrantable
+role: tank
+custom-model-data: 0
+entity-type: IRON_GOLEM
+
+# Estadísticas base
+stats:
+  health: 120
+  defense: 20
+  attack: 15
+  attack-speed: 0.5
+  movement-speed: 0.6
+
+# Crecimiento por nivel
+growth:
+  health-per-level: 20
+  defense-per-level: 4
+  attack-per-level: 3
+  attack-speed-per-level: 0.005
+  movement-speed-per-level: 0.003
+
+# Escalado desde estadísticas del jugador (0.0 = 0%, 0.5 = 50%, 1.0 = 100%)
+player-scaling:
+  health: 0.30         # 30% de vida (tanque supremo)
+  attack: 0.15         # 15% de la fuerza
+  defense: 0.25        # 25% defensa (muralla)
+  attack-speed: 0.003  # Muy lento
+  movement-speed: 0.005
+
+# Habilidades de la mascota
+abilities:
+  - id: puño-de-acero
+    name: Puño de Acero
+    description: Un golpe devastador que lanza al enemigo por los aires
+    cooldown: 12
+    damage-multiplier: 3.0
+    launch-height: 4
+  - id: defensa-inquebrantable
+    name: Defensa Inquebrantable
+    description: Se vuelve inmune al daño temporalmente
+    cooldown: 45
+    duration: 5
+    invulnerable: true
+
+# Configuración
+menu-icon: IRON_BLOCK
+required-level: 30
+allowed-classes:
+  - invocador
+
+# Tienda
+price: 8000
+permission: rpg.pet.golem-de-hierro
+
+# Mascota Golem de Hierro tanque resistente

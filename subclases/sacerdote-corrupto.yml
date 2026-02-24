@@ -1,0 +1,12 @@
+id: sacerdote-corrupto
+name: Sacerdote Corrupto
+order: 2
+description: Sacerdote que usa magia oscura para sus curaciones
+parent-class: sacerdote
+advantages:
+  - Curaciones con magia corrupta
+  - daño mágico decente
+disadvantages:
+  - No tiene defensa a melé y tiene a distancia débil
+
+# Subclase del Sacerdote que usa magia oscura para debilitar

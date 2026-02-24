@@ -1,0 +1,8 @@
+id: recauda-10-cristales
+name: Recauda 10 Cristales
+description: Recauda 10 cristales dispersos en el mundo
+required-level: 10
+reward-exp: 150
+reward-item: DIAMOND
+
+# Mision para recolectar 10 cristales magicos

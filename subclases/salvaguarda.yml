@@ -1,0 +1,11 @@
+id: salvaguarda
+name: Salvaguarda
+order: 1
+description: Usa magia su magia apoyar a los aliados y puede hacer algo de daño
+parent-class: evocador
+advantages:
+  - Magias de soporte y decente daño a distancia
+disadvantages:
+  - Baja vida y débil daño a melé
+
+# Subclase del Evocador orientada a la proteccion y escudos

@@ -1,0 +1,13 @@
+id: asesino
+name: Asesino
+order: 1
+description: "Luchador hábil con alta posibilidad de hacer golpes críticos y gran movilidad"
+parent-class: picaro
+advantages:
+  - Alta posibilidad de critico
+  - alta movilidad
+  - hace mas daño si golpea por la espalda
+disadvantages:
+  - Baja defensa y nula habilidad a distancia
+
+# Subclase del Picaro especializada en dano critico y sigilo

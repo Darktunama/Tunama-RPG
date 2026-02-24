@@ -1,0 +1,28 @@
+id: ejecutar
+name: Ejecutar
+description: Ejecuta al enemigo con dano verdadero. Si lo mata, el cooldown se reinicia
+class: guerrero
+required-level: 25
+mana-cost: "60"
+material: DIAMOND_AXE
+custom-model-data: 0
+particle: CRIT
+particle-count: 30
+particle-speed: 0.5
+required-weapon: ""
+range: 3
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 180
+base-damage: 100
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.1
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Guerrero: dano verdadero que reinicia CD al matar

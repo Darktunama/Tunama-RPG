@@ -1,0 +1,8 @@
+id: derrota-titan-oscuro
+name: Derrota al Titan Oscuro
+description: Derrota al Titan Oscuro en el End
+required-level: 50
+reward-exp: 5000
+reward-item: NETHERITE_PICKAXE
+
+# Mision para derrotar al Titan Oscuro

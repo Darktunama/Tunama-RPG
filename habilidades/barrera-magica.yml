@@ -1,0 +1,25 @@
+id: barrera-magica
+name: Barrera Magica
+description: Crea una barrera que protege contra ataques magicos
+class: mago
+required-level: 10
+mana-cost: "35"
+material: END_CRYSTAL
+custom-model-data: 0
+particle: ENCHANTED_HIT
+particle-count: 25
+particle-speed: 0.3
+range: 0
+area-of-effect: 0
+cast-time: 0.5
+cast-mode: static
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Mago: barrera protectora magica

@@ -1,0 +1,27 @@
+# =====================================================
+# TunamaRPG - Nombres Prohibidos
+# =====================================================
+# Lista de nombres que no se pueden usar al crear personajes
+# Los nombres se validan sin distinguir mayúsculas/minúsculas
+# Si un nombre prohibido está contenido en el nombre elegido, será rechazado
+# Ejemplo: Si "Admin" está prohibido, tampoco se podrá usar "AdminPlayer" o "MiAdmin"
+
+nombres-prohibidos:
+  - Admin
+  - Administrator
+  - Administrador
+  - Moderator
+  - Moderador
+  - Mod
+  - Staff
+  - Owner
+  - Developer
+  - Console
+  - Server
+  - System
+  - Oficial
+  - GM
+  - GameMaster
+  - Helper
+
+# Lista de nombres que no se pueden usar en personajes

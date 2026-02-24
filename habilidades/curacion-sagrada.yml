@@ -1,0 +1,25 @@
+id: curacion-sagrada
+name: Curacion Sagrada
+description: Cura a ti mismo o a un aliado
+class: sacerdote
+required-level: 1
+mana-cost: "30"
+material: GOLDEN_APPLE
+custom-model-data: 0
+particle: HEART
+particle-count: 10
+particle-speed: 0.2
+range: 10
+area-of-effect: 0
+cast-time: 0.5
+cast-mode: static
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.2
+  sacred-power: 0.8
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Sacerdote: cura a si mismo o a un aliado

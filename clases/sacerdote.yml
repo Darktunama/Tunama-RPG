@@ -1,0 +1,13 @@
+id: sacerdote
+name: Sacerdote
+order: 6
+description: Enfocado a curar a tus compañeros a cambio de tener poco daño
+
+advantages: Alta curación propia y de los aliados, habilidades de escudo
+disadvantages: No tiene daño a melé y daño a distancia débil
+
+subclasses:
+  - primarca
+  - sacerdote-corrupto
+
+# Archivo de configuracion de la Clase Sacerdote

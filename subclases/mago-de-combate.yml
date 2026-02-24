@@ -1,0 +1,11 @@
+id: mago-de-combate
+name: Mago de Combate
+order: 2
+description: Poderoso hechicero con alto daño mágico cuerpo a cuerpo
+parent-class: mago
+advantages:
+  - Alto daño mágico con poderes concentrado en sus armas cuerpo a cuerpo
+disadvantages:
+  - Nula capacitad de combate a distancia
+
+# Subclase del Mago que combina hechizos con melee

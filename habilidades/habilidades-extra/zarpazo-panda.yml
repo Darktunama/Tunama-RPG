@@ -1,0 +1,29 @@
+id: zarpazo-panda
+name: Zarpazo de Panda
+description: Un zarpazo equilibrado que causa daño moderado
+class: druida
+required-level: 10
+mana-cost: "12"
+material: BAMBOO
+custom-model-data: 0
+particle: CRIT
+particle-count: 15
+particle-speed: 0.4
+required-weapon: ""
+range: 3
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 2.5
+form-only: true
+
+damage-scaling:
+  health: 0.1
+  strength: 1.0
+  agility: 0.3
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.3
+
+# Habilidad exclusiva Panda: zarpazo fuerte y lento

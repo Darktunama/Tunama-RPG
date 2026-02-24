@@ -1,0 +1,7 @@
+id: crecimiento
+name: Crecimiento
+description: Alcanza nivel 10
+category: Nivel
+requirement: 10
+
+# Logro relacionado con el crecimiento del personaje

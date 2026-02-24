@@ -1,0 +1,26 @@
+id: segunda-mascota
+name: Segunda Mascota
+description: Habilidad pasiva que permite tener 2 mascotas activas a la vez
+class: cazador
+required-level: 28
+passive: true
+mana-cost: "0"
+material: EGG
+custom-model-data: 0
+particle: HAPPY_VILLAGER
+particle-count: 15
+particle-speed: 0.3
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+# Habilidad del Cazador: permite invocar una segunda mascota

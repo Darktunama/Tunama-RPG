@@ -1,0 +1,25 @@
+id: bendicion-divina
+name: Bendicion Divina
+description: Bendice a tu equipo con poder sagrado
+class: sacerdote
+required-level: 20
+mana-cost: "50"
+material: NETHER_STAR
+custom-model-data: 0
+particle: END_ROD
+particle-count: 30
+particle-speed: 0.5
+range: 15
+area-of-effect: 8
+cast-time: 1.0
+cast-mode: static
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.1
+  sacred-power: 0.9
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Sacerdote: bendice al equipo con poder sagrado

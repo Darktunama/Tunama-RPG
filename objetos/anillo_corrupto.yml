@@ -1,0 +1,12 @@
+id: anillo_corrupto
+name: "§4Anillo Corrupto"
+type: ring
+description: "Un anillo imbuido con poder oscuro"
+material: GOLD_NUGGET
+lore:
+  - "§7Aumenta el poder corrupto"
+  - "§7+5 Poder Corrupto"
+stats:
+  corrupt_power: 5
+
+# Anillo que potencia el poder corrupto del personaje

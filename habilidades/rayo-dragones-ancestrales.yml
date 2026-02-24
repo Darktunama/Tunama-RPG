@@ -1,0 +1,30 @@
+id: rayo-dragones-ancestrales
+name: Rayo de los Dragones Ancestrales
+description: Rayo devastador en área amplia que cura aliados y daña fuertemente a enemigos
+class: evocador
+required-level: 25
+mana-cost: "80"
+material: END_CRYSTAL
+custom-model-data: 0
+particle: DRAGON_BREATH
+particle-count: 60
+particle-speed: 0.5
+required-weapon: ""
+range: 15
+area-of-effect: 8
+cast-time: 2.5
+cast-mode: mobile
+cooldown: 45
+damage-scaling:
+  health: 0.1
+  strength: 0.0
+  agility: 0.0
+  intelligence: 1.5
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+heal-scaling:
+  intelligence: 1.0
+  sacred-power: 0.6
+
+# Habilidad del Evocador: rayo devastador de alto dano draconico

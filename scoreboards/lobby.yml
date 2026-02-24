@@ -1,0 +1,37 @@
+id: lobby
+
+title:
+  text: "Servidor Lobby"
+  type: "build-glow"
+  build-color: "&b&l"
+  build-secondary-color: "&3&l"
+  build-secondary-start: 9
+  glow-normal: "&f&l"
+  glow-center: "&3&l"
+  glow-edge: "&b&l"
+  glow-size: 2
+  hold-cursor: 10
+  hold-full: 20
+  interval: 2
+
+lines:
+  - text: "&b&m━━━━━━━━━━━━━━━━━━━━━━"
+  - text: ""
+  - text: "&f▪ &b&lClan: &a%rpg_clan%"
+  - text: "&f▪ &b&lClase: &f%rpg_clase%"
+  - text: "&f▪ &b&lRango: &f%luckperms_prefix%"
+  - text: ""
+  - text: "&f▪ &b&lMonedas: &a$&f%vault_eco_balance_formatted%"
+  - text: "&f▪ &b&lLobby: &c%server_online% &fjugadores"
+  - text: ""
+  - text: "  &rConsigue tu &crango"
+    condition: "default-rank"
+  - text: "  &r¡Mejora tu experiencia!"
+    condition: "default-rank"
+  - text: ""
+    condition: "default-rank"
+  - text: "&b&m━━━━━━━━━━━━━━━━━━━━━━"
+  - text: "irdem.com"
+    animated-colors: true
+
+# Lineas y variables que se muestran en el scoreboard

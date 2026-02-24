@@ -1,0 +1,29 @@
+id: mordisco-panda
+name: Mordisco de Panda
+description: Un mordisco que causa daño y te cura ligeramente
+class: druida
+required-level: 10
+mana-cost: "18"
+material: MELON_SLICE
+custom-model-data: 0
+particle: HEART
+particle-count: 10
+particle-speed: 0.3
+required-weapon: ""
+range: 2
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 4
+form-only: true
+
+damage-scaling:
+  health: 0.2
+  strength: 0.9
+  agility: 0.2
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.4
+
+# Habilidad exclusiva Panda: mordisco de gran fuerza

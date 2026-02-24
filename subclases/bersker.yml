@@ -1,0 +1,16 @@
+id: bersker
+name: Bersker
+order: 1
+description: Un maestro en el arte del combate que decidió abandonar toda armadura a cambio de pegar mas fuerte
+parent-class: guerrero
+advantages:
+  - Gran cantidad vida
+  - Gran daño a melé
+  - puede absorber una parte del daño (absorbe el 10% del daño recibido como curación)
+disadvantages:
+  - Tiene 0 de Defensa Fija
+  - débil en habilidades de rango
+
+# Especializacion avanzada de cada clase principal
+
+# Subclase del Guerrero que aumenta el dano a costa de defensa

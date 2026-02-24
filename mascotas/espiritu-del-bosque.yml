@@ -1,0 +1,64 @@
+# Mascota: Espíritu del Bosque
+id: espiritu-del-bosque
+name: Espíritu del Bosque
+description: Un antiguo espíritu de la naturaleza
+role: support
+custom-model-data: 0
+entity-type: ALLAY
+
+# Estadísticas base
+stats:
+  health: 45
+  defense: 6
+  attack: 8
+  attack-speed: 1.2
+  movement-speed: 1.4
+
+# Crecimiento por nivel
+growth:
+  health-per-level: 8
+  defense-per-level: 1.2
+  attack-per-level: 2
+  attack-speed-per-level: 0.02
+  movement-speed-per-level: 0.015
+
+# Escalado desde estadísticas del jugador (0.0 = 0%, 0.5 = 50%, 1.0 = 100%)
+player-scaling:
+  health: 0.15         # 15% de vida (soporte equilibrado)
+  attack: 0.12         # 12% de la fuerza
+  defense: 0.10        # 10% defensa
+  attack-speed: 0.015  # Moderado
+  movement-speed: 0.02 # Flotante y ágil
+
+# Habilidades de la mascota
+abilities:
+  - id: vinculo-natural
+    name: Vínculo Natural
+    description: Cura al dueño con energía de la naturaleza
+    cooldown: 15
+    heal-amount: 20
+    heal-target: owner
+  - id: raices-atrapantes
+    name: Raíces Atrapantes
+    description: Invoca raíces que inmovilizan al enemigo
+    cooldown: 18
+    root-duration: 4
+    damage-per-second: 3
+  - id: bendicion-del-bosque
+    name: Bendición del Bosque
+    description: Aumenta la regeneración del dueño
+    cooldown: 40
+    duration: 10
+    regen-boost: 5
+
+# Configuración
+menu-icon: OAK_SAPLING
+required-level: 22
+allowed-classes:
+  - invocador
+
+# Tienda
+price: 4000
+permission: rpg.pet.espiritu-del-bosque
+
+# Mascota Espiritu del Bosque con poderes naturales

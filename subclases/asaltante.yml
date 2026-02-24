@@ -1,0 +1,14 @@
+id: asaltante
+name: Asaltante
+order: 2
+description: "Luchador rápido que prefiere escapar de combate y atacar por sorpresa"
+parent-class: picaro
+advantages:
+  - Gran movilidad
+  - puede escapar de combates
+  - excelente daño a distancia
+disadvantages:
+  - Baja defensa
+  - débil en combate prolongado
+
+# Subclase del Picaro orientada al combate directo

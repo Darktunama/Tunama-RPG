@@ -1,0 +1,13 @@
+id: shaolin
+name: Shaolin
+order: 1
+description: Un luchador experimentado que abandona su movilidad a cambio de ganar mas daño
+parent-class: monje
+advantages:
+  - Gran daño a melé
+  - puede stunear enemigos (5% Probabilidad)
+disadvantages:
+  - Defensa baja
+  - débil en habilidades de rango tanto magias, trampas y arcos
+
+# Subclase del Monje con tecnicas de combate a manos desnudas

@@ -1,0 +1,16 @@
+id: amuleto_mago
+name: "§5Amuleto del Mago"
+type: amulet
+description: "Un amuleto que amplifica el poder mágico"
+material: EMERALD
+lore:
+  - "§7Aumenta el poder mágico"
+  - "§7+10 Inteligencia"
+  - "§7+5 Poder Sagrado"
+  - "§7+5 Poder Corrupto"
+stats:
+  intelligence: 10
+  sacred_power: 5
+  corrupt_power: 5
+
+# Amuleto de equipamiento para el Mago

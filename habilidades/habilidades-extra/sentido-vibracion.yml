@@ -1,0 +1,29 @@
+id: sentido-vibracion
+name: Sentido de Vibración
+description: Detectas todos los enemigos cercanos incluso a través de paredes
+class: druida
+required-level: 30
+mana-cost: "30"
+material: SCULK_SENSOR
+custom-model-data: 0
+particle: VIBRATION
+particle-count: 50
+particle-speed: 0.2
+required-weapon: ""
+range: 0
+area-of-effect: 20
+cast-time: 0
+cast-mode: mobile
+cooldown: 30
+form-only: true
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad exclusiva Arana: detecta enemigos a traves de vibraciones

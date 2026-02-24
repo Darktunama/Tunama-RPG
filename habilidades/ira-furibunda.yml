@@ -1,0 +1,31 @@
+id: ira-furibunda
+name: Ira Furibunda
+description: Entra en un estado de furia imparable con bonus de dano, velocidad, inmunidad y vida extra
+class: guerrero
+required-level: 30
+mana-cost: "80"
+material: BLAZE_POWDER
+custom-model-data: 0
+particle: FLAME
+particle-count: 25
+particle-speed: 0.3
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 120
+buff-duration: 30
+damage-bonus: 0.3
+attack-speed-bonus: 0.2
+temp-health: 100
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Guerrero: frenesi que aumenta ataque y velocidad

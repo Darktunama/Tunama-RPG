@@ -1,0 +1,8 @@
+id: derrota-5-zombies
+name: Derrota 5 Zombies
+description: Derrota 5 zombies para ganar experiencia
+required-level: 1
+reward-exp: 50
+reward-item: ""
+
+# Define los objetivos y recompensas de la mision

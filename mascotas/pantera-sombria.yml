@@ -1,0 +1,59 @@
+# Mascota: Pantera Sombría
+id: pantera-sombria
+name: Pantera Sombría
+description: Una sigilosa cazadora de las sombras
+role: assassin
+custom-model-data: 0
+entity-type: CAT
+
+# Estadísticas base
+stats:
+  health: 35
+  defense: 4
+  attack: 12
+  attack-speed: 1.6
+  movement-speed: 1.8
+
+# Crecimiento por nivel
+growth:
+  health-per-level: 6
+  defense-per-level: 0.8
+  attack-per-level: 3
+  attack-speed-per-level: 0.03
+  movement-speed-per-level: 0.02
+
+# Escalado desde estadísticas del jugador (0.0 = 0%, 0.5 = 50%, 1.0 = 100%)
+player-scaling:
+  health: 0.10         # 10% de vida
+  attack: 0.22         # 22% de la fuerza (asesina rápida)
+  defense: 0.08        # Evita en vez de resistir
+  attack-speed: 0.03   # Alta velocidad de ataque
+  movement-speed: 0.04 # Muy rápida
+
+# Habilidades de la mascota
+abilities:
+  - id: emboscada
+    name: Emboscada
+    description: Ataca desde las sombras con daño crítico
+    cooldown: 10
+    damage-multiplier: 3.5
+    critical-chance: 100
+  - id: sigilo
+    name: Sigilo
+    description: Se vuelve invisible y aumenta su velocidad
+    cooldown: 20
+    duration: 6
+    invisibility: true
+    speed-boost: 50
+
+# Configuración
+menu-icon: CAT_SPAWN_EGG
+required-level: 18
+allowed-classes:
+  - cazador
+
+# Tienda
+price: 2800
+permission: rpg.pet.pantera-sombria
+
+# Mascota Pantera Sombria con alta velocidad y sigilo

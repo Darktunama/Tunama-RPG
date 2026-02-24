@@ -1,0 +1,14 @@
+id: lich
+name: Lich
+order: 1
+description: Hechicero Oscuro con invocación de muertos y usa habilidades de putrefacción
+parent-class: nigromante
+advantages:
+  - Invoca no muertos
+  - Alto daño mágico
+  - debilita a los enemigos con su putrefacción
+disadvantages:
+  - Baja defensa
+  - "Débil en habilidades a melé"
+
+# Subclase del Nigromante con alto poder oscuro y hechizos

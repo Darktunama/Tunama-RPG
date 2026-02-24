@@ -1,0 +1,29 @@
+id: corte-profundo
+name: Corte Profundo
+description: Un corte devastador que causa sangrado al enemigo durante 10 segundos
+class: guerrero
+required-level: 1
+mana-cost: "20"
+material: IRON_SWORD
+custom-model-data: 0
+particle: DAMAGE_INDICATOR
+particle-count: 10
+particle-speed: 0.2
+required-weapon: ""
+range: 3
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 30
+bleed-duration: 10
+bleed-level: 1
+damage-scaling:
+  health: 0.0
+  strength: 0.4
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Guerrero: corte que causa sangrado prolongado

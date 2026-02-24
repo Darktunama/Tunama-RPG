@@ -1,0 +1,64 @@
+id: forma-de-oso
+name: Forma de Oso
+description: Te transforma en un oso y otorga habilidades zarpazo, mordisco, golpe pesado, rabia de oso y volver a forma druida
+class: druida
+required-level: 22
+mana-cost: "60"
+material: HONEYCOMB
+custom-model-data: 0
+particle: HAPPY_VILLAGER
+particle-count: 30
+particle-speed: 0.4
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 1.0
+cast-mode: static
+
+# Configuración de transformación
+transformation:
+  entity-type: POLAR_BEAR
+  duration: 300          # Duración en segundos (0 = permanente hasta cancelar)
+  stats:
+    health-bonus: 50     # Vida extra fija (tanque)
+    strength-bonus: 25   # Fuerza extra fija
+    agility-bonus: -10   # Agilidad reducida fija (lento)
+    defense-bonus: 20    # Defensa alta fija
+  # Escalado dinámico desde stats del jugador
+  player-scaling:
+    health:
+      stat: health           # Vida escala con stat de vida
+      multiplier: 0.5        # 50% del stat de vida (tanque)
+    strength:
+      stat: strength         # Fuerza escala con fuerza
+      multiplier: 0.3        # 30% de la fuerza
+    armor:
+      stat: nature-power     # Armadura escala con poder naturaleza
+      multiplier: 0.4        # Alta armadura para tanque
+    attack-speed:
+      stat: strength         # Velocidad de ataque lenta, pero escala con fuerza
+      multiplier: 0.01
+    movement-speed:
+      stat: agility          # Movimiento lento
+      multiplier: 0.005      # Bajo escalado de velocidad
+  effects:
+    - type: RESISTANCE
+      amplifier: 1
+    - type: SLOWNESS
+      amplifier: 0
+  abilities:
+    - zarpazo-oso
+    - mordisco-oso
+    - golpe-pesado
+    - rabia-de-oso
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Druida: transformacion en Oso con habilidades propias

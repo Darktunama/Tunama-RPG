@@ -1,0 +1,13 @@
+id: destructor
+name: Destructor
+order: 2
+description: Usa magia para infligir daño masivo
+parent-class: evocador
+advantages:
+  - Alto daño mágico en área
+  - hechizos destructivos
+disadvantages:
+  - Baja defensa
+  - baja vida
+
+# Subclase del Evocador con maximo dano magico

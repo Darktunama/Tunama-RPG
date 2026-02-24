@@ -1,0 +1,27 @@
+id: flecha-penetrante
+name: Flecha Penetrante
+description: Flecha que ignora una parte de la armadura y defensa del objetivo
+class: arquero
+required-level: 10
+mana-cost: "45"
+material: ARROWREGEN
+custom-model-data: 0
+particle: DAMAGE_INDICATOR
+particle-count: 10
+particle-speed: 0.3
+required-weapon: BOW
+range: 12
+area-of-effect: 0
+cast-time: 1.5
+cast-mode: mobile
+cooldown: 3.0
+armor-penetration: 0.3
+damage-scaling:
+  health: 0.0
+  strength: 0.3
+  agility: 0.5
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+# Habilidad del Arquero: flecha que ignora armadura

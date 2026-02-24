@@ -1,0 +1,13 @@
+id: francotirador
+name: Francotirador
+order: 1
+description: Un preciso luchador a distancia con alto critico que sacrifico su movilidad para ello
+parent-class: arquero
+advantages:
+  - Alta cantidad de critico
+  - daño fuerte a distancia
+  - puede golpear a los enemigos a distancia con su arco
+disadvantages:
+  - Baja defensa y débil en habilidad a melé
+
+# Subclase del Arquero con maximo alcance y precision

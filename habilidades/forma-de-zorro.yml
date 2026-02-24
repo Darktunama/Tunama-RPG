@@ -1,0 +1,60 @@
+id: forma-de-zorro
+name: Forma de Zorro
+description: Te transforma en un zorro y otorga habilidades zarpazo, mordisco y volver a forma druida
+class: druida
+required-level: 5
+mana-cost: "40"
+material: SWEET_BERRIES
+custom-model-data: 0
+particle: HAPPY_VILLAGER
+particle-count: 20
+particle-speed: 0.3
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 1.0
+cast-mode: static
+
+# Configuración de transformación
+transformation:
+  entity-type: FOX
+  duration: 300          # Duración en segundos (0 = permanente hasta cancelar)
+  stats:
+    health-bonus: 5      # Poca vida extra fija
+    strength-bonus: 8    # Fuerza moderada fija
+    agility-bonus: 30    # Máxima agilidad fija
+    defense-bonus: -8    # Defensa reducida fija
+  # Escalado dinámico - forma ultra ágil
+  player-scaling:
+    agility:
+      stat: agility          # Agilidad escala con agilidad
+      multiplier: 0.5        # 50% de la agilidad (máxima agilidad)
+    attack-speed:
+      stat: agility          # Velocidad de ataque muy rápida
+      multiplier: 0.04       # Máximo escalado de velocidad de ataque
+    movement-speed:
+      stat: agility          # Movimiento muy rápido
+      multiplier: 0.03       # Máximo escalado de velocidad
+    armor:
+      stat: agility          # Armadura de evasión
+      multiplier: 0.08       # Algo de armadura por evasión
+  effects:
+    - type: SPEED
+      amplifier: 2
+    - type: NIGHT_VISION
+      amplifier: 0
+  abilities:
+    - zarpazo-zorro
+    - mordisco-zorro
+    - esquivar-zorro
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Druida: transformacion en Zorro con habilidades propias

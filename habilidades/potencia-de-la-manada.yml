@@ -1,0 +1,33 @@
+id: potencia-de-la-manada
+name: Potencia de la Manada
+description: Buff grupal que escala con el numero de mascotas activas
+class: cazador
+required-level: 18
+mana-cost: "55"
+material: FERMENTED_SPIDER_EYE
+custom-model-data: 0
+particle: HAPPY_VILLAGER
+particle-count: 20
+particle-speed: 0.3
+required-weapon: ""
+range: 10
+area-of-effect: 0
+cast-time: 0.5
+cast-mode: mobile
+cooldown: 60.0
+
+# Porcentaje de daño adicional POR CADA mascota activa
+damage-bonus-per-pet: 10
+
+# Duración del buff en segundos
+buff-duration: 20
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+# Habilidad del Cazador: buff de grupo con varias mascotas

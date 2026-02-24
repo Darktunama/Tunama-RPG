@@ -1,0 +1,8 @@
+id: derrota-jefe-esqueleto
+name: Derrota al Jefe Esqueleto
+description: Derrota al jefe esqueleto en el cementerio
+required-level: 20
+reward-exp: 500
+reward-item: DIAMOND_SWORD
+
+# Mision para derrotar al jefe Esqueleto

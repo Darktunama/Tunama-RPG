@@ -1,0 +1,14 @@
+id: elementalista
+name: Elementalista
+order: 1
+description: Poderoso hechicero con alto daño mágico que se especializo en el dominio de los elementos
+parent-class: mago
+advantages:
+  - Alto daño mágico
+  - variedad de hechizos de diferentes elementos
+  - ataca a distancia
+disadvantages:
+  - Baja defensa
+  - débil en combate cuerpo a cuerpo
+
+# Subclase del Mago especializada en magias elementales

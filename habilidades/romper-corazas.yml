@@ -1,0 +1,29 @@
+id: romper-corazas
+name: Romper Corazas
+description: Un golpe devastador que destroza la armadura del enemigo, reduciendola un 40%
+class: guerrero
+required-level: 10
+mana-cost: "35"
+material: IRON_AXE
+custom-model-data: 0
+particle: ENCHANTED_HIT
+particle-count: 20
+particle-speed: 0.2
+required-weapon: ""
+range: 3
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 30
+armor-reduction: 0.4
+debuff-duration: 15
+damage-scaling:
+  health: 0.0
+  strength: 0.3
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+
+# Habilidad del Guerrero: reduce la armadura del objetivo

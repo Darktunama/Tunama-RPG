@@ -1,0 +1,13 @@
+id: paladin
+name: Paladín
+order: 1
+description: Luchador balanceado en combate que puede curar tanto a sí mismo como a aliados
+
+advantages: Alta defensa y vida, curaciones y habilidades variadas
+disadvantages: Débil tanto en habilidades melé como distancia
+
+subclasses:
+  - paladin-sagrado
+  - paladin-del-caos
+
+# Archivo de configuracion de la Clase Paladin

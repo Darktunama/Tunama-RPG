@@ -1,0 +1,26 @@
+id: lluvia-flechas
+name: Lluvia de Flechas
+description: Lanza multiples flechas al cielo
+class: arquero
+required-level: 15
+mana-cost: "40"
+material: ARROWINV
+custom-model-data: 0
+particle: CRIT
+particle-count: 20
+particle-speed: 0.5
+range: 20
+area-of-effect: 5
+cast-time: 2.0
+cast-mode: mobile
+cooldown: 3.0
+damage-scaling:
+  health: 0.0
+  strength: 0.1
+  agility: 0.4
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.1
+
+# Habilidad del Arquero: lluvia de flechas desde el cielo

@@ -1,0 +1,13 @@
+id: nigromante
+name: Nigromante
+order: 11
+description: Hechicero oscuro con invocación de muertos y habilidades de putrefacción
+
+advantages: Invoca no muertos, alto daño mágico, debilita a los enemigos
+disadvantages: Baja defensa, débil en habilidades a melé
+
+subclasses:
+  - lich
+  - caballero-de-la-muerte
+
+# Archivo de configuracion de la Clase Nigromante

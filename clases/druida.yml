@@ -1,0 +1,13 @@
+id: druida
+name: Druida
+order: 8
+description: Usa magia de naturaleza y transformaciones
+
+advantages: Se transforma en animales, se puede curar a sí mismo, magia de naturaleza
+disadvantages: Baja defensa en formas de animales, débil en habilidades a melé
+
+subclasses:
+  - licantropo
+  - archidruida
+
+# Archivo de configuracion de la Clase Druida

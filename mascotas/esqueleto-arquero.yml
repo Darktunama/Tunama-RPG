@@ -1,0 +1,58 @@
+# Mascota: Esqueleto Arquero
+id: esqueleto-arquero
+name: Esqueleto Arquero
+description: Un arquero no-muerto de puntería letal
+role: dps
+custom-model-data: 0
+entity-type: SKELETON
+
+# Estadísticas base
+stats:
+  health: 30
+  defense: 3
+  attack: 12
+  attack-speed: 1.5
+  movement-speed: 1.1
+
+# Crecimiento por nivel
+growth:
+  health-per-level: 5
+  defense-per-level: 0.5
+  attack-per-level: 3
+  attack-speed-per-level: 0.03
+  movement-speed-per-level: 0.01
+
+# Escalado desde estadísticas del jugador (0.0 = 0%, 0.5 = 50%, 1.0 = 100%)
+player-scaling:
+  health: 0.08         # 8% de vida (frágil pero letal)
+  attack: 0.25         # 25% de la fuerza del jugador (alto daño)
+  defense: 0.05        # Poca defensa
+  attack-speed: 0.02   # Disparo rápido
+  movement-speed: 0.01
+
+# Habilidades de la mascota
+abilities:
+  - id: flecha-osea
+    name: Flecha Ósea
+    description: Dispara una flecha que atraviesa enemigos
+    cooldown: 6
+    damage-multiplier: 2.0
+    piercing: true
+  - id: lluvia-de-huesos
+    name: Lluvia de Huesos
+    description: Lanza múltiples proyectiles en un área
+    cooldown: 18
+    damage-multiplier: 1.5
+    projectile-count: 5
+
+# Configuración
+menu-icon: BOW
+required-level: 15
+allowed-classes:
+  - nigromante
+
+# Tienda
+price: 2000
+permission: rpg.pet.esqueleto-arquero
+
+# Mascota Esqueleto Arquero invocado por el Cazador

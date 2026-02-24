@@ -1,0 +1,20 @@
+id: dragoneante
+name: Dragoneante
+order: 8
+description: Son los nacidos del Dragon
+
+advantages: Cada punto Invertido en Inteligencia, Agilidad o Poder Sagrado da 2 puntos
+disadvantages: Cada punto invertido en Vida Poder Corrupto requiere 2 puntos, no puede usar clases Nigromante, Invocador, Paladín, Guerrero
+
+multipliers:
+  agility: 2.0
+  intelligence: 2.0
+  life: 0.5
+  strength: 1.0
+
+costs:
+  corrupt-power: 2.0
+  sagrado-power: 2.0
+  nature-power: 1.0
+
+# Archivo de configuracion de la Raza Dragoneante

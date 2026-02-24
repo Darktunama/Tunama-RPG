@@ -1,0 +1,13 @@
+id: archidruida
+name: Archidruida
+order: 2
+description: Maestro en la magia de naturaleza con transformaciones versátiles
+parent-class: druida
+advantages:
+  - Se transforma en varios animales
+  - magia de naturaleza poderosa
+  - se puede curar
+disadvantages:
+  - Baja defensa en la forma humana
+
+# Subclase del Druida especializada en magia natural avanzada

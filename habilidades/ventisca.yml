@@ -1,0 +1,30 @@
+id: ventisca
+name: Ventisca
+description: Invoca una ventisca en un area que golpea 5 veces. Enemigos golpeados 3+ veces se congelan
+class: mago
+required-level: 20
+mana-cost: "50"
+material: SNOW_BLOCK
+custom-model-data: 0
+particle: SNOWFLAKE
+particle-count: 60
+particle-speed: 0.3
+required-weapon: ""
+range: 10
+area-of-effect: 4
+cast-time: 3
+cast-mode: static
+cooldown: 25
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.4
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+wave-count: 5
+freeze-threshold: 3
+freeze-duration: 6
+
+# Habilidad del Mago: 5 oleadas de hielo en area

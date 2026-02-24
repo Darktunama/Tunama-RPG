@@ -1,0 +1,12 @@
+id: maestro-de-la-manada
+name: Maestro de la Manada
+order: 1
+description: Pelea junto a varias mascotas compañeras
+parent-class: cazador
+advantages:
+  - Disponibilidad de múltiples mascotas
+  - buena velocidad de movimiento
+disadvantages:
+  - Baja defensa y vida
+
+# Subclase del Cazador con multiples mascotas y liderazgo
