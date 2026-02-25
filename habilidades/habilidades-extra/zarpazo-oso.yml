@@ -1,0 +1,28 @@
+id: zarpazo-oso
+name: Zarpazo de Oso
+description: Un poderoso zarpazo que causa gran daño
+class: druida
+damage-type: physical
+required-level: 22
+mana-cost: "15"
+material: HONEYCOMB
+custom-model-data: 0
+particle: CRIT_MAGIC
+particle-count: 20
+particle-speed: 0.5
+required-weapon: ""
+range: 3
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 3
+form-only: true
+
+damage-scaling:
+  health: 0.2
+  strength: 1.5
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.4

@@ -1,0 +1,57 @@
+# Mascota: Araña Venenosa
+id: araña-venenosa
+name: Araña Venenosa
+description: Una araña gigante que envenena a sus presas
+role: debuffer
+custom-model-data: 0
+entity-type: SPIDER
+
+# Estadísticas base
+stats:
+  health: 35
+  defense: 4
+  attack: 7
+  attack-speed: 1.4
+  movement-speed: 1.5
+
+# Crecimiento por nivel
+growth:
+  health-per-level: 6
+  defense-per-level: 0.8
+  attack-per-level: 1.8
+  attack-speed-per-level: 0.02
+  movement-speed-per-level: 0.02
+
+# Escalado desde estadísticas del jugador (0.0 = 0%, 0.5 = 50%, 1.0 = 100%)
+player-scaling:
+  health: 0.12         # 12% de vida
+  attack: 0.15         # 15% de la fuerza (daño moderado + veneno)
+  defense: 0.08
+  attack-speed: 0.02
+  movement-speed: 0.03 # Ágil
+
+# Habilidades de la mascota
+abilities:
+  - id: mordedura-toxica
+    name: Mordedura Tóxica
+    description: Muerde aplicando veneno potente
+    cooldown: 7
+    damage-multiplier: 1.5
+    poison-duration: 8
+    poison-level: 2
+  - id: telaraña-trampa
+    name: Telaraña Trampa
+    description: Atrapa al enemigo en una red de telarañas
+    cooldown: 15
+    slow-duration: 4
+    slow-level: 3
+
+# Configuración
+menu-icon: SPIDER_EYE
+required-level: 8
+allowed-classes:
+  - cazador
+
+# Tienda
+price: 1200
+permission: rpg.pet.araña-venenosa

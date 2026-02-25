@@ -1,0 +1,10 @@
+id: combatiente-primigenio
+name: Combatiente Primigenio
+order: 2
+description: Cazador que se une con su mascota en combate
+parent-class: cazador
+advantages:
+  - Disponibilidad de mascota poderosa
+  - se puede potenciar con ella
+disadvantages:
+  - Baja defensa y vida

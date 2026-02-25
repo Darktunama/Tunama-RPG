@@ -1,0 +1,32 @@
+id: llama-interior
+name: Llama Interior
+description: Aumenta tu armadura y vida temporalmente durante 1 minuto
+class: evocador
+required-level: 5
+mana-cost: "40"
+mana-cost-percent: 20
+material: MAGMA_CREAM
+custom-model-data: 0
+particle: LAVA
+particle-count: 25
+particle-speed: 0.2
+required-weapon: "STAFF,SWORD,GAUNTLET"
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 120
+buff-duration: 60
+armor-bonus: 10
+health-bonus: 20
+agility-scaling: 0.5
+intelligence-scaling: 1.0
+health-scaling: 0.5
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

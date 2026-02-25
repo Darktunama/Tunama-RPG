@@ -1,0 +1,11 @@
+id: trampero
+name: Trampero
+order: 13
+description: Pelea basándose en sus trampas
+
+advantages: Alto daño en trampas y torretas
+disadvantages: No puede usar combate cuerpo a cuerpo ni a distancia
+
+subclasses:
+  - maestro-de-las-trampas
+  - ingeniero

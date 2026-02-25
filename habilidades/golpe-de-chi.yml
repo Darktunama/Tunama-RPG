@@ -1,0 +1,27 @@
+id: golpe-de-chi
+name: Golpe de Chi
+description: Canaliza tu energia interior en un golpe demoledor que daña al enemigo mas cercano
+class: monje
+damage-type: physical
+required-level: 1
+mana-cost: "20"
+mana-cost-percent: 10
+material: BLAZE_ROD
+custom-model-data: 0
+particle: CRIT
+particle-count: 20
+particle-speed: 0.3
+required-weapon: "GAUNTLET"
+range: 3
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 10
+damage-scaling:
+  health: 0.0
+  strength: 0.2
+  agility: 0.3
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

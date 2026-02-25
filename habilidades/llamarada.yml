@@ -1,0 +1,27 @@
+id: llamarada
+name: Llamarada
+description: Lanza una llamarada en cono frente al mago que quema a los enemigos
+class: mago
+damage-type: magical
+required-level: 15
+mana-cost: "40"
+mana-cost-percent: 20
+material: FIRE_CHARGE
+custom-model-data: 0
+particle: FLAME
+particle-count: 50
+particle-speed: 0.4
+required-weapon: "STAFF,WAND,SWORD"
+range: 2
+area-of-effect: 2
+cast-time: 0
+cast-mode: mobile
+cooldown: 20
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.5
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

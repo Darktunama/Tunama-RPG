@@ -1,0 +1,28 @@
+id: mordisco-arana
+name: Mordisco Venenoso
+description: Un mordisco que inyecta veneno al enemigo
+class: druida
+damage-type: poison
+required-level: 1
+mana-cost: "15"
+material: SPIDER_EYE
+custom-model-data: 0
+particle: SPELL_WITCH
+particle-count: 15
+particle-speed: 0.3
+required-weapon: ""
+range: 2
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 3
+form-only: true
+
+damage-scaling:
+  health: 0.0
+  strength: 0.6
+  agility: 0.8
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.4

@@ -1,0 +1,27 @@
+id: flecha-rapida
+name: Flecha Rapida
+description: Dispara una flecha veloz que causa dano basado en agilidad y fuerza
+class: arquero
+damage-type: physical
+required-level: 1
+mana-cost: "35"
+mana-cost-percent: 3
+material: ARROWNIGTHV
+custom-model-data: 0
+particle: CRIT
+particle-count: 15
+particle-speed: 0.3
+required-weapon: "BOW,CROSSBOW"
+range: 10
+area-of-effect: 0
+cast-time: 0.1
+cast-mode: mobile
+cooldown: 2
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.1
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

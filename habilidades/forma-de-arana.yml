@@ -1,0 +1,60 @@
+id: forma-de-arana
+name: Forma de Arana
+description: Te transforma en una arana y otorga habilidades mordisco, telarana y volver a forma druida
+class: druida
+required-level: 1
+mana-cost: "40"
+mana-cost-percent: 30
+material: SPIDER_EYE
+custom-model-data: 0
+particle: SMOKE
+particle-count: 20
+particle-speed: 0.3
+required-weapon: "STAFF"
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: static
+cooldown: 20
+
+# Configuración de transformación
+transformation:
+  entity-type: SPIDER
+  duration: 300          # Duración en segundos (0 = permanente hasta cancelar)
+  stats:
+    health-bonus: 0      # Sin vida extra fija
+    strength-bonus: 5    # Poca fuerza extra fija
+    agility-bonus: 20    # Alta agilidad fija
+    defense-bonus: -10   # Defensa reducida fija (frágil)
+  # Escalado dinámico desde stats del jugador
+  player-scaling:
+    agility:
+      stat: agility          # Agilidad escala con agilidad
+      multiplier: 0.4        # 40% de la agilidad (muy ágil)
+    attack-speed:
+      stat: agility          # Velocidad de ataque rápida con agilidad
+      multiplier: 0.03       # Alto escalado de velocidad de ataque
+    movement-speed:
+      stat: agility          # Movimiento rápido con agilidad
+      multiplier: 0.025      # Alto escalado de velocidad
+    armor:
+      stat: agility          # Poca armadura, pero algo de evasión
+      multiplier: 0.05       # Bajo escalado de armadura
+  effects:
+    - type: SPEED
+      amplifier: 1
+    - type: JUMP_BOOST
+      amplifier: 2
+  abilities:
+    - mordisco-arana
+    - telarana
+    - veneno-arana
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

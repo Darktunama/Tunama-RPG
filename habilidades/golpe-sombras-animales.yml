@@ -1,0 +1,27 @@
+id: golpe-sombras-animales
+name: Golpe de las Sombras Animales
+description: Hace invisible a tu mascota y ejecuta un ataque rapido al objetivo
+class: cazador
+damage-type: physical
+required-level: 22
+mana-cost: "20"
+mana-cost-percent: 10
+material: PHANTOM_MEMBRANE
+custom-model-data: 0
+particle: SMOKE
+particle-count: 25
+particle-speed: 0.4
+required-weapon: "BOW,AXE,SWORD"
+range: 12
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 30
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.3
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

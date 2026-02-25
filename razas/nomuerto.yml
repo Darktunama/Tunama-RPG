@@ -1,0 +1,18 @@
+id: nomuerto
+name: No Muerto
+order: 9
+description: La Muerte nunca los freno por eso siempre vuelven
+
+advantages: Cada punto Invertido en Vida o Poder Corrupto da 2 puntos
+disadvantages: Cada punto invertido en Agilidad o Poder Naturaleza requiere 2 puntos, no puede usar clases Evocador, Sacerdote, Monje
+
+multipliers:
+  agility: 0.5
+  intelligence: 1.0
+  life: 2.0
+  strength: 1.0
+
+costs:
+  corrupt-power: 2.0
+  sagrado-power: 1.0
+  nature-power: 2.0

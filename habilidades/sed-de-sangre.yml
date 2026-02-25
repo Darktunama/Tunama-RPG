@@ -1,0 +1,29 @@
+id: sed-de-sangre
+name: Sed de Sangre
+description: Activa tu sed de sangre, ganando 20% de bonus en habilidades y 10% de robo de vida
+class: guerrero
+required-level: 18
+mana-cost: "40"
+mana-cost-percent: 30
+material: REDSTONE
+custom-model-data: 0
+particle: VILLAGER_ANGRY
+particle-count: 15
+particle-speed: 0.2
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 60
+buff-duration: 30
+damage-bonus: 0.2
+lifesteal: 0.1
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

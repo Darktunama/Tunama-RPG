@@ -1,0 +1,13 @@
+id: chaman
+name: "Chamán"
+order: 2
+description: Hechicero que invoca elementales para que luchen por el
+parent-class: invocador
+advantages:
+  - Invoca elementales
+  - las elementales pelean por ti
+  - puede invocar varias elementales a la vez
+disadvantages:
+  - Débil en habilidades melé
+  - defensa baja
+  - débil en habilidades de distancia

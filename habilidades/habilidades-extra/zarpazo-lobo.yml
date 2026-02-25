@@ -1,0 +1,28 @@
+id: zarpazo-lobo
+name: Zarpazo de Lobo
+description: Un rápido zarpazo que causa daño al enemigo
+class: druida
+damage-type: physical
+required-level: 15
+mana-cost: "10"
+material: BONE
+custom-model-data: 0
+particle: CRIT
+particle-count: 15
+particle-speed: 0.5
+required-weapon: ""
+range: 3
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 2
+form-only: true
+
+damage-scaling:
+  health: 0.0
+  strength: 1.2
+  agility: 0.5
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.3

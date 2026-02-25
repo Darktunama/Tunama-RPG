@@ -1,0 +1,27 @@
+id: descarga-de-karma
+name: Descarga de Karma
+description: Canalizas todo el peso de tu existencia en un golpe definitivo. El dano es igual a tu vida actual. Si fallas, sufres tu propio golpe
+class: monje
+damage-type: physical
+required-level: 35
+mana-cost: "80"
+mana-cost-percent: 30
+material: TOTEM_OF_UNDYING
+custom-model-data: 0
+particle: DAMAGE_INDICATOR
+particle-count: 25
+particle-speed: 0.3
+required-weapon: "GAUNTLET"
+range: 3
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 120
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

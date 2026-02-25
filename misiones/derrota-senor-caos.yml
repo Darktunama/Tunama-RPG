@@ -1,0 +1,6 @@
+id: derrota-senor-caos
+name: Derrota al Senor del Caos
+description: Derrota al Senor del Caos en el Nether
+required-level: 30
+reward-exp: 2000
+reward-item: NETHERITE_SWORD

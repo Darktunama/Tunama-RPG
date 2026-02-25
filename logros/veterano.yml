@@ -1,0 +1,5 @@
+id: veterano
+name: Veterano
+description: Alcanza nivel 20
+category: Nivel
+requirement: 20

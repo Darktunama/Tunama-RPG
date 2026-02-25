@@ -1,0 +1,10 @@
+id: anillo_sagrado
+name: "§6Anillo Sagrado"
+type: ring
+description: "Un anillo bendecido con poder divino"
+material: GOLD_NUGGET
+lore:
+  - "§7Aumenta el poder sagrado"
+  - "§7+5 Poder Sagrado"
+stats:
+  sacred_power: 5

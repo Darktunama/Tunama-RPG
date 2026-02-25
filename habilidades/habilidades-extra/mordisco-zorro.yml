@@ -1,0 +1,28 @@
+id: mordisco-zorro
+name: Mordisco Ágil
+description: Un mordisco rápido y preciso
+class: druida
+damage-type: physical
+required-level: 5
+mana-cost: "12"
+material: RABBIT
+custom-model-data: 0
+particle: CRIT_MAGIC
+particle-count: 12
+particle-speed: 0.6
+required-weapon: ""
+range: 2
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 2
+form-only: true
+
+damage-scaling:
+  health: 0.0
+  strength: 0.6
+  agility: 1.2
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.3

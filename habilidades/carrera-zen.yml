@@ -1,0 +1,28 @@
+id: carrera-zen
+name: Carrera Zen
+description: Tu mente se vacia y tu cuerpo vuela. Ganas un burst de velocidad del 150% durante 10 segundos
+class: monje
+required-level: 15
+mana-cost: "40"
+mana-cost-percent: 10
+material: FEATHER
+custom-model-data: 0
+particle: CLOUD
+particle-count: 10
+particle-speed: 0.1
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 40
+speed-bonus: 1.5
+buff-duration: 10
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

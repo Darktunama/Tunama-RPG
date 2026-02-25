@@ -1,0 +1,27 @@
+id: esquivar-zorro
+name: Evasión de Zorro
+description: Realizas un movimiento evasivo que te hace intocable brevemente
+class: druida
+required-level: 5
+mana-cost: "20"
+material: FEATHER
+custom-model-data: 0
+particle: CLOUD
+particle-count: 20
+particle-speed: 0.5
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 12
+form-only: true
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

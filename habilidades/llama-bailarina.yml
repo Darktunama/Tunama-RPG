@@ -1,0 +1,30 @@
+id: llama-bailarina
+name: Llama Bailarina
+description: Una llama que salta entre 3 entidades, curando aliados y dañando enemigos
+class: evocador
+damage-type: magical
+required-level: 16
+mana-cost: "60"
+mana-cost-percent: 10
+material: SPECTRAL_ARROW
+custom-model-data: 0
+particle: FLAME
+particle-count: 15
+particle-speed: 0.6
+required-weapon: "STAFF,SWORD,GAUNTLET"
+range: 10
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 40
+bounces: 3
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.3
+  intelligence: 0.3
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
+heal-intelligence-scaling: 0.5
+heal-sacred-power-scaling: 1.0

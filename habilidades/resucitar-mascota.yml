@@ -1,0 +1,30 @@
+id: resucitar-mascota
+name: Resucitar Mascota
+description: Devuelve a la vida a tu mascota muerta
+class: cazador
+required-level: 8
+mana-cost: "30"
+mana-cost-percent: 40
+material: TOTEM_OF_UNDYING
+custom-model-data: 0
+particle: TOTEM_OF_UNDYING
+particle-count: 30
+particle-speed: 0.5
+required-weapon: ""
+range: 5
+area-of-effect: 0
+cast-time: 2
+cast-mode: static
+cooldown: 40
+
+# Porcentaje de vida con la que revive la mascota (0-100)
+resurrect-percent: 50
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

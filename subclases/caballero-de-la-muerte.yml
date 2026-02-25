@@ -1,0 +1,10 @@
+id: caballero-de-la-muerte
+name: Caballero de la Muerte
+order: 2
+description: Guerrero que usa magia oscura para potenciar su combate
+parent-class: nigromante
+advantages:
+  - "Alto daño a melé con magia"
+  - vida temporal robada a enemigos
+disadvantages:
+  - "Débil en defensa"

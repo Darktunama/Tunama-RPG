@@ -1,0 +1,29 @@
+id: embestida
+name: Embestida
+description: Te impulsas 6 bloques hacia adelante. Si impactas reduces la armadura del enemigo un 20%. Si fallas, sufres el efecto tu mismo
+class: guerrero
+damage-type: physical
+required-level: 5
+mana-cost: "40"
+mana-cost-percent: 30
+material: SHIELD
+custom-model-data: 0
+particle: CRIT
+particle-count: 15
+particle-speed: 0.3
+required-weapon: "SWORD,AXE"
+range: 5
+area-of-effect: 1
+cast-time: 0
+cast-mode: mobile
+cooldown: 20
+armor-reduction: 0.2
+debuff-duration: 10
+damage-scaling:
+  health: 0.0
+  strength: 0.5
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

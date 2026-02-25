@@ -1,0 +1,27 @@
+id: trueno-primigenio
+name: Trueno Primigenio
+description: Invoca un devastador trueno que golpea a todos los enemigos en el area
+class: invocador
+damage-type: magical
+required-level: 10
+mana-cost: "40"
+mana-cost-percent: 20
+material: LIGHTNING_ROD
+custom-model-data: 0
+particle: ELECTRIC_SPARK
+particle-count: 40
+particle-speed: 0.5
+required-weapon: "STAFF,WAND,SWORD"
+range: 0
+area-of-effect: 5
+cast-time: 3
+cast-mode: static
+cooldown: 15
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.6
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

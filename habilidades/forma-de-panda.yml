@@ -1,0 +1,63 @@
+id: forma-de-panda
+name: Forma de Panda
+description: Te transforma en un panda y otorga habilidades zarpazo, mordisco, golpe pesado y volver a forma druida
+class: druida
+required-level: 10
+mana-cost: "40"
+mana-cost-percent: 30
+material: BAMBOO
+custom-model-data: 0
+particle: HAPPY_VILLAGER
+particle-count: 25
+particle-speed: 0.3
+required-weapon: "STAFF"
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: static
+cooldown: 20
+
+# Configuración de transformación
+transformation:
+  entity-type: PANDA
+  duration: 300          # Duración en segundos (0 = permanente hasta cancelar)
+  stats:
+    health-bonus: 30     # Vida moderada fija
+    strength-bonus: 12   # Fuerza moderada fija
+    agility-bonus: -5    # Ligeramente lento fijo
+    defense-bonus: 15    # Defensa moderada fija
+  # Escalado dinámico - forma equilibrada
+  player-scaling:
+    health:
+      stat: health           # Vida escala con vida
+      multiplier: 0.35       # 35% de la vida (equilibrado)
+    strength:
+      stat: strength         # Fuerza escala con fuerza
+      multiplier: 0.2        # 20% de fuerza
+    armor:
+      stat: nature-power     # Armadura escala con naturaleza
+      multiplier: 0.25       # Armadura moderada
+    attack-speed:
+      stat: agility          # Velocidad normal
+      multiplier: 0.015
+    movement-speed:
+      stat: agility          # Movimiento normal
+      multiplier: 0.01
+  effects:
+    - type: REGENERATION
+      amplifier: 0
+    - type: SATURATION
+      amplifier: 0
+  abilities:
+    - zarpazo-panda
+    - mordisco-panda
+    - golpe-pesado-panda
+
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

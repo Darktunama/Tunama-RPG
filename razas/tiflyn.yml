@@ -1,0 +1,18 @@
+id: tiflyn
+name: Tiflyn
+order: 7
+description: Nacidos de humanos maldecidos por el Infierno
+
+advantages: Cada punto invertido en Vida, Fuerza, Agilidad o Poder Corrupto soma 2 en vez de 1
+disadvantages: Cada punto Invertido en Poder Sagrado o Poder Naturaleza requiere 2 puntos, no puede usar las clases Monje, Sacerdote ni Druida
+
+multipliers:
+  agility: 2.0
+  intelligence: 1.0
+  life: 2.0
+  strength: 2.0
+
+costs:
+  corrupt-power: 2.0
+  sagrado-power: 2.0
+  nature-power: 2.0

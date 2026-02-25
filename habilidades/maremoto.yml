@@ -1,0 +1,29 @@
+id: maremoto
+name: Maremoto
+description: Desata una ola devastadora que dana a los enemigos en el area durante 5 segundos
+class: invocador
+damage-type: magical
+required-level: 20
+mana-cost: "70"
+mana-cost-percent: 30
+material: HEART_OF_THE_SEA
+custom-model-data: 0
+particle: FALLING_WATER
+particle-count: 35
+particle-speed: 0.3
+required-weapon: "STAFF,WAND,SWORD"
+range: 0
+area-of-effect: 6
+cast-time: 2
+cast-mode: static
+cooldown: 15
+dot-duration: 5
+dot-ticks: 5
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.7
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

@@ -1,0 +1,27 @@
+id: fuerza-de-la-naturaleza
+name: Fuerza de la Naturaleza
+description: Golpe devastador basado en el conjunto de stats totales pero impide transformarse durante 1 minuto
+class: druida
+damage-type: magical
+required-level: 25
+mana-cost: "80"
+mana-cost-percent: 50
+material: NETHER_STAR
+custom-model-data: 0
+particle: EXPLOSION
+particle-count: 5
+particle-speed: 0.5
+required-weapon: "STAFF"
+range: 5
+area-of-effect: 3
+cast-time: 0.5
+cast-mode: mobile
+cooldown: 30
+damage-scaling:
+  health: 0.1
+  strength: 0.3
+  agility: 0.3
+  intelligence: 0.3
+  sacred-power: 1.0
+  corrupt-power: 1.0
+  nature-power: 1.0

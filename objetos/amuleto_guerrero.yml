@@ -1,0 +1,28 @@
+# ===========================================
+# Amuleto del Guerrero - Solo para guerreros
+# ===========================================
+id: amuleto_guerrero
+name: "§c§lAmuleto del Guerrero"
+type: amulet
+description: "Un amuleto que solo los verdaderos guerreros pueden portar"
+material: EMERALD
+
+lore:
+  - "§7Forjado en el calor de la batalla"
+  - "§7Solo los guerreros pueden sentir su poder"
+
+stats:
+  strength: 10
+  agility: 10
+  health: 15
+
+# Requisitos para equipar este objeto
+requisitos:
+  nivel: 15
+  estadisticas:
+    strength: 20
+  clases:
+    - guerrero
+
+# Para usar con resource pack personalizado
+custom_model_data: 1001

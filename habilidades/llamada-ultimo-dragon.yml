@@ -1,0 +1,28 @@
+id: llamada-ultimo-dragon
+name: La Llamada del Último Dragón
+description: Invoca un mini Ender Dragón que ataca a los enemigos durante 30 segundos
+class: evocador
+damage-type: magical
+required-level: 30
+mana-cost: "80"
+mana-cost-percent: 30
+material: DRAGON_EGG
+custom-model-data: 0
+particle: PORTAL
+particle-count: 50
+particle-speed: 0.3
+required-weapon: "STAFF,SWORD,GAUNTLET"
+range: 0
+area-of-effect: 15
+cast-time: 2
+cast-mode: static
+cooldown: 60
+summon-duration: 30
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.8
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

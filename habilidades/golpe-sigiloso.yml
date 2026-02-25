@@ -1,0 +1,24 @@
+id: golpe-sigiloso
+name: Golpe Sigiloso
+description: Ataca desde las sombras causando dano extra
+class: picaro
+damage-type: physical
+required-level: 1
+mana-cost: "20"
+material: FLINT
+custom-model-data: 0
+particle: SMOKE
+particle-count: 15
+particle-speed: 0.2
+range: 3
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+damage-scaling:
+  health: 0.0
+  strength: 0.3
+  agility: 0.5
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

@@ -1,0 +1,22 @@
+id: amuleto_legendario
+name: "§6§lAmuleto Legendario"
+type: amulet
+description: "Un amuleto de poder legendario"
+material: EMERALD
+lore:
+  - "§7El amuleto más poderoso"
+  - "§7+15 Fuerza"
+  - "§7+15 Agilidad"
+  - "§7+15 Inteligencia"
+  - "§7+20 Vida"
+  - "§7+10 Poder Sagrado"
+  - "§7+10 Poder Corrupto"
+  - "§7+10 Poder de la Naturaleza"
+stats:
+  strength: 15
+  agility: 15
+  intelligence: 15
+  health: 20
+  sacred_power: 10
+  corrupt_power: 10
+  nature_power: 10

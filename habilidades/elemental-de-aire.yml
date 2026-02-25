@@ -1,0 +1,30 @@
+id: elemental-de-aire
+name: Elemental de Aire
+description: Invoca un veloz elemental de aire que lucha a tu lado durante 60 segundos
+class: invocador
+damage-type: magical
+required-level: 15
+mana-cost: "50"
+mana-cost-percent: 30
+material: FEATHER
+custom-model-data: 0
+particle: CLOUD
+particle-count: 25
+particle-speed: 0.4
+required-weapon: "STAFF,WAND,SWORD"
+range: 0
+area-of-effect: 0
+cast-time: 5
+cast-mode: static
+cooldown: 90
+summon-duration: 60
+summon-type: STRAY
+summon-damage-scaling: 0.7
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.7
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

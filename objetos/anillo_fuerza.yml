@@ -1,0 +1,37 @@
+# ===========================================
+# Configuración de Objeto RPG
+# ===========================================
+id: anillo_fuerza
+name: "§6Anillo de Fuerza"
+type: ring
+description: "Un anillo que aumenta tu fuerza física"
+material: GOLD_NUGGET
+
+# Lore personalizado (opcional)
+lore:
+  - "§7Un anillo forjado por los"
+  - "§7antiguos maestros herreros"
+
+# Estadísticas que otorga el objeto
+stats:
+  strength: 5
+
+# Requisitos para usar el objeto (opcional)
+requisitos:
+  # Nivel mínimo requerido (0 = sin requisito)
+  nivel: 0
+
+  # Estadísticas mínimas requeridas (opcional)
+  # estadisticas:
+  #   strength: 10
+  #   agility: 5
+
+  # Clases que pueden usar este objeto (vacío = todas las clases)
+  # Usa los IDs de las clases, no los nombres
+  # clases:
+  #   - guerrero
+  #   - paladin
+
+# CustomModelData para resource packs (0 = desactivado)
+# Esto permite usar texturas personalizadas del resource pack
+custom_model_data: 0

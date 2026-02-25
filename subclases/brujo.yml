@@ -1,0 +1,13 @@
+id: brujo
+name: Brujo
+order: 1
+description: Hechicero que invoca demonios que luchen por el
+parent-class: invocador
+advantages:
+  - Invoca demonios
+  - las demonios pelean por ti
+  - puede invocar varias demonios a la vez
+disadvantages:
+  - Débil en habilidades melé
+  - defensa baja
+  - débil en habilidades de distancia

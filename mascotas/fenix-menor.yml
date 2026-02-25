@@ -1,0 +1,56 @@
+# Mascota: Fénix Menor
+id: fenix-menor
+name: Fénix Menor
+description: Un ave de fuego que renace de sus cenizas
+role: dps
+custom-model-data: 0
+entity-type: PARROT
+
+# Estadísticas base
+stats:
+  health: 25
+  defense: 2
+  attack: 15
+  attack-speed: 1.8
+  movement-speed: 2.0
+
+# Crecimiento por nivel
+growth:
+  health-per-level: 4
+  defense-per-level: 0.5
+  attack-per-level: 4
+  attack-speed-per-level: 0.03
+  movement-speed-per-level: 0.02
+
+# Escalado desde estadísticas del jugador (0.0 = 0%, 0.5 = 50%, 1.0 = 100%)
+player-scaling:
+  health: 0.05         # 5% de vida (muy frágil)
+  attack: 0.30         # 30% de la fuerza (daño explosivo)
+  defense: 0.03        # Casi sin defensa
+  attack-speed: 0.025  # Muy rápido
+  movement-speed: 0.04 # Vuela rápido
+
+# Habilidades de la mascota
+abilities:
+  - id: aliento-de-fuego
+    name: Aliento de Fuego
+    description: Lanza fuego que quema a los enemigos
+    cooldown: 8
+    damage-multiplier: 2.0
+    burn-duration: 4
+  - id: renacimiento
+    name: Renacimiento
+    description: Revive automáticamente una vez al morir
+    cooldown: 300
+    auto-revive: true
+    revive-health-percent: 50
+
+# Configuración
+menu-icon: BLAZE_POWDER
+required-level: 25
+allowed-classes:
+  - invocador
+
+# Tienda
+price: 5000
+permission: rpg.pet.fenix-menor

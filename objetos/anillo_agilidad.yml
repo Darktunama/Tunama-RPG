@@ -1,0 +1,10 @@
+id: anillo_agilidad
+name: "§eAnillo de Agilidad"
+type: ring
+description: "Un anillo que aumenta tu velocidad y agilidad"
+material: GOLD_NUGGET
+lore:
+  - "§7Aumenta la agilidad del portador"
+  - "§7+5 Agilidad"
+stats:
+  agility: 5

@@ -1,0 +1,26 @@
+id: salto-dimensional
+name: Salto Dimensional
+description: Te teletransporta hacia adelante hasta 10 bloques instantaneamente
+class: mago
+required-level: 30
+mana-cost: "20"
+mana-cost-percent: 20
+material: ENDER_PEARL
+custom-model-data: 0
+particle: PORTAL
+particle-count: 40
+particle-speed: 0.5
+required-weapon: ""
+range: 10
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 30
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

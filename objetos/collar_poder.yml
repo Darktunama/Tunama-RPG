@@ -1,0 +1,16 @@
+id: collar_poder
+name: "§bCollar de Poder"
+type: necklace
+description: "Un collar que aumenta todas las estadísticas"
+material: AMETHYST_SHARD
+lore:
+  - "§7Aumenta todas las estadísticas"
+  - "§7+3 Fuerza"
+  - "§7+3 Agilidad"
+  - "§7+3 Inteligencia"
+  - "§7+5 Vida"
+stats:
+  strength: 3
+  agility: 3
+  intelligence: 3
+  health: 5

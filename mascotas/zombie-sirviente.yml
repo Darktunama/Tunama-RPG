@@ -1,0 +1,55 @@
+# Mascota: Zombie Sirviente
+id: zombie-sirviente
+name: Zombie Sirviente
+description: Un no-muerto que obedece tus órdenes sin cuestionar
+role: tank
+custom-model-data: 0
+entity-type: ZOMBIE
+
+# Estadísticas base
+stats:
+  health: 60
+  defense: 8
+  attack: 6
+  attack-speed: 0.8
+  movement-speed: 0.9
+
+# Crecimiento por nivel
+growth:
+  health-per-level: 12
+  defense-per-level: 2
+  attack-per-level: 1.5
+  attack-speed-per-level: 0.01
+  movement-speed-per-level: 0.005
+
+# Escalado desde estadísticas del jugador (0.0 = 0%, 0.5 = 50%, 1.0 = 100%)
+player-scaling:
+  health: 0.20         # 20% de la vida del jugador (tanque)
+  attack: 0.10         # 10% de la fuerza del jugador
+  defense: 0.15        # 15% de la agilidad del jugador (más defensa)
+  attack-speed: 0.005  # Lento pero resistente
+  movement-speed: 0.01
+
+# Habilidades de la mascota
+abilities:
+  - id: golpe-putrefacto
+    name: Golpe Putrefacto
+    description: Golpea al enemigo aplicando veneno
+    cooldown: 10
+    damage-multiplier: 1.8
+    poison-duration: 5
+  - id: regeneracion-oscura
+    name: Regeneración Oscura
+    description: Se cura absorbiendo la vida de enemigos cercanos
+    cooldown: 25
+    heal-percent: 30
+
+# Configuración
+menu-icon: ROTTEN_FLESH
+required-level: 10
+allowed-classes:
+  - nigromante
+
+# Tienda
+price: 1500
+permission: rpg.pet.zombie-sirviente

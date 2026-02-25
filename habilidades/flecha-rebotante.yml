@@ -1,0 +1,27 @@
+id: flecha-rebotante
+name: Flecha Rebotante
+description: Flecha que rebota entre varios enemigos cercanos en un rango
+class: arquero
+damage-type: physical
+required-level: 20
+mana-cost: "40"
+mana-cost-percent: 4
+material: ARROWTURTLE
+custom-model-data: 0
+particle: ENCHANTED_HIT
+particle-count: 15
+particle-speed: 0.3
+required-weapon: "BOW,CROSSBOW"
+range: 15
+area-of-effect: 8
+cast-time: 0.1
+cast-mode: mobile
+cooldown: 30
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.4
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

@@ -1,0 +1,28 @@
+id: mordisco-oso
+name: Mordisco de Oso
+description: Un mordisco devastador que causa gran daño
+class: druida
+damage-type: physical
+required-level: 22
+mana-cost: "20"
+material: COOKED_BEEF
+custom-model-data: 0
+particle: DAMAGE_INDICATOR
+particle-count: 15
+particle-speed: 0.3
+required-weapon: ""
+range: 2
+area-of-effect: 0
+cast-time: 0
+cast-mode: mobile
+cooldown: 4
+form-only: true
+
+damage-scaling:
+  health: 0.3
+  strength: 1.3
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.3

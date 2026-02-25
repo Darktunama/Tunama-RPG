@@ -1,0 +1,29 @@
+id: atronar
+name: Atronar
+description: Golpea el suelo causando dano en area y ralentizando a los enemigos un 20%
+class: guerrero
+damage-type: physical
+required-level: 15
+mana-cost: "50"
+mana-cost-percent: 30
+material: NETHERITE_AXE
+custom-model-data: 0
+particle: EXPLOSION_LARGE
+particle-count: 10
+particle-speed: 0.1
+required-weapon: "SWORD,AXE"
+range: 0
+area-of-effect: 3
+cast-time: 0
+cast-mode: mobile
+cooldown: 40
+slow-percent: 20
+slow-duration: 5
+damage-scaling:
+  health: 0.0
+  strength: 0.4
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

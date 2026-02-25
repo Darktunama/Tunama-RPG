@@ -1,0 +1,28 @@
+id: grito-sonico
+name: Grito Sónico
+description: Emites un grito devastador que daña a todos los enemigos frente a ti
+class: druida
+damage-type: physical
+required-level: 30
+mana-cost: "50"
+material: SCULK_SHRIEKER
+custom-model-data: 0
+particle: SONIC_BOOM
+particle-count: 30
+particle-speed: 1.0
+required-weapon: ""
+range: 15
+area-of-effect: 5
+cast-time: 1.0
+cast-mode: mobile
+cooldown: 15
+form-only: true
+
+damage-scaling:
+  health: 0.3
+  strength: 2.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 1.0
