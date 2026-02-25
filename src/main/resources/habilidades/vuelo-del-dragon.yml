@@ -2,24 +2,26 @@ id: vuelo-del-dragon
 name: Vuelo del Dragón
 description: Te teletransportas hacia adelante dañando a los enemigos que atraviesas
 class: evocador
+damage-type: physical
 required-level: 12
-mana-cost: "35"
+mana-cost: "50"
+mana-cost-percent: 10
 material: ELYTRA
 custom-model-data: 0
 particle: DRAGON_BREATH
 particle-count: 30
 particle-speed: 0.4
-required-weapon: ""
+required-weapon: "STAFF,SWORD,GAUNTLET"
 range: 12
 area-of-effect: 2
 cast-time: 0
 cast-mode: mobile
-cooldown: 12
+cooldown: 30
 damage-scaling:
-  health: 0.2
+  health: 0.0
   strength: 0.0
-  agility: 0.4
-  intelligence: 0.6
+  agility: 0.2
+  intelligence: 0.1
   sacred-power: 0.0
   corrupt-power: 0.0
   nature-power: 0.0

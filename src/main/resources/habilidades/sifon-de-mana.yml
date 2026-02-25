@@ -4,6 +4,7 @@ description: Canaliza energia arcana para recuperar el 60% de tu mana maximo
 class: mago
 required-level: 25
 mana-cost: "0"
+mana-cost-percent: 0
 material: EXPERIENCE_BOTTLE
 custom-model-data: 0
 particle: ENCHANT
@@ -15,6 +16,7 @@ area-of-effect: 0
 cast-time: 0
 cast-mode: mobile
 cooldown: 60
+mana-restore-percent: 60
 damage-scaling:
   health: 0.0
   strength: 0.0
@@ -23,4 +25,3 @@ damage-scaling:
   sacred-power: 0.0
   corrupt-power: 0.0
   nature-power: 0.0
-mana-restore-percent: 60

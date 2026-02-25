@@ -2,6 +2,7 @@ id: mordisco-panda
 name: Mordisco de Panda
 description: Un mordisco que causa daño y te cura ligeramente
 class: druida
+damage-type: physical
 required-level: 10
 mana-cost: "18"
 material: MELON_SLICE

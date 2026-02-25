@@ -3,18 +3,19 @@ name: Rabia Animal
 description: Aumenta el dano y velocidad de ataque de tu mascota
 class: cazador
 required-level: 12
-mana-cost: "45"
+mana-cost: "30"
+mana-cost-percent: 10
 material: BLAZE_POWDER
 custom-model-data: 0
 particle: FLAME
 particle-count: 15
 particle-speed: 0.3
-required-weapon: ""
+required-weapon: "BOW,AXE,SWORD"
 range: 10
 area-of-effect: 0
 cast-time: 0
 cast-mode: mobile
-cooldown: 45.0
+cooldown: 70
 
 # Porcentaje de daño adicional para las mascotas
 damage-bonus: 50

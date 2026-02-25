@@ -2,14 +2,16 @@ id: bola-fuego
 name: Bola de Fuego
 description: Lanza una bola de fuego que explota al impactar. Si el objetivo muere, causa una erupcion de dano en area
 class: mago
+damage-type: magical
 required-level: 1
-mana-cost: "25"
+mana-cost: "20"
+mana-cost-percent: 10
 material: BLAZE_POWDER
 custom-model-data: 0
 particle: FLAME
 particle-count: 30
 particle-speed: 0.5
-required-weapon: ""
+required-weapon: "STAFF,WAND,SWORD"
 range: 15
 area-of-effect: 3
 cast-time: 2

@@ -3,13 +3,14 @@ name: Ira Furibunda
 description: Entra en un estado de furia imparable con bonus de dano, velocidad, inmunidad y vida extra
 class: guerrero
 required-level: 30
-mana-cost: "80"
+mana-cost: "70"
+mana-cost-percent: 20
 material: BLAZE_POWDER
 custom-model-data: 0
 particle: FLAME
 particle-count: 25
 particle-speed: 0.3
-required-weapon: ""
+required-weapon: "SWORD,AXE"
 range: 0
 area-of-effect: 0
 cast-time: 0

@@ -158,6 +158,9 @@ public class AbilityManager {
             ability.setCastMode(config.getString("cast-mode", "mobile"));
             ability.setCooldown(config.getDouble("cooldown", 0));
             ability.setArmorPenetration(config.getDouble("armor-penetration", 0));
+            ability.setMagicPenetration(config.getDouble("magic-penetration", 0));
+            ability.setDamageType(config.getString("damage-type", "physical"));
+            ability.setManaCostPercent(config.getInt("mana-cost-percent", 0));
             ability.setCritBonus(config.getDouble("crit-bonus", 0));
             ability.setCritDuration(config.getDouble("crit-duration", 0));
             ability.setPassive(config.getBoolean("passive", false));

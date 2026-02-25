@@ -2,14 +2,16 @@ id: corte-profundo
 name: Corte Profundo
 description: Un corte devastador que causa sangrado al enemigo durante 10 segundos
 class: guerrero
+damage-type: physical
 required-level: 1
-mana-cost: "20"
+mana-cost: "30"
+mana-cost-percent: 20
 material: IRON_SWORD
 custom-model-data: 0
 particle: DAMAGE_INDICATOR
 particle-count: 10
 particle-speed: 0.2
-required-weapon: ""
+required-weapon: "SWORD,AXE"
 range: 3
 area-of-effect: 0
 cast-time: 0

@@ -2,6 +2,7 @@ id: zarpazo-oso
 name: Zarpazo de Oso
 description: Un poderoso zarpazo que causa gran daño
 class: druida
+damage-type: physical
 required-level: 22
 mana-cost: "15"
 material: HONEYCOMB

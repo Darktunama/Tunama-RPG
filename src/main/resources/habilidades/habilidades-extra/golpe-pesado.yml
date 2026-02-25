@@ -2,6 +2,7 @@ id: golpe-pesado
 name: Golpe Pesado
 description: Un golpe contundente que aturde al enemigo brevemente
 class: druida
+damage-type: physical
 required-level: 22
 mana-cost: "30"
 material: ANVIL

@@ -2,6 +2,7 @@ id: zarpazo-lobo
 name: Zarpazo de Lobo
 description: Un rápido zarpazo que causa daño al enemigo
 class: druida
+damage-type: physical
 required-level: 15
 mana-cost: "10"
 material: BONE

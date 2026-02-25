@@ -2,8 +2,10 @@ id: orden-de-ataque
 name: Orden de Ataque
 description: Ordena a tu mascota atacar al objetivo
 class: cazador
+damage-type: physical
 required-level: 1
-mana-cost: "15"
+mana-cost: "30"
+mana-cost-percent: 5
 material: DIAMOND_SWORD
 custom-model-data: 0
 particle: ANGRY_VILLAGER
@@ -13,7 +15,7 @@ required-weapon: ""
 range: 15
 area-of-effect: 0
 cast-time: 0
-cooldown: 2.0
+cooldown: 10
 cast-mode: mobile
 damage-scaling:
   health: 0.0

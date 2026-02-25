@@ -2,6 +2,7 @@ id: onda-de-choque
 name: Onda de Choque
 description: Golpeas el suelo creando una onda que daña y empuja a los enemigos
 class: druida
+damage-type: physical
 required-level: 30
 mana-cost: "40"
 material: SCULK_CATALYST

@@ -3,18 +3,19 @@ name: Forma de Warden
 description: Te transforma en un warden y otorga las habilidades del warden y volver a forma druida
 class: druida
 required-level: 30
-mana-cost: "80"
+mana-cost: "40"
+mana-cost-percent: 30
 material: SCULK_CATALYST
 custom-model-data: 0
 particle: SCULK_CHARGE_POP
 particle-count: 30
 particle-speed: 0.5
-required-weapon: ""
+required-weapon: "STAFF"
 range: 0
 area-of-effect: 0
-cast-time: 1.5
+cast-time: 0
 cast-mode: static
-cooldown: 60
+cooldown: 20
 
 # Configuración de transformación
 transformation:

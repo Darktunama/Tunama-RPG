@@ -1,0 +1,29 @@
+id: palma-de-buda
+name: Palma de Buda
+description: Liberas toda tu energia chi en una explosion devastadora. Consume todo el mana restante (minimo 20%) y cada 10% consumido aumenta el dano un 10%
+class: monje
+damage-type: physical
+required-level: 25
+mana-cost: "0"
+mana-cost-percent: 0
+material: GOLDEN_SWORD
+custom-model-data: 0
+particle: FLASH
+particle-count: 50
+particle-speed: 0.5
+required-weapon: "GAUNTLET"
+range: 0
+area-of-effect: 2
+cast-time: 0
+cast-mode: mobile
+cooldown: 60
+min-mana-percent: 20
+damage-bonus-per-10-percent: 0.1
+damage-scaling:
+  health: 0.0
+  strength: 0.5
+  agility: 0.5
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

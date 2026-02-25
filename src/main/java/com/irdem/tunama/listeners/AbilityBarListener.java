@@ -2,7 +2,6 @@ package com.irdem.tunama.listeners;
 
 import net.kyori.adventure.bossbar.BossBar;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Fireball;
@@ -20,6 +19,7 @@ import org.bukkit.scheduler.BukkitTask;
 import com.irdem.tunama.TunamaRPG;
 import com.irdem.tunama.data.Ability;
 import com.irdem.tunama.data.Pet;
+import com.irdem.tunama.util.DamageCalculator;
 import com.irdem.tunama.data.PetCommand;
 import com.irdem.tunama.data.PetType;
 import com.irdem.tunama.data.PlayerData;
@@ -69,19 +69,41 @@ public class AbilityBarListener implements Listener {
     private static final Map<UUID, BukkitTask> castingTasks = new HashMap<>();
     private static final Map<UUID, org.bukkit.Location> castingStartLocations = new HashMap<>();
 
-    // Traducciones de armas
+    // Traducciones de armas y categorías
     private static final Map<String, String> WEAPON_NAMES = new HashMap<>();
+    private static final Map<String, java.util.Set<org.bukkit.Material>> WEAPON_CATEGORIES = new HashMap<>();
     static {
-        WEAPON_NAMES.put("BOW", "arco");
+        // Categorías de armas (soportan múltiples materials por categoría)
+        WEAPON_CATEGORIES.put("BOW",      java.util.Set.of(org.bukkit.Material.BOW));
+        WEAPON_CATEGORIES.put("CROSSBOW", java.util.Set.of(org.bukkit.Material.CROSSBOW));
+        WEAPON_CATEGORIES.put("SWORD",    java.util.Set.of(
+            org.bukkit.Material.WOODEN_SWORD, org.bukkit.Material.STONE_SWORD,
+            org.bukkit.Material.IRON_SWORD,   org.bukkit.Material.GOLDEN_SWORD,
+            org.bukkit.Material.DIAMOND_SWORD, org.bukkit.Material.NETHERITE_SWORD));
+        WEAPON_CATEGORIES.put("AXE",      java.util.Set.of(
+            org.bukkit.Material.WOODEN_AXE, org.bukkit.Material.STONE_AXE,
+            org.bukkit.Material.IRON_AXE,   org.bukkit.Material.GOLDEN_AXE,
+            org.bukkit.Material.DIAMOND_AXE, org.bukkit.Material.NETHERITE_AXE));
+        WEAPON_CATEGORIES.put("STAFF",    java.util.Set.of(org.bukkit.Material.BLAZE_ROD));   // placeholder
+        WEAPON_CATEGORIES.put("WAND",     java.util.Set.of(org.bukkit.Material.STICK));        // placeholder
+        WEAPON_CATEGORIES.put("GAUNTLET", java.util.Set.of(org.bukkit.Material.IRON_INGOT));   // placeholder
+
+        // Nombres amigables (categorías y materiales individuales)
+        WEAPON_NAMES.put("BOW",      "arco");
         WEAPON_NAMES.put("CROSSBOW", "ballesta");
-        WEAPON_NAMES.put("DIAMOND_SWORD", "espada de diamante");
+        WEAPON_NAMES.put("SWORD",    "espada");
+        WEAPON_NAMES.put("AXE",      "hacha");
+        WEAPON_NAMES.put("STAFF",    "bastón");
+        WEAPON_NAMES.put("WAND",     "varita");
+        WEAPON_NAMES.put("GAUNTLET", "guantelete");
+        WEAPON_NAMES.put("DIAMOND_SWORD",   "espada de diamante");
         WEAPON_NAMES.put("NETHERITE_SWORD", "espada de netherita");
-        WEAPON_NAMES.put("IRON_SWORD", "espada de hierro");
-        WEAPON_NAMES.put("WOODEN_SWORD", "espada de madera");
-        WEAPON_NAMES.put("STONE_SWORD", "espada de piedra");
-        WEAPON_NAMES.put("GOLDEN_SWORD", "espada de oro");
-        WEAPON_NAMES.put("TRIDENT", "tridente");
-        WEAPON_NAMES.put("SHIELD", "escudo");
+        WEAPON_NAMES.put("IRON_SWORD",      "espada de hierro");
+        WEAPON_NAMES.put("WOODEN_SWORD",    "espada de madera");
+        WEAPON_NAMES.put("STONE_SWORD",     "espada de piedra");
+        WEAPON_NAMES.put("GOLDEN_SWORD",    "espada de oro");
+        WEAPON_NAMES.put("TRIDENT",  "tridente");
+        WEAPON_NAMES.put("SHIELD",   "escudo");
     }
 
     public AbilityBarListener(TunamaRPG plugin) {
@@ -368,29 +390,37 @@ public class AbilityBarListener implements Listener {
             return;
         }
 
-        // Verificar maná
-        int manaCost = 0;
-        try { manaCost = Integer.parseInt(ability.getManaCost()); } catch (NumberFormatException ignored) {}
+        // Verificar maná (coste base + % del maná máximo)
+        int manaCostBase = 0;
+        try { manaCostBase = Integer.parseInt(ability.getManaCost()); } catch (NumberFormatException ignored) {}
+        int manaCost = manaCostBase + (ability.getManaCostPercent() * playerData.getMaxMana() / 100);
 
         if (manaCost > 0 && !playerData.useMana(manaCost)) {
             player.sendMessage("§c✗ Maná insuficiente. Necesitas §9" + manaCost + "§c, tienes §9" + playerData.getCurrentMana() + "§c.");
             return;
         }
 
-        // Verificar arma requerida (el arma ahora está en slot 8, donde tiene la mano)
+        // Verificar arma requerida — soporta lista separada por comas y categorías de arma
         if (!ability.getRequiredWeapon().isEmpty()) {
-            ItemStack weaponItem = player.getInventory().getItemInMainHand(); // Slot 8
-
-            try {
-                Material requiredMat = Material.valueOf(ability.getRequiredWeapon().toUpperCase());
-                if (weaponItem == null || weaponItem.getType() != requiredMat) {
-                    playerData.regenMana(manaCost);
-                    String weaponName = WEAPON_NAMES.getOrDefault(ability.getRequiredWeapon().toUpperCase(),
-                        ability.getRequiredWeapon().toLowerCase().replace("_", " "));
-                    player.sendMessage("§c✗ Necesitas un §f" + weaponName + " §cen el slot §f1§c.");
-                    return;
+            org.bukkit.Material heldMat = player.getInventory().getItemInMainHand().getType();
+            boolean weaponValid = false;
+            for (String req : ability.getRequiredWeapon().split(",")) {
+                req = req.trim().toUpperCase();
+                java.util.Set<org.bukkit.Material> cat = WEAPON_CATEGORIES.get(req);
+                if (cat != null) {
+                    if (cat.contains(heldMat)) { weaponValid = true; break; }
+                } else {
+                    try { if (org.bukkit.Material.valueOf(req) == heldMat) { weaponValid = true; break; } }
+                    catch (IllegalArgumentException ignored) {}
                 }
-            } catch (IllegalArgumentException ignored) {}
+            }
+            if (!weaponValid) {
+                playerData.regenMana(manaCost);
+                String first = ability.getRequiredWeapon().split(",")[0].trim().toUpperCase();
+                String wName = WEAPON_NAMES.getOrDefault(first, first.toLowerCase().replace("_", " "));
+                player.sendMessage("§c✗ Necesitas un §f" + wName + "§c (u otra arma válida) en el slot §f1§c.");
+                return;
+            }
         }
 
         // Verificar si ya está casteando otra habilidad
@@ -782,6 +812,39 @@ public class AbilityBarListener implements Listener {
 
             case "salto-dimensional":
                 executeDimensionalLeap(player, ability);
+                break;
+
+            // ── MONJE ──
+            case "golpe-de-chi":
+                executeChiStrike(player, ability, damage);
+                break;
+
+            case "flujo-de-chi":
+                executeChiFlow(player, ability, damage);
+                break;
+
+            case "meditacion":
+                executeMeditation(player, ability, playerData);
+                break;
+
+            case "carrera-zen":
+                executeZenRun(player, ability);
+                break;
+
+            case "golpe-ocho-trigramas":
+                executeEightTrigrams(player, ability, damage);
+                break;
+
+            case "ocho-puertas-meditacion":
+                executeEightGates(player, ability);
+                break;
+
+            case "palma-de-buda":
+                executeBuddhaPalm(player, ability, playerData);
+                break;
+
+            case "descarga-de-karma":
+                executeKarmaDischarge(player, ability);
                 break;
 
             default:
@@ -1376,7 +1439,7 @@ public class AbilityBarListener implements Listener {
 
                 if (distance <= aoe) {
                     // Aplicar daño
-                    target.damage(damage, player);
+                    applyAbilityDamage(target, player, damage, ability);
                     enemiesHit++;
 
                     // Efectos visuales en el objetivo
@@ -1439,7 +1502,7 @@ public class AbilityBarListener implements Listener {
                     alliesHealed++;
                 } else {
                     // Dañar enemigos (mobs)
-                    target.damage(damage, player);
+                    applyAbilityDamage(target, player, damage, ability);
                     target.getWorld().spawnParticle(org.bukkit.Particle.FLAME, target.getLocation().add(0, 1, 0), 20, 0.5, 0.5, 0.5, 0.1);
                     enemiesHit++;
                 }
@@ -1550,7 +1613,7 @@ public class AbilityBarListener implements Listener {
                 player.sendMessage("§a🔥 ¡Llama Viva! §7Curaste a §f" + ally.getName() + " §7(+" + String.format("%.1f", healAmount) + " vida) (-§9" + ability.getManaCost() + " maná§7)");
             } else {
                 // Dañar enemigo
-                target.damage(damage, player);
+                applyAbilityDamage(target, player, damage, ability);
                 target.getWorld().spawnParticle(org.bukkit.Particle.FLAME, target.getLocation().add(0, 1, 0), 25, 0.5, 0.5, 0.5, 0.1);
                 player.sendMessage("§c🔥 ¡Llama Viva! §7(Daño: §e" + String.format("%.1f", damage) + "§7) (-§9" + ability.getManaCost() + " maná§7)");
             }
@@ -1606,7 +1669,7 @@ public class AbilityBarListener implements Listener {
                 if (entity instanceof org.bukkit.entity.LivingEntity && entity != player) {
                     org.bukkit.entity.LivingEntity target = (org.bukkit.entity.LivingEntity) entity;
                     if (!target.hasMetadata("rpg-dragon-flight-hit")) {
-                        target.damage(damage, player);
+                        applyAbilityDamage(target, player, damage, ability);
                         target.setMetadata("rpg-dragon-flight-hit", new FixedMetadataValue(plugin, true));
                         target.getWorld().spawnParticle(org.bukkit.Particle.PORTAL, target.getLocation().add(0, 1, 0), 20, 0.3, 0.5, 0.3, 0.8);
                         enemiesHit++;
@@ -1674,7 +1737,7 @@ public class AbilityBarListener implements Listener {
                 ally.getWorld().spawnParticle(org.bukkit.Particle.HEART, ally.getLocation().add(0, 2, 0), 5, 0.3, 0.3, 0.3, 0);
                 alliesHealed++;
             } else {
-                target.damage(damage * 0.7, player); // Daño reducido por rebote
+                applyAbilityDamage(target, player, damage * 0.7, ability); // Daño reducido por rebote
                 target.getWorld().spawnParticle(org.bukkit.Particle.FLAME, target.getLocation().add(0, 1, 0), 15, 0.3, 0.3, 0.3, 0.1);
                 enemiesHit++;
             }
@@ -1826,7 +1889,7 @@ public class AbilityBarListener implements Listener {
                     ally.getWorld().spawnParticle(org.bukkit.Particle.HEART, ally.getLocation().add(0, 2, 0), 10, 0.5, 0.5, 0.5, 0);
                     alliesHealed++;
                 } else {
-                    target.damage(damage * 1.5, player); // 50% más de daño
+                    applyAbilityDamage(target, player, damage * 1.5, ability); // 50% más de daño
                     target.getWorld().spawnParticle(org.bukkit.Particle.PORTAL, target.getLocation().add(0, 1, 0), 40, 0.5, 0.5, 0.5, 1.0);
                     target.getWorld().spawnParticle(org.bukkit.Particle.WITCH, target.getLocation().add(0, 1, 0), 15, 0.3, 0.3, 0.3, 0);
                     enemiesHit++;
@@ -1882,7 +1945,7 @@ public class AbilityBarListener implements Listener {
                 dragon.setTarget(nearestEnemy);
                 // Atacar si está cerca
                 if (nearestDist < 3) {
-                    nearestEnemy.damage(damage * 0.5, player);
+                    applyAbilityDamage(nearestEnemy, player, damage * 0.5, ability);
                     nearestEnemy.getWorld().spawnParticle(org.bukkit.Particle.PORTAL, nearestEnemy.getLocation().add(0, 1, 0), 15, 0.3, 0.3, 0.3, 0.8);
                     nearestEnemy.getWorld().spawnParticle(org.bukkit.Particle.WITCH, nearestEnemy.getLocation().add(0, 1, 0), 5, 0.2, 0.2, 0.2, 0);
                 }
@@ -1920,7 +1983,7 @@ public class AbilityBarListener implements Listener {
         }
 
         // Aplicar daño
-        target.damage(damage, player);
+        applyAbilityDamage(target, player, damage, ability);
 
         // Aplicar sangrado (usando WITHER como efecto de sangrado)
         target.addPotionEffect(new org.bukkit.potion.PotionEffect(
@@ -1999,7 +2062,7 @@ public class AbilityBarListener implements Listener {
 
         if (hitTarget != null) {
             // Impactó a un enemigo
-            hitTarget.damage(damage, player);
+            applyAbilityDamage(hitTarget, player, damage, ability);
 
             // Reducir armadura del enemigo
             org.bukkit.attribute.AttributeInstance armorAttr = hitTarget.getAttribute(org.bukkit.attribute.Attribute.GENERIC_ARMOR);
@@ -2081,7 +2144,7 @@ public class AbilityBarListener implements Listener {
         }
 
         // Aplicar daño
-        target.damage(damage, player);
+        applyAbilityDamage(target, player, damage, ability);
 
         // Reducir armadura del objetivo
         org.bukkit.attribute.AttributeInstance armorAttr = target.getAttribute(org.bukkit.attribute.Attribute.GENERIC_ARMOR);
@@ -2129,7 +2192,7 @@ public class AbilityBarListener implements Listener {
                 org.bukkit.entity.LivingEntity target = (org.bukkit.entity.LivingEntity) entity;
 
                 // Aplicar daño
-                target.damage(damage, player);
+                applyAbilityDamage(target, player, damage, ability);
 
                 // Aplicar ralentización (SLOW)
                 int slowLevel = Math.max(0, (slowPercent / 20) - 1); // 20% = nivel 0, 40% = nivel 1, etc.
@@ -2215,7 +2278,7 @@ public class AbilityBarListener implements Listener {
             for (org.bukkit.entity.Entity entity : player.getNearbyEntities(aoe, aoe, aoe)) {
                 if (entity instanceof org.bukkit.entity.LivingEntity && entity != player) {
                     org.bukkit.entity.LivingEntity target = (org.bukkit.entity.LivingEntity) entity;
-                    target.damage(damagePerTick * 0.5, player); // Daño por tick (mitad porque son 2 ticks/s)
+                    applyAbilityDamage(target, player, damagePerTick * 0.5, ability); // Daño por tick (mitad porque son 2 ticks/s)
                 }
             }
 
@@ -2376,7 +2439,7 @@ public class AbilityBarListener implements Listener {
                 for (org.bukkit.entity.Entity entity : center.getWorld().getNearbyEntities(center, aoe, 2, aoe)) {
                     if (entity instanceof org.bukkit.entity.LivingEntity && entity != player) {
                         org.bukkit.entity.LivingEntity target = (org.bukkit.entity.LivingEntity) entity;
-                        target.damage(damagePerTick, player);
+                        applyAbilityDamage(target, player, damagePerTick, ability);
                         target.setFireTicks(40);
                     }
                 }
@@ -2409,7 +2472,7 @@ public class AbilityBarListener implements Listener {
         for (org.bukkit.entity.Entity entity : center.getWorld().getNearbyEntities(center, aoe, 3, aoe)) {
             if (entity instanceof org.bukkit.entity.LivingEntity && entity != player) {
                 org.bukkit.entity.LivingEntity target = (org.bukkit.entity.LivingEntity) entity;
-                target.damage(damage, player);
+                applyAbilityDamage(target, player, damage, ability);
                 target.getWorld().spawnParticle(org.bukkit.Particle.ELECTRIC_SPARK, target.getLocation().add(0, 1, 0), 15, 0.3, 0.5, 0.3, 0.1);
                 enemiesHit++;
             }
@@ -2443,7 +2506,7 @@ public class AbilityBarListener implements Listener {
                 for (org.bukkit.entity.Entity entity : center.getWorld().getNearbyEntities(center, aoe, 2, aoe)) {
                     if (entity instanceof org.bukkit.entity.LivingEntity && entity != player) {
                         org.bukkit.entity.LivingEntity target = (org.bukkit.entity.LivingEntity) entity;
-                        target.damage(damagePerTick, player);
+                        applyAbilityDamage(target, player, damagePerTick, ability);
                         target.addPotionEffect(new org.bukkit.potion.PotionEffect(
                             org.bukkit.potion.PotionEffectType.SLOWNESS, 40, 1, false, true, false
                         ));
@@ -2484,7 +2547,7 @@ public class AbilityBarListener implements Listener {
                 for (org.bukkit.entity.Entity entity : center.getWorld().getNearbyEntities(center, aoe, 3, aoe)) {
                     if (entity instanceof org.bukkit.entity.LivingEntity && entity != player) {
                         org.bukkit.entity.LivingEntity target = (org.bukkit.entity.LivingEntity) entity;
-                        target.damage(damagePerTick, player);
+                        applyAbilityDamage(target, player, damagePerTick, ability);
                         target.setFireTicks(60);
                     }
                 }
@@ -2795,7 +2858,7 @@ public class AbilityBarListener implements Listener {
         LivingEntity target = findNearestTarget(player, range);
 
         if (target != null) {
-            target.damage(damage, player);
+            applyAbilityDamage(target, player, damage, ability);
             spawnAbilityParticles(player, ability);
 
             // Partículas en el objetivo
@@ -2855,7 +2918,7 @@ public class AbilityBarListener implements Listener {
         LivingEntity target = findNearestTarget(player, range);
 
         if (target != null) {
-            target.damage(damage * 1.5, player);
+            applyAbilityDamage(target, player, damage * 1.5, ability);
             // Efecto de aturdimiento (lentitud extrema)
             target.addPotionEffect(new org.bukkit.potion.PotionEffect(
                 org.bukkit.potion.PotionEffectType.SLOWNESS, 40, 5, false, true, true
@@ -2930,7 +2993,7 @@ public class AbilityBarListener implements Listener {
                 target.addPotionEffect(new org.bukkit.potion.PotionEffect(
                     org.bukkit.potion.PotionEffectType.POISON, 100, 1, false, true, true
                 ));
-                target.damage(damage * 0.5, player);
+                applyAbilityDamage(target, player, damage * 0.5, ability);
                 poisoned++;
             }
         }
@@ -2975,7 +3038,7 @@ public class AbilityBarListener implements Listener {
         for (org.bukkit.entity.Entity nearby : player.getWorld().getNearbyEntities(targetLoc, aoe, aoe, aoe)) {
             if (nearby instanceof LivingEntity && nearby != player) {
                 LivingEntity target = (LivingEntity) nearby;
-                target.damage(damage * 2, player);
+                applyAbilityDamage(target, player, damage * 2, ability);
                 // Efecto de knockback
                 org.bukkit.util.Vector knockback = target.getLocation().toVector()
                     .subtract(player.getLocation().toVector()).normalize().multiply(2);
@@ -3005,7 +3068,7 @@ public class AbilityBarListener implements Listener {
         for (org.bukkit.entity.Entity nearby : player.getNearbyEntities(aoe, aoe, aoe)) {
             if (nearby instanceof LivingEntity && !(nearby instanceof Player)) {
                 LivingEntity target = (LivingEntity) nearby;
-                target.damage(damage * 1.5, player);
+                applyAbilityDamage(target, player, damage * 1.5, ability);
 
                 // Knockback desde el jugador
                 org.bukkit.util.Vector knockback = target.getLocation().toVector()
@@ -3254,7 +3317,7 @@ public class AbilityBarListener implements Listener {
         org.bukkit.Bukkit.getScheduler().runTaskLater(plugin, () -> {
             if (target.isDead() || !target.isValid()) return;
 
-            target.damage(finalDamage, player);
+            applyAbilityDamage(target, player, finalDamage, ability);
             target.setFireTicks(60);
             player.getWorld().spawnParticle(org.bukkit.Particle.FLAME, target.getLocation(), 20, 0.5, 0.5, 0.5, 0.1);
             player.getWorld().playSound(target.getLocation(), org.bukkit.Sound.ENTITY_GENERIC_EXPLODE, 0.7f, 1.2f);
@@ -3288,7 +3351,7 @@ public class AbilityBarListener implements Listener {
                     for (org.bukkit.entity.Entity entity : deathLoc.getWorld().getNearbyEntities(deathLoc, aoe, 2, aoe)) {
                         if (entity instanceof org.bukkit.entity.LivingEntity && !entity.equals(player) && !entity.equals(target)) {
                             org.bukkit.entity.LivingEntity victim = (org.bukkit.entity.LivingEntity) entity;
-                            victim.damage(finalExplosionDamage, player);
+                            applyAbilityDamage(victim, player, finalExplosionDamage, ability);
                             victim.setFireTicks(60);
                         }
                     }
@@ -3337,7 +3400,7 @@ public class AbilityBarListener implements Listener {
         org.bukkit.Bukkit.getScheduler().runTaskLater(plugin, () -> {
             if (target.isDead() || !target.isValid()) return;
 
-            target.damage(finalDamage, player);
+            applyAbilityDamage(target, player, finalDamage, ability);
             player.getWorld().spawnParticle(org.bukkit.Particle.SNOWFLAKE, target.getLocation().add(0, 1, 0), 25, 0.3, 0.5, 0.3, 0.05);
             player.getWorld().playSound(target.getLocation(), org.bukkit.Sound.BLOCK_GLASS_BREAK, 1.0f, 1.5f);
 
@@ -3410,7 +3473,7 @@ public class AbilityBarListener implements Listener {
                 }
 
                 org.bukkit.entity.LivingEntity victim = (org.bukkit.entity.LivingEntity) entity;
-                victim.damage(damage, player);
+                applyAbilityDamage(victim, player, damage, ability);
 
                 // Knockback: empujar hacia afuera
                 org.bukkit.util.Vector knockback = victim.getLocation().toVector()
@@ -3464,7 +3527,7 @@ public class AbilityBarListener implements Listener {
                 if (dist > 0) {
                     double angle = Math.toDegrees(toEntity.normalize().angle(direction));
                     if (angle <= coneAngle) {
-                        victim.damage(damage, player);
+                        applyAbilityDamage(victim, player, damage, ability);
                         victim.setFireTicks(60);
                         hits++;
                     }
@@ -3514,7 +3577,7 @@ public class AbilityBarListener implements Listener {
                         }
 
                         org.bukkit.entity.LivingEntity victim = (org.bukkit.entity.LivingEntity) entity;
-                        victim.damage(damage, player);
+                        applyAbilityDamage(victim, player, damage, ability);
                         hitCounts.merge(victim.getUniqueId(), 1, Integer::sum);
                     }
                 }
@@ -3623,5 +3686,394 @@ public class AbilityBarListener implements Listener {
      */
     public static void disableTransformAbilityMode(UUID uuid) {
         abilityModeEnabled.put(uuid, false);
+    }
+
+    // ==================== HABILIDADES DEL MONJE ====================
+
+    /**
+     * Golpe de Chi - Golpe melee rápido, daño fuerza x0.2 + agilidad x0.3
+     */
+    private void executeChiStrike(Player player, Ability ability, double damage) {
+        org.bukkit.entity.LivingEntity target = getTargetInSight(player, ability.getRange());
+
+        if (target == null) {
+            player.sendMessage("§c✗ No hay objetivo en rango.");
+            return;
+        }
+
+        // Efectos visuales de chi
+        target.getWorld().spawnParticle(org.bukkit.Particle.CRIT, target.getLocation().add(0, 1, 0), 20, 0.3, 0.5, 0.3, 0.2);
+        target.getWorld().spawnParticle(org.bukkit.Particle.SWEEP_ATTACK, target.getLocation().add(0, 1, 0), 5, 0.2, 0.2, 0.2, 0);
+        player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_PLAYER_ATTACK_STRONG, 1.0f, 1.4f);
+
+        applyAbilityDamage(target, player, damage, ability);
+        spawnAbilityParticles(player, ability);
+        player.sendMessage("§e👊 ¡Golpe de Chi! §7(Daño: §e" + String.format("%.1f", damage) + "§7) (-§9" + ability.getManaCost() + " maná§7)");
+    }
+
+    /**
+     * Flujo de Chi - Rayo de energía a distancia (máx. 4 bloques), estático
+     */
+    private void executeChiFlow(Player player, Ability ability, double damage) {
+        double range = ability.getRange() > 0 ? ability.getRange() : 4.0;
+        org.bukkit.Location start = player.getEyeLocation();
+        org.bukkit.util.Vector direction = start.getDirection().normalize();
+
+        org.bukkit.entity.LivingEntity hit = null;
+
+        // Raycast bloque a bloque hasta 4 casillas
+        for (double d = 0.5; d <= range; d += 0.25) {
+            org.bukkit.Location point = start.clone().add(direction.clone().multiply(d));
+
+            // Partícula visual del rayo
+            point.getWorld().spawnParticle(org.bukkit.Particle.SOUL_FIRE_FLAME, point, 1, 0.0, 0.0, 0.0, 0.0);
+
+            if (point.getBlock().getType().isSolid()) break;
+
+            for (org.bukkit.entity.Entity entity : point.getWorld().getNearbyEntities(point, 0.6, 0.6, 0.6)) {
+                if (entity instanceof org.bukkit.entity.LivingEntity && entity != player) {
+                    hit = (org.bukkit.entity.LivingEntity) entity;
+                    break;
+                }
+            }
+            if (hit != null) break;
+        }
+
+        if (hit == null) {
+            player.sendMessage("§c✗ No hay objetivo en rango (máx. 4 casillas).");
+            return;
+        }
+
+        applyAbilityDamage(hit, player, damage, ability);
+        hit.getWorld().spawnParticle(org.bukkit.Particle.FLASH, hit.getLocation().add(0, 1, 0), 1, 0, 0, 0, 0);
+        player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_BLAZE_SHOOT, 0.8f, 1.6f);
+        spawnAbilityParticles(player, ability);
+        player.sendMessage("§e✦ ¡Flujo de Chi! §7(Daño: §e" + String.format("%.1f", damage) + "§7) (-§9" + ability.getManaCost() + " maná§7)");
+    }
+
+    /**
+     * Meditación - Canalizada: +5% vida/s, -10% maná/s. Se interrumpe al moverse.
+     */
+    private void executeMeditation(Player player, Ability ability, PlayerData playerData) {
+        // Evitar doble meditación
+        if (player.hasMetadata("rpg-meditacion")) {
+            // Cancelar meditación activa
+            player.removeMetadata("rpg-meditacion", plugin);
+            player.sendMessage("§7☯ Meditación interrumpida.");
+            return;
+        }
+
+        int healPercent = ability.getIntProperty("heal-percent-per-second", 5);
+        int manaPercent = ability.getIntProperty("mana-drain-percent-per-second", 10);
+        int maxDuration = ability.getIntProperty("max-duration", 30);
+
+        player.setMetadata("rpg-meditacion", new FixedMetadataValue(plugin, true));
+        org.bukkit.Location startLoc = player.getLocation().clone();
+
+        player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.BLOCK_ENCHANTMENT_TABLE_USE, 0.8f, 0.5f);
+        player.sendMessage("§e☯ ¡Meditación iniciada! §7(+" + healPercent + "% vida/s, -" + manaPercent + "% maná/s)");
+
+        final int[] ticksLeft = {maxDuration};
+        org.bukkit.scheduler.BukkitTask task = org.bukkit.Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+            if (!player.isOnline() || !player.hasMetadata("rpg-meditacion") || ticksLeft[0] <= 0) return;
+
+            // Verificar si el jugador se movió
+            if (player.getLocation().distanceSquared(startLoc) > 0.1) {
+                player.removeMetadata("rpg-meditacion", plugin);
+                player.sendMessage("§c✗ Meditación interrumpida por movimiento.");
+                return;
+            }
+
+            // Verificar maná disponible
+            PlayerData pd = plugin.getDatabaseManager().getPlayerData(player.getUniqueId());
+            if (pd == null) { player.removeMetadata("rpg-meditacion", plugin); return; }
+
+            int maxMana = pd.getMaxMana();
+            int currentMana = pd.getCurrentMana();
+            int manaDrain = (int)(maxMana * manaPercent / 100.0);
+
+            if (currentMana < manaDrain) {
+                player.removeMetadata("rpg-meditacion", plugin);
+                player.sendMessage("§c✗ Maná insuficiente para continuar la meditación.");
+                return;
+            }
+
+            // Drenar maná
+            pd.setCurrentMana(currentMana - manaDrain);
+            plugin.getDatabaseManager().updatePlayerData(pd);
+
+            // Curar vida
+            double maxHealth = player.getAttribute(org.bukkit.attribute.Attribute.GENERIC_MAX_HEALTH).getValue();
+            double heal = maxHealth * healPercent / 100.0;
+            player.setHealth(Math.min(player.getHealth() + heal, maxHealth));
+
+            // Partículas
+            player.getWorld().spawnParticle(org.bukkit.Particle.END_ROD, player.getLocation().add(0, 1, 0), 8, 0.3, 0.3, 0.3, 0.02);
+            player.getWorld().spawnParticle(org.bukkit.Particle.HEART, player.getLocation().add(0, 2, 0), 2, 0.2, 0.1, 0.2, 0);
+
+            ticksLeft[0]--;
+        }, 20L, 20L); // Cada segundo
+
+        org.bukkit.Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            if (player.hasMetadata("rpg-meditacion")) {
+                player.removeMetadata("rpg-meditacion", plugin);
+                player.sendMessage("§7☯ Meditación finalizada.");
+            }
+            task.cancel();
+        }, maxDuration * 20L + 20L);
+    }
+
+    /**
+     * Carrera Zen - Burst de velocidad 150% durante 10 segundos
+     */
+    private void executeZenRun(Player player, Ability ability) {
+        int duration = ability.getIntProperty("buff-duration", 10);
+
+        // SPEED II = 40% extra (nivel 4 = amplifier 3 = aprox 160% extra)
+        // Para 150% usamos SPEED con amplifier 7 (cada nivel añade ~20%)
+        player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+            org.bukkit.potion.PotionEffectType.SPEED,
+            duration * 20,
+            7, // amplifier 7 ≈ +160% velocidad
+            false, true, true
+        ));
+
+        // Partículas de viento
+        player.getWorld().spawnParticle(org.bukkit.Particle.CLOUD, player.getLocation().add(0, 0.5, 0), 20, 0.3, 0.3, 0.3, 0.15);
+        player.getWorld().spawnParticle(org.bukkit.Particle.CRIT, player.getLocation().add(0, 1, 0), 15, 0.5, 0.5, 0.5, 0.1);
+        player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_ENDERMAN_TELEPORT, 0.6f, 1.8f);
+
+        spawnAbilityParticles(player, ability);
+        player.sendMessage("§b💨 ¡Carrera Zen! §7(+150% velocidad por §e" + duration + "s§7) (-§9" + ability.getManaCost() + " maná§7)");
+
+        org.bukkit.Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            if (player.isOnline()) player.sendMessage("§7💨 Carrera Zen finalizada.");
+        }, duration * 20L);
+    }
+
+    /**
+     * Golpe de los Ocho Trigramas - AoE 4 bloques, daño por segundo durante 4 segundos
+     */
+    private void executeEightTrigrams(Player player, Ability ability, double damage) {
+        double aoe = ability.getAreaOfEffect() > 0 ? ability.getAreaOfEffect() : 4.0;
+        int spinDuration = ability.getIntProperty("spin-duration", 4);
+        double damagePerSecond = damage; // damage ya viene calculado con fuerza*1.1 + agil*0.3
+
+        player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_PLAYER_ATTACK_SWEEP, 1.2f, 0.7f);
+
+        final int[] secondsLeft = {spinDuration};
+        org.bukkit.scheduler.BukkitTask task = org.bukkit.Bukkit.getScheduler().runTaskTimer(plugin, () -> {
+            if (secondsLeft[0] <= 0 || !player.isOnline()) return;
+
+            // Dibujar los 8 trigramas
+            for (int i = 0; i < 8; i++) {
+                double angle = Math.toRadians(i * 45);
+                double x = Math.cos(angle) * aoe;
+                double z = Math.sin(angle) * aoe;
+                org.bukkit.Location particleLoc = player.getLocation().add(x, 0.5, z);
+                player.getWorld().spawnParticle(org.bukkit.Particle.SWEEP_ATTACK, particleLoc, 3, 0.1, 0.1, 0.1, 0);
+                player.getWorld().spawnParticle(org.bukkit.Particle.CRIT, particleLoc, 5, 0.2, 0.2, 0.2, 0.1);
+            }
+            // Centro
+            player.getWorld().spawnParticle(org.bukkit.Particle.FLASH, player.getLocation().add(0, 0.5, 0), 1, 0, 0, 0, 0);
+
+            // Dañar enemigos en el área
+            for (org.bukkit.entity.Entity entity : player.getNearbyEntities(aoe, aoe, aoe)) {
+                if (entity instanceof org.bukkit.entity.LivingEntity && entity != player) {
+                    org.bukkit.entity.LivingEntity target = (org.bukkit.entity.LivingEntity) entity;
+                    if (player.getLocation().distance(target.getLocation()) <= aoe) {
+                        applyAbilityDamage(target, player, damagePerSecond, ability);
+                    }
+                }
+            }
+
+            player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_PLAYER_ATTACK_SWEEP, 0.8f, 1.0f);
+            secondsLeft[0]--;
+        }, 0L, 20L); // Cada segundo
+
+        org.bukkit.Bukkit.getScheduler().runTaskLater(plugin, task::cancel, spinDuration * 20L + 5L);
+
+        spawnAbilityParticles(player, ability);
+        player.sendMessage("§6✦ ¡Golpe de los Ocho Trigramas! §7(Daño: §e" + String.format("%.1f", damage) + "§7/s durante §e" + spinDuration + "s§7) (-§9" + ability.getManaCost() + " maná§7)");
+    }
+
+    /**
+     * Ocho Puertas de la Meditación - +50% daño, +20% vel. ataque por 30s
+     */
+    private void executeEightGates(Player player, Ability ability) {
+        int duration = ability.getIntProperty("buff-duration", 30);
+        double damageBonus = ability.getDoubleProperty("damage-bonus", 0.5);
+        double attackSpeedBonus = ability.getDoubleProperty("attack-speed-bonus", 0.2);
+
+        // Guardar buff en metadata
+        player.setMetadata("rpg-ocho-puertas", new FixedMetadataValue(plugin, System.currentTimeMillis() + duration * 1000L));
+        player.setMetadata("rpg-ocho-puertas-damage", new FixedMetadataValue(plugin, damageBonus));
+
+        // Haste para velocidad de ataque (+20% = Haste II)
+        player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+            org.bukkit.potion.PotionEffectType.HASTE,
+            duration * 20,
+            1,
+            false, true, true
+        ));
+
+        // Fuerza extra visual
+        player.addPotionEffect(new org.bukkit.potion.PotionEffect(
+            org.bukkit.potion.PotionEffectType.STRENGTH,
+            duration * 20,
+            0,
+            false, true, true
+        ));
+
+        // Efectos visuales épicos
+        player.getWorld().spawnParticle(org.bukkit.Particle.TOTEM_OF_UNDYING, player.getLocation().add(0, 1, 0), 80, 0.5, 1, 0.5, 0.5);
+        player.getWorld().spawnParticle(org.bukkit.Particle.CRIT, player.getLocation().add(0, 1, 0), 40, 0.4, 0.8, 0.4, 0.3);
+        player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_ENDER_DRAGON_GROWL, 0.6f, 1.5f);
+        player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_LIGHTNING_BOLT_THUNDER, 0.4f, 1.8f);
+
+        // Fin del buff
+        org.bukkit.Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            if (player.isOnline()) {
+                player.removeMetadata("rpg-ocho-puertas", plugin);
+                player.removeMetadata("rpg-ocho-puertas-damage", plugin);
+                player.sendMessage("§6⛩ Las Ocho Puertas se han cerrado.");
+            }
+        }, duration * 20L);
+
+        spawnAbilityParticles(player, ability);
+        player.sendMessage("§6⛩ ¡OCHO PUERTAS DE LA MEDITACIÓN! §7(+" + (int)(damageBonus * 100) + "% daño, +" + (int)(attackSpeedBonus * 100) + "% vel. ataque por §e" + duration + "s§7) (-§9" + ability.getManaCost() + " maná§7)");
+    }
+
+    /**
+     * Palma de Buda - AoE 2 bloques, consume todo el maná (mín 20%), cada 10% extra +10% daño
+     */
+    private void executeBuddhaPalm(Player player, Ability ability, PlayerData playerData) {
+        double aoe = ability.getAreaOfEffect() > 0 ? ability.getAreaOfEffect() : 2.0;
+        int minManaPercent = ability.getIntProperty("min-mana-percent", 20);
+        double bonusPerTen = ability.getDoubleProperty("damage-bonus-per-10-percent", 0.1);
+
+        int maxMana = playerData.getMaxMana();
+        int currentMana = playerData.getCurrentMana();
+
+        // Verificar maná mínimo
+        if (maxMana <= 0 || currentMana < (maxMana * minManaPercent / 100.0)) {
+            player.sendMessage("§c✗ Necesitas al menos §e" + minManaPercent + "%§c de maná para usar Palma de Buda.");
+            return;
+        }
+
+        // Calcular el daño base (scaling fuerza*0.5 + agil*0.5 ya viene en damage del ability)
+        double baseDamage = ability.calculateDamage(playerData.getStats());
+        if (baseDamage < 1.0) baseDamage = 1.0;
+
+        // Calcular bonus por maná consumido
+        double manaPercent = (double) currentMana / maxMana * 100.0;
+        int tensConsumed = (int)(manaPercent / 10); // Cada 10% de maná consumido
+        double damageMultiplier = 1.0 + (tensConsumed * bonusPerTen);
+        double finalDamage = baseDamage * damageMultiplier;
+
+        // Consumir todo el maná
+        playerData.setCurrentMana(0);
+        plugin.getDatabaseManager().updatePlayerData(playerData);
+
+        // Efectos visuales
+        player.getWorld().spawnParticle(org.bukkit.Particle.FLASH, player.getLocation().add(0, 1, 0), 3, 0, 0, 0, 0);
+        player.getWorld().spawnParticle(org.bukkit.Particle.TOTEM_OF_UNDYING, player.getLocation().add(0, 1, 0), 60, 0.3, 0.5, 0.3, 0.5);
+        player.getWorld().spawnParticle(org.bukkit.Particle.CRIT, player.getLocation().add(0, 1, 0), 40, 0.5, 0.5, 0.5, 0.3);
+        player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_GENERIC_EXPLODE, 0.8f, 1.5f);
+        player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_PLAYER_ATTACK_STRONG, 1.2f, 0.5f);
+
+        // Dañar enemigos en el área
+        int hit = 0;
+        for (org.bukkit.entity.Entity entity : player.getNearbyEntities(aoe, aoe, aoe)) {
+            if (entity instanceof org.bukkit.entity.LivingEntity && entity != player) {
+                org.bukkit.entity.LivingEntity target = (org.bukkit.entity.LivingEntity) entity;
+                if (player.getLocation().distance(target.getLocation()) <= aoe) {
+                    applyAbilityDamage(target, player, finalDamage, ability);
+                    target.getWorld().spawnParticle(org.bukkit.Particle.CRIT, target.getLocation().add(0, 1, 0), 15, 0.3, 0.3, 0.3, 0.2);
+                    hit++;
+                }
+            }
+        }
+
+        spawnAbilityParticles(player, ability);
+        String msg = hit > 0
+            ? "§e☸ ¡PALMA DE BUDA! §7(" + hit + " enemigos, Daño: §e" + String.format("%.1f", finalDamage) + "§7, Bonus: §e+" + String.format("%.0f", (damageMultiplier - 1) * 100) + "%§7, Maná consumido: §9" + (int)manaPercent + "%§7)"
+            : "§e☸ ¡PALMA DE BUDA! §7(Sin enemigos en rango, Maná consumido: §9" + (int)manaPercent + "%§7)";
+        player.sendMessage(msg);
+    }
+
+    /**
+     * Descarga de Karma - Daño = vida actual del lanzador. Si falla, el jugador se daña a sí mismo
+     */
+    private void executeKarmaDischarge(Player player, Ability ability) {
+        double currentHealth = player.getHealth();
+        double damage = currentHealth; // El daño es exactamente la vida actual
+
+        org.bukkit.entity.LivingEntity target = getTargetInSight(player, ability.getRange());
+
+        // Efectos visuales en el jugador
+        player.getWorld().spawnParticle(org.bukkit.Particle.DAMAGE_INDICATOR, player.getLocation().add(0, 1, 0), 20, 0.3, 0.5, 0.3, 0.2);
+        player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_WITHER_SHOOT, 0.8f, 0.6f);
+
+        if (target != null) {
+            // Golpea al enemigo
+            applyAbilityDamage(target, player, damage, ability);
+            target.getWorld().spawnParticle(org.bukkit.Particle.DAMAGE_INDICATOR, target.getLocation().add(0, 1, 0), 30, 0.3, 0.5, 0.3, 0.3);
+            target.getWorld().spawnParticle(org.bukkit.Particle.FLASH, target.getLocation().add(0, 1, 0), 2, 0, 0, 0, 0);
+            target.getWorld().playSound(target.getLocation(), org.bukkit.Sound.ENTITY_PLAYER_ATTACK_CRIT, 1.2f, 0.5f);
+            player.sendMessage("§4☯ ¡DESCARGA DE KARMA! §7(Daño: §e" + String.format("%.1f", damage) + "§7 = tu vida actual) (-§9" + ability.getManaCost() + " maná§7)");
+        } else {
+            // Falla - el jugador se daña a sí mismo
+            // Asegurar que no muera por esto (dejarlo en 0.5 mínimo)
+            double selfDamage = Math.min(damage, player.getHealth() - 0.5);
+            if (selfDamage > 0) {
+                player.damage(selfDamage);
+            }
+            player.getWorld().spawnParticle(org.bukkit.Particle.DAMAGE_INDICATOR, player.getLocation().add(0, 2, 0), 20, 0.3, 0.5, 0.3, 0.3);
+            player.getWorld().playSound(player.getLocation(), org.bukkit.Sound.ENTITY_PLAYER_HURT, 1.0f, 0.5f);
+            player.sendMessage("§c✗ ¡El karma se volvió contra ti! §7(Autodaño: §e" + String.format("%.1f", selfDamage) + "§7) (-§9" + ability.getManaCost() + " maná§7)");
+        }
+
+        spawnAbilityParticles(player, ability);
+    }
+
+    /**
+     * Aplica daño de habilidad RPG al objetivo, calculando la reducción por armadura.
+     *
+     * Fórmula:
+     *   Físico/Veneno/Necrótico: max(1, rawDamage - max(0, targetArmor - armorPen))
+     *   Mágico:                  max(1, rawDamage - max(0, targetMagicArmor - magicPen))
+     *
+     * Se marca el atacante con metadata "rpg-bypass-minecraft-armor" para que
+     * CombatListener anule la reducción de armadura de vainilla de Minecraft.
+     *
+     * @param target    Entidad objetivo
+     * @param attacker  Jugador atacante
+     * @param rawDamage Daño bruto antes de armadura
+     * @param ability   Habilidad usada (contiene tipo de daño y penetración)
+     */
+    protected void applyAbilityDamage(LivingEntity target, Player attacker, double rawDamage, Ability ability) {
+        int targetArmor = 0;
+        int targetMagicArmor = 0;
+
+        if (target instanceof Player) {
+            PlayerData victimData = plugin.getDatabaseManager().getPlayerData(target.getUniqueId());
+            if (victimData != null) {
+                targetArmor = victimData.getStats().getArmor();
+                targetMagicArmor = victimData.getStats().getMagicArmor();
+            }
+        }
+
+        double effectiveDamage = DamageCalculator.calculate(
+            rawDamage,
+            ability.getDamageType(),
+            ability.getArmorPenetration(),
+            ability.getMagicPenetration(),
+            targetArmor,
+            targetMagicArmor
+        );
+
+        attacker.setMetadata("rpg-bypass-minecraft-armor", new FixedMetadataValue(plugin, true));
+        target.damage(effectiveDamage, attacker);
     }
 }

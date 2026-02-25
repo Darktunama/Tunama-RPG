@@ -2,14 +2,16 @@ id: implosion-arcana
 name: Implosion Arcana
 description: Genera una explosion arcana alrededor del mago que empuja a los enemigos
 class: mago
+damage-type: magical
 required-level: 10
-mana-cost: "15"
+mana-cost: "30"
+mana-cost-percent: 10
 material: ENDER_EYE
 custom-model-data: 0
 particle: ENCHANTED_HIT
 particle-count: 40
 particle-speed: 0.5
-required-weapon: ""
+required-weapon: "STAFF,WAND,SWORD"
 range: 0
 area-of-effect: 2
 cast-time: 1

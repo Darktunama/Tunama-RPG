@@ -2,14 +2,16 @@ id: ejecutar
 name: Ejecutar
 description: Ejecuta al enemigo con dano verdadero. Si lo mata, el cooldown se reinicia
 class: guerrero
+damage-type: physical
 required-level: 25
-mana-cost: "60"
+mana-cost: "70"
+mana-cost-percent: 20
 material: DIAMOND_AXE
 custom-model-data: 0
 particle: CRIT
 particle-count: 30
 particle-speed: 0.5
-required-weapon: ""
+required-weapon: "SWORD,AXE"
 range: 3
 area-of-effect: 0
 cast-time: 0

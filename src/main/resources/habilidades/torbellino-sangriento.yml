@@ -2,14 +2,16 @@ id: torbellino-sangriento
 name: Torbellino Sangriento
 description: Giras violentamente durante 3 segundos danando a todos los enemigos cercanos
 class: guerrero
+damage-type: physical
 required-level: 22
-mana-cost: "45"
+mana-cost: "50"
+mana-cost-percent: 20
 material: NETHERITE_SWORD
 custom-model-data: 0
 particle: SWEEP_ATTACK
 particle-count: 8
 particle-speed: 0.3
-required-weapon: ""
+required-weapon: "SWORD,AXE"
 range: 0
 area-of-effect: 4
 cast-time: 0

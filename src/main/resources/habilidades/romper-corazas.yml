@@ -2,19 +2,21 @@ id: romper-corazas
 name: Romper Corazas
 description: Un golpe devastador que destroza la armadura del enemigo, reduciendola un 40%
 class: guerrero
+damage-type: physical
 required-level: 10
-mana-cost: "35"
+mana-cost: "50"
+mana-cost-percent: 30
 material: IRON_AXE
 custom-model-data: 0
 particle: ENCHANTED_HIT
 particle-count: 20
 particle-speed: 0.2
-required-weapon: ""
+required-weapon: "SWORD,AXE"
 range: 3
 area-of-effect: 0
 cast-time: 0
 cast-mode: mobile
-cooldown: 30
+cooldown: 40
 armor-reduction: 0.4
 debuff-duration: 15
 damage-scaling:

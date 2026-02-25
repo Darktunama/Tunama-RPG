@@ -1,0 +1,27 @@
+id: flujo-de-chi
+name: Flujo de Chi
+description: Proyecta tu energia Chi en un rayo de energia que alcanza hasta 4 casillas
+class: monje
+damage-type: magical
+required-level: 5
+mana-cost: "30"
+mana-cost-percent: 15
+material: END_ROD
+custom-model-data: 0
+particle: SOUL_FIRE_FLAME
+particle-count: 15
+particle-speed: 0.2
+required-weapon: "GAUNTLET"
+range: 4
+area-of-effect: 0
+cast-time: 0.2
+cast-mode: static
+cooldown: 30
+damage-scaling:
+  health: 0.0
+  strength: 0.2
+  agility: 0.4
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

@@ -2,6 +2,7 @@ id: mordisco-zorro
 name: Mordisco Ágil
 description: Un mordisco rápido y preciso
 class: druida
+damage-type: physical
 required-level: 5
 mana-cost: "12"
 material: RABBIT

@@ -2,6 +2,7 @@ id: veneno-arana
 name: Nube de Veneno
 description: Liberas una nube de veneno a tu alrededor
 class: druida
+damage-type: poison
 required-level: 1
 mana-cost: "35"
 material: FERMENTED_SPIDER_EYE

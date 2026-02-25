@@ -2,6 +2,7 @@ id: zarpazo-panda
 name: Zarpazo de Panda
 description: Un zarpazo equilibrado que causa daño moderado
 class: druida
+damage-type: physical
 required-level: 10
 mana-cost: "12"
 material: BAMBOO

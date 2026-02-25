@@ -5,6 +5,7 @@ class: cazador
 required-level: 28
 passive: true
 mana-cost: "0"
+mana-cost-percent: 0
 material: EGG
 custom-model-data: 0
 particle: HAPPY_VILLAGER
@@ -14,6 +15,7 @@ required-weapon: ""
 range: 0
 area-of-effect: 0
 cast-time: 0
+cooldown: 0
 cast-mode: mobile
 damage-scaling:
   health: 0.0

@@ -1,0 +1,21 @@
+id: meditacion
+name: Meditacion
+description: Entras en un estado de meditacion profunda, recuperando un 5% de vida por segundo a costa de un 10% de mana por segundo. Se interrumpe al moverte
+class: monje
+required-level: 10
+mana-cost: "0"
+mana-cost-percent: 0
+material: PAPER
+custom-model-data: 0
+particle: END_ROD
+particle-count: 10
+particle-speed: 0.05
+required-weapon: ""
+range: 0
+area-of-effect: 0
+cast-time: 0
+cast-mode: static
+cooldown: 0
+heal-percent-per-second: 5
+mana-drain-percent-per-second: 10
+max-duration: 30

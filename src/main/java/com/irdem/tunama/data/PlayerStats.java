@@ -8,6 +8,8 @@ public class PlayerStats {
     private int sacredPower;
     private int corruptPower;
     private int naturePower;
+    private int armor;
+    private int magicArmor;
 
     public PlayerStats() {
         this.health = 10;
@@ -17,6 +19,8 @@ public class PlayerStats {
         this.sacredPower = 1;
         this.corruptPower = 1;
         this.naturePower = 1;
+        this.armor = 0;
+        this.magicArmor = 0;
     }
 
     // Getters y Setters
@@ -27,7 +31,9 @@ public class PlayerStats {
     public int getSacredPower() { return sacredPower; }
     public int getCorruptPower() { return corruptPower; }
     public int getNaturePower() { return naturePower; }
-    
+    public int getArmor() { return armor; }
+    public int getMagicArmor() { return magicArmor; }
+
     public void setHealth(int value) { this.health = value; }
     public void setStrength(int value) { this.strength = value; }
     public void setAgility(int value) { this.agility = value; }
@@ -35,7 +41,9 @@ public class PlayerStats {
     public void setSacredPower(int value) { this.sacredPower = value; }
     public void setCorruptPower(int value) { this.corruptPower = value; }
     public void setNaturePower(int value) { this.naturePower = value; }
-    
+    public void setArmor(int value) { this.armor = value; }
+    public void setMagicArmor(int value) { this.magicArmor = value; }
+
     public void addHealth(int amount) { this.health += amount; }
     public void addStrength(int amount) { this.strength += amount; }
     public void addAgility(int amount) { this.agility += amount; }
@@ -43,4 +51,6 @@ public class PlayerStats {
     public void addSacredPower(int amount) { this.sacredPower += amount; }
     public void addCorruptPower(int amount) { this.corruptPower += amount; }
     public void addNaturePower(int amount) { this.naturePower += amount; }
+    public void addArmor(int amount) { this.armor += amount; }
+    public void addMagicArmor(int amount) { this.magicArmor += amount; }
 }

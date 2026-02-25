@@ -2,14 +2,16 @@ id: pica-de-hielo
 name: Pica de Hielo
 description: Lanza una pica de hielo. Si un enemigo recibe 3 picas en 30 segundos, se congela
 class: mago
+damage-type: magical
 required-level: 5
-mana-cost: "20"
+mana-cost: "40"
+mana-cost-percent: 10
 material: PACKED_ICE
 custom-model-data: 0
 particle: SNOWFLAKE
 particle-count: 20
 particle-speed: 0.3
-required-weapon: ""
+required-weapon: "STAFF,WAND,SWORD"
 range: 15
 area-of-effect: 0
 cast-time: 2

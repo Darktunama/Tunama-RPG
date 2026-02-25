@@ -3,23 +3,24 @@ name: Cura Natural
 description: Cura al usuario basandose en inteligencia y poder natural
 class: druida
 required-level: 3
-mana-cost: "35"
+mana-cost: "0"
+mana-cost-percent: 10
 material: OAK_SAPLING
 custom-model-data: 0
 particle: HEART
 particle-count: 15
 particle-speed: 0.2
-required-weapon: ""
+required-weapon: "STAFF"
 range: 0
 area-of-effect: 0
 cast-time: 0.5
 cast-mode: static
-cooldown: 8
+cooldown: 10
 
 # Configuración de curación
-base-heal: 10
-intelligence-scaling: 0.003
-nature-scaling: 0.002
+heal-percent-per-second: 3
+intelligence-scaling: 0.2
+nature-scaling: 0.5
 
 damage-scaling:
   health: 0.0

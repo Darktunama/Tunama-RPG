@@ -2,6 +2,7 @@ id: golpe-sigiloso
 name: Golpe Sigiloso
 description: Ataca desde las sombras causando dano extra
 class: picaro
+damage-type: physical
 required-level: 1
 mana-cost: "20"
 material: FLINT

@@ -2,24 +2,26 @@ id: flecha-negra
 name: Flecha Negra
 description: Flecha oscura que dana y aplica veneno al objetivo
 class: arquero
+damage-type: physical
 required-level: 25
-mana-cost: "50"
+mana-cost: "80"
+mana-cost-percent: 4
 material: ARROWWE2
 custom-model-data: 0
 particle: WITCH
 particle-count: 20
 particle-speed: 0.3
-required-weapon: BOW
+required-weapon: "BOW,CROSSBOW"
 range: 12
 area-of-effect: 0
-cast-time: 1.5
-cast-mode: mobile
-cooldown: 6.0
+cast-time: 0.2
+cast-mode: static
+cooldown: 60
 damage-scaling:
   health: 0.0
-  strength: 0.1
-  agility: 0.4
+  strength: 0.0
+  agility: 0.5
   intelligence: 0.0
   sacred-power: 0.0
-  corrupt-power: 0.2
-  nature-power: 0.2
+  corrupt-power: 1.0
+  nature-power: 0.0

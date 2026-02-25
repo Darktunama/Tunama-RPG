@@ -4,16 +4,18 @@ description: Te transforma en un zorro y otorga habilidades zarpazo, mordisco y 
 class: druida
 required-level: 5
 mana-cost: "40"
+mana-cost-percent: 30
 material: SWEET_BERRIES
 custom-model-data: 0
 particle: HAPPY_VILLAGER
 particle-count: 20
 particle-speed: 0.3
-required-weapon: ""
+required-weapon: "STAFF"
 range: 0
 area-of-effect: 0
-cast-time: 1.0
+cast-time: 0
 cast-mode: static
+cooldown: 20
 
 # Configuración de transformación
 transformation:

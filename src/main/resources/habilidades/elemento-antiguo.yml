@@ -3,7 +3,9 @@ name: Elemento Antiguo
 description: Pasiva - Todos tus hechizos hacen un 30% mas de dano
 class: mago
 required-level: 35
+passive: true
 mana-cost: "0"
+mana-cost-percent: 0
 material: NETHER_STAR
 custom-model-data: 0
 particle: ENCHANTED_HIT
@@ -15,7 +17,7 @@ area-of-effect: 0
 cast-time: 0
 cast-mode: mobile
 cooldown: 0
-passive: true
+damage-bonus: 0.3
 damage-scaling:
   health: 0.0
   strength: 0.0
@@ -24,4 +26,3 @@ damage-scaling:
   sacred-power: 0.0
   corrupt-power: 0.0
   nature-power: 0.0
-damage-bonus: 0.3

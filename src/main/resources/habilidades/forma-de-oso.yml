@@ -3,17 +3,19 @@ name: Forma de Oso
 description: Te transforma en un oso y otorga habilidades zarpazo, mordisco, golpe pesado, rabia de oso y volver a forma druida
 class: druida
 required-level: 22
-mana-cost: "60"
+mana-cost: "40"
+mana-cost-percent: 30
 material: HONEYCOMB
 custom-model-data: 0
 particle: HAPPY_VILLAGER
 particle-count: 30
 particle-speed: 0.4
-required-weapon: ""
+required-weapon: "STAFF"
 range: 0
 area-of-effect: 0
-cast-time: 1.0
+cast-time: 0
 cast-mode: static
+cooldown: 20
 
 # Configuración de transformación
 transformation:

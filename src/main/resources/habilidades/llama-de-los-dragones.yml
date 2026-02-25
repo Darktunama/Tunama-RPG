@@ -2,27 +2,28 @@ id: llama-de-los-dragones
 name: Llama de los Dragones
 description: Golpe en área que daña a los enemigos y cura a los aliados
 class: evocador
+damage-type: magical
 required-level: 1
 mana-cost: "30"
+mana-cost-percent: 10
 material: BLAZE_POWDER
 custom-model-data: 0
 particle: FLAME
 particle-count: 40
 particle-speed: 0.3
-required-weapon: ""
+required-weapon: "STAFF,SWORD,GAUNTLET"
 range: 8
 area-of-effect: 5
-cast-time: 0.5
+cast-time: 0
 cast-mode: mobile
-cooldown: 8
+cooldown: 10
 damage-scaling:
-  health: 0.2
+  health: 0.0
   strength: 0.0
-  agility: 0.0
-  intelligence: 0.6
+  agility: 0.1
+  intelligence: 0.1
   sacred-power: 0.0
   corrupt-power: 0.0
-  nature-power: 0.1
-heal-scaling:
-  intelligence: 0.5
-  sacred-power: 0.3
+  nature-power: 0.0
+heal-intelligence-scaling: 0.2
+heal-sacred-power-scaling: 1.0

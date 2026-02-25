@@ -2,6 +2,7 @@ id: mordisco-arana
 name: Mordisco Venenoso
 description: Un mordisco que inyecta veneno al enemigo
 class: druida
+damage-type: poison
 required-level: 1
 mana-cost: "15"
 material: SPIDER_EYE

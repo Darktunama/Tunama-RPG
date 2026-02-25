@@ -2,18 +2,20 @@ id: vulcano
 name: Vulcano
 description: Desata la furia de un volcan, quemando a todos los enemigos en el area durante 5 segundos
 class: invocador
+damage-type: magical
 required-level: 28
-mana-cost: "75"
+mana-cost: "90"
+mana-cost-percent: 30
 material: MAGMA_BLOCK
 custom-model-data: 0
 particle: LAVA
 particle-count: 40
 particle-speed: 0.4
-required-weapon: ""
+required-weapon: "STAFF,WAND,SWORD"
 range: 0
 area-of-effect: 6
 cast-time: 3
-cast-mode: stationary
+cast-mode: static
 cooldown: 45
 dot-duration: 5
 dot-ticks: 5

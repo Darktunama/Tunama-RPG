@@ -2,6 +2,7 @@ id: golpe-pesado-panda
 name: Golpe de Panda
 description: Un golpe contundente que derriva al enemigo
 class: druida
+damage-type: physical
 required-level: 10
 mana-cost: "25"
 material: HAY_BLOCK

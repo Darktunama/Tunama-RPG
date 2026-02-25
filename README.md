@@ -38,7 +38,8 @@
 |---------|-------------|
 | 🧙 **13 Clases** | Cada clase con habilidades únicas, subclases y mecánicas propias |
 | 🧬 **9 Razas** | Razas jugables con bonificadores de estadísticas únicos |
-| ⚡ **83 Habilidades** | Sistema de barra de habilidades con casteo estático y móvil |
+| ⚡ **83+ Habilidades** | Sistema de barra de habilidades con casteo estático y móvil |
+| 🛡️ **Sistema de Daño RPG** | Fórmula de armadura propia: físico, mágico, veneno y necrótico |
 | 🐾 **9 Mascotas** | Mascotas invocables que combaten junto al jugador |
 | 🏰 **Sistema de Clanes** | Clanes con banco, guerras, alianzas, rangos y clasificaciones |
 | 🔄 **Transformaciones** | El Druida puede transformarse en 6 formas animales distintas |
@@ -126,6 +127,30 @@ Daño = (Fuerza × escala) + (Inteligencia × escala) + (Agilidad × escala) + .
 
 Estadísticas disponibles: **Vida · Fuerza · Agilidad · Inteligencia · Poder Sagrado · Poder Corrupto · Poder Natural**
 
+### Sistema de Daño RPG
+
+El plugin reemplaza el sistema de armadura de Minecraft con una fórmula RPG propia:
+
+| Tipo de daño | Reducción | Descripción |
+|---|---|---|
+| ⚔️ **Físico** | Armadura − Penetración | Daño de golpes y habilidades melee |
+| 🔮 **Mágico** | Armadura Mágica − Penetración Mágica | Conjuros y proyectiles arcanos |
+| ☠️ **Veneno** | Ninguna | Penetra toda la armadura |
+| 💀 **Necrótico** | Ninguna | Penetra toda la armadura |
+
+```
+Daño final (físico) = max(1, DañoBase - max(0, Armadura - PenetraciónArmadura))
+Daño final (mágico) = max(1, DañoBase - max(0, ArmaduraMágica - PenetraciónMágica))
+```
+
+### Coste de Maná
+
+Las habilidades pueden tener coste fijo, coste porcentual del maná máximo, o ambos:
+
+```
+Coste total = CosteFijo + (PorcentajeManáMáximo × ManáMáximo / 100)
+```
+
 ### Habilidades por Clase
 
 <details>
@@ -172,6 +197,22 @@ Estadísticas disponibles: **Vida · Fuerza · Agilidad · Inteligencia · Poder
 | Flecha Rebotante | 20 | Flecha que rebota hasta 3 enemigos |
 | Flecha Negra | 22 | Flecha que aplica veneno |
 | Disparo al Corazón | 25 | Buff de crítico potenciado durante 30s |
+
+</details>
+
+<details>
+<summary>👊 Monje — 8 habilidades</summary>
+
+| Habilidad | Nivel | Tipo | CD | Descripción |
+|-----------|-------|------|----|-------------|
+| Golpe Sigiloso | 1 | Móvil | 8s | Golpe rápido con daño físico directo |
+| Evasión Total | 5 | Móvil | 45s | Buff que otorga inmunidad a daño durante 3s |
+| Lluvia de Flechas | 10 | Estático | 20s | Ráfaga de proyectiles en cono frontal |
+| Fuerza de la Naturaleza | 15 | Móvil | 30s | Buff mágico de daño durante 20s |
+| Flujo de Chi | 20 | Móvil | 12s | Expulsa energía arcana en área cercana |
+| Barrera Mágica | 22 | Móvil | 60s | Escudo que absorbe daño durante 10s |
+| Bendición Divina | 25 | Móvil | 90s | Curación gradual durante 15s |
+| Curación Sagrada | 30 | Móvil | 120s | Gran curación instantánea |
 
 </details>
 
@@ -378,6 +419,6 @@ experience:
 
 <div align="center">
 
-**Desarrollado por [Tunama](https://github.com/Darktunama/) · Paper 1.21 · Java 21
+**Desarrollado por [Tunama](https://github.com/Darktunama/) · Paper 1.21 · Java 21**
 
 </div>

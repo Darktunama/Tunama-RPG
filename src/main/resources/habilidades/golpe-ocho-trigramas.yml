@@ -1,0 +1,28 @@
+id: golpe-ocho-trigramas
+name: Golpe de los Ocho Trigramas
+description: Golpea en un area de 4 casillas alrededor tuyo en 8 puntos cardinales, infligiendo dano continuo durante 4 segundos
+class: monje
+damage-type: physical
+required-level: 20
+mana-cost: "40"
+mana-cost-percent: 10
+material: NETHER_STAR
+custom-model-data: 0
+particle: SWEEP_ATTACK
+particle-count: 15
+particle-speed: 0.2
+required-weapon: "GAUNTLET"
+range: 0
+area-of-effect: 4
+cast-time: 0.3
+cast-mode: mobile
+cooldown: 40
+spin-duration: 4
+damage-scaling:
+  health: 0.0
+  strength: 0.5
+  agility: 0.3
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

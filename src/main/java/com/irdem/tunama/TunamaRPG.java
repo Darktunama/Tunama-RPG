@@ -301,7 +301,10 @@ public class TunamaRPG extends JavaPlugin {
             // Invocador
             "erupcion-de-fuego", "elemental-de-fuego", "trueno-primigenio",
             "elemental-de-aire", "maremoto", "elemental-de-agua",
-            "vulcano", "elemental-de-tierra"
+            "vulcano", "elemental-de-tierra",
+            // Monje
+            "golpe-de-chi", "flujo-de-chi", "meditacion", "carrera-zen",
+            "golpe-ocho-trigramas", "ocho-puertas-meditacion", "palma-de-buda", "descarga-de-karma"
         };
         for (String ability : abilityFiles) {
             copyResourceIfNotExists("habilidades/" + ability + ".yml", "habilidades/" + ability + ".yml");

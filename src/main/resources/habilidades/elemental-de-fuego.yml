@@ -2,18 +2,20 @@ id: elemental-de-fuego
 name: Elemental de Fuego
 description: Invoca un poderoso elemental de fuego que lucha a tu lado durante 60 segundos
 class: invocador
+damage-type: magical
 required-level: 5
-mana-cost: "60"
+mana-cost: "50"
+mana-cost-percent: 20
 material: BLAZE_POWDER
 custom-model-data: 0
 particle: FLAME
 particle-count: 20
 particle-speed: 0.3
-required-weapon: ""
+required-weapon: "STAFF,WAND,SWORD"
 range: 0
 area-of-effect: 0
 cast-time: 5
-cast-mode: stationary
+cast-mode: static
 cooldown: 70
 summon-duration: 60
 summon-type: BLAZE

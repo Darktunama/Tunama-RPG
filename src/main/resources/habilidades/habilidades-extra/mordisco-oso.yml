@@ -2,6 +2,7 @@ id: mordisco-oso
 name: Mordisco de Oso
 description: Un mordisco devastador que causa gran daño
 class: druida
+damage-type: physical
 required-level: 22
 mana-cost: "20"
 material: COOKED_BEEF

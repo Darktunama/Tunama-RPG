@@ -2,6 +2,7 @@ id: mordisco-infectado
 name: Mordisco Infectado
 description: Un mordisco que causa daño y aplica veneno al enemigo
 class: druida
+damage-type: poison
 required-level: 15
 mana-cost: "20"
 material: ROTTEN_FLESH

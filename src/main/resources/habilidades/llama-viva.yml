@@ -2,27 +2,28 @@ id: llama-viva
 name: Llama Viva
 description: Lanza una llama que cura aliados o daña enemigos
 class: evocador
+damage-type: magical
 required-level: 8
-mana-cost: "25"
+mana-cost: "50"
+mana-cost-percent: 10
 material: FIRE_CHARGE
 custom-model-data: 0
 particle: FLAME
 particle-count: 20
 particle-speed: 0.5
-required-weapon: ""
+required-weapon: "STAFF,SWORD,GAUNTLET"
 range: 15
 area-of-effect: 0
 cast-time: 0
 cast-mode: mobile
-cooldown: 5
+cooldown: 20
 damage-scaling:
-  health: 0.1
+  health: 0.0
   strength: 0.0
-  agility: 0.0
-  intelligence: 0.6
+  agility: 0.3
+  intelligence: 0.2
   sacred-power: 0.0
   corrupt-power: 0.0
   nature-power: 0.0
-heal-scaling:
-  intelligence: 0.8
-  sacred-power: 0.4
+heal-intelligence-scaling: 0.3
+heal-sacred-power-scaling: 1.0

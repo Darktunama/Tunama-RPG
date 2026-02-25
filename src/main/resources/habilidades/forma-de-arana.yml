@@ -4,16 +4,18 @@ description: Te transforma en una arana y otorga habilidades mordisco, telarana 
 class: druida
 required-level: 1
 mana-cost: "40"
+mana-cost-percent: 30
 material: SPIDER_EYE
 custom-model-data: 0
 particle: SMOKE
 particle-count: 20
 particle-speed: 0.3
-required-weapon: ""
+required-weapon: "STAFF"
 range: 0
 area-of-effect: 0
-cast-time: 1.0
+cast-time: 0
 cast-mode: static
+cooldown: 20
 
 # Configuración de transformación
 transformation:

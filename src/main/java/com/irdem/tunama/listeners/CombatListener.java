@@ -13,6 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -26,6 +27,53 @@ public class CombatListener implements Listener {
 
     public CombatListener(TunamaRPG plugin) {
         this.plugin = plugin;
+    }
+
+    /**
+     * Intercepta daño de habilidades RPG para aplicar la fórmula de armadura.
+     * Prioridad NORMAL: se ejecuta antes de que Minecraft aplique su propia armadura.
+     *
+     * Fórmula: max(1, rawDamage - max(0, armor - penetration))
+     * - Daño físico/veneno/necrótico: reducido por armadura física
+     * - Daño mágico: reducido por armadura mágica
+     */
+    @SuppressWarnings("deprecation")
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onRPGAbilityDamage(EntityDamageByEntityEvent event) {
+        Entity damager = event.getDamager();
+        Player attacker = null;
+
+        if (damager instanceof Player) {
+            attacker = (Player) damager;
+        } else if (damager instanceof Projectile) {
+            Projectile proj = (Projectile) damager;
+            if (proj.getShooter() instanceof Player) {
+                attacker = (Player) proj.getShooter();
+            }
+        }
+
+        if (attacker == null || !attacker.hasMetadata("rpg-bypass-minecraft-armor")) return;
+
+        // Eliminar metadata inmediatamente para evitar recursión
+        attacker.removeMetadata("rpg-bypass-minecraft-armor", plugin);
+
+        // Anular reducción de armadura de vainilla de Minecraft
+        // para que solo aplique la armadura RPG ya calculada
+        if (event.isApplicable(EntityDamageEvent.DamageModifier.ARMOR)) {
+            event.setDamage(EntityDamageEvent.DamageModifier.ARMOR, 0);
+        }
+        if (event.isApplicable(EntityDamageEvent.DamageModifier.MAGIC)) {
+            event.setDamage(EntityDamageEvent.DamageModifier.MAGIC, 0);
+        }
+        if (event.isApplicable(EntityDamageEvent.DamageModifier.BLOCKING)) {
+            event.setDamage(EntityDamageEvent.DamageModifier.BLOCKING, 0);
+        }
+        if (event.isApplicable(EntityDamageEvent.DamageModifier.RESISTANCE)) {
+            event.setDamage(EntityDamageEvent.DamageModifier.RESISTANCE, 0);
+        }
+        if (event.isApplicable(EntityDamageEvent.DamageModifier.ABSORPTION)) {
+            event.setDamage(EntityDamageEvent.DamageModifier.ABSORPTION, 0);
+        }
     }
 
     /**

@@ -22,7 +22,10 @@ public class Ability {
     private Map<String, Double> damageScaling;
     private String castMode; // "mobile" = puede moverse, "static" = requiere estar quieto
     private double cooldown; // Tiempo de espera entre usos (en segundos)
-    private double armorPenetration; // Porcentaje de armadura ignorada (0.0 a 1.0)
+    private double armorPenetration; // Penetración de armadura física (valor plano)
+    private double magicPenetration; // Penetración de armadura mágica (valor plano)
+    private String damageType; // "physical", "magical", "poison", "necrotic"
+    private int manaCostPercent; // % del maná máximo que se suma al coste base (0 = sin %)
     private double critBonus; // Bonificación de crítico (0.5 = +50% daño)
     private double critDuration; // Duración del buff de crítico en segundos
     private boolean passive; // Habilidad pasiva (no se puede asignar a la barra)
@@ -48,7 +51,10 @@ public class Ability {
         this.damageScaling = new HashMap<>();
         this.castMode = "mobile"; // Por defecto permite moverse
         this.cooldown = 0; // Sin cooldown por defecto
-        this.armorPenetration = 0; // Sin penetración por defecto
+        this.armorPenetration = 0;
+        this.magicPenetration = 0;
+        this.damageType = "physical";
+        this.manaCostPercent = 0;
         this.critBonus = 0; // Sin bonus de crítico por defecto
         this.critDuration = 0; // Sin duración por defecto
         this.passive = false; // Por defecto no es pasiva
@@ -76,6 +82,9 @@ public class Ability {
     public String getCastMode() { return castMode; }
     public double getCooldown() { return cooldown; }
     public double getArmorPenetration() { return armorPenetration; }
+    public double getMagicPenetration() { return magicPenetration; }
+    public String getDamageType() { return damageType; }
+    public int getManaCostPercent() { return manaCostPercent; }
     public double getCritBonus() { return critBonus; }
     public double getCritDuration() { return critDuration; }
     public boolean isPassive() { return passive; }
@@ -97,6 +106,9 @@ public class Ability {
     public void setCastMode(String castMode) { this.castMode = castMode; }
     public void setCooldown(double cooldown) { this.cooldown = cooldown; }
     public void setArmorPenetration(double armorPenetration) { this.armorPenetration = armorPenetration; }
+    public void setMagicPenetration(double magicPenetration) { this.magicPenetration = magicPenetration; }
+    public void setDamageType(String damageType) { this.damageType = damageType != null ? damageType : "physical"; }
+    public void setManaCostPercent(int manaCostPercent) { this.manaCostPercent = manaCostPercent; }
     public void setCritBonus(double critBonus) { this.critBonus = critBonus; }
     public void setCritDuration(double critDuration) { this.critDuration = critDuration; }
     public void setPassive(boolean passive) { this.passive = passive; }
