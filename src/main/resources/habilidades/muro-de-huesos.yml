@@ -1,0 +1,29 @@
+id: muro-de-huesos
+name: Muro de Huesos
+description: Invoca un muro de huesos alrededor de una invocación o aliado objetivo durante 10 segundos. El muro inflige daño necrótico corrupto a quien lo golpee o atraviese y se mueve con el objetivo
+class: nigromante
+damage-type: necrotic
+required-level: 20
+mana-cost: "40"
+mana-cost-percent: 10
+material: BONE_BLOCK
+custom-model-data: 0
+particle: BLOCK_DUST
+particle-count: 25
+particle-speed: 0.1
+required-weapon: "STAFF,WAND,SWORD"
+range: 10
+area-of-effect: 0
+cast-time: 0.1
+cast-mode: static
+cooldown: 40
+buff-duration: 10
+wall-follows-target: true
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.2
+  nature-power: 0.0

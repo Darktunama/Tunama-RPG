@@ -205,14 +205,14 @@ Coste total = CosteFijo + (PorcentajeManáMáximo × ManáMáximo / 100)
 
 | Habilidad | Nivel | Tipo | CD | Descripción |
 |-----------|-------|------|----|-------------|
-| Golpe Sigiloso | 1 | Móvil | 8s | Golpe rápido con daño físico directo |
-| Evasión Total | 5 | Móvil | 45s | Buff que otorga inmunidad a daño durante 3s |
-| Lluvia de Flechas | 10 | Estático | 20s | Ráfaga de proyectiles en cono frontal |
-| Fuerza de la Naturaleza | 15 | Móvil | 30s | Buff mágico de daño durante 20s |
-| Flujo de Chi | 20 | Móvil | 12s | Expulsa energía arcana en área cercana |
-| Barrera Mágica | 22 | Móvil | 60s | Escudo que absorbe daño durante 10s |
-| Bendición Divina | 25 | Móvil | 90s | Curación gradual durante 15s |
-| Curación Sagrada | 30 | Móvil | 120s | Gran curación instantánea |
+| Golpe de Chi | 1 | Móvil | 10s | Golpe demoledor al enemigo más cercano canalizando energía interior |
+| Flujo de Chi | 5 | Estático | 30s | Proyecta tu energía chi en un rayo que alcanza hasta 4 casillas |
+| Meditación | 10 | Estático | — | Recupera 5% de vida/s a costa de 10% de maná/s. Se interrumpe al moverse |
+| Carrera Zen | 15 | Móvil | 40s | Burst de velocidad del 150% durante 10 segundos |
+| Golpe de los Ocho Trigramas | 20 | Móvil | 40s | AoE de 4 casillas en 8 direcciones con daño continuo 4s |
+| Palma de Buda | 25 | Móvil | 60s | Explosión devastadora: consume todo el maná (mín 20%), +10% daño por cada 10% consumido |
+| Ocho Puertas de la Meditación | 30 | Móvil | 120s | Abre las ocho puertas del chi, potenciando todos los ataques 30s |
+| Descarga de Karma | 35 | Móvil | 120s | Golpe definitivo cuyo daño es igual a tu vida actual. Si fallas, te golpeas tú mismo |
 
 </details>
 
@@ -263,6 +263,22 @@ El Druida puede transformarse en **6 formas animales**, cada una con habilidades
 | 🦊 Zorro | Zarpazo, Mordisco, Esquivar |
 | 🐼 Panda | Zarpazo, Mordisco, Golpe Pesado |
 | 🌿 Warden | Grito Sónico, Onda de Choque |
+
+</details>
+
+<details>
+<summary>💀 Nigromante — 8 habilidades</summary>
+
+| Habilidad | Nivel | Tipo | CD | Descripción |
+|-----------|-------|------|----|-------------|
+| Disparo Necrótico | 1 | Estático | 10s | Proyectil mágico hasta 6 casillas (0.2 INT). Aplica veneno necrótico 0.1 Poder Corrupto/s durante 5s |
+| Invocar Zombi Guardián | 5 | Estático | 30s† | Invoca un Zombi que escala con tus stats. Permanente hasta que muere. †CD se activa al morir |
+| Invocar Esqueleto Escolta | 10 | Estático | 30s† | Invoca un Esqueleto que escala con tus stats. Permanente hasta que muere. †CD se activa al morir |
+| Escamas Necrótidas | 15 | Móvil | 60s | +0.2 INT de armadura para ti y tus invocaciones. Golpes cuerpo a cuerpo recibidos aplican daño necrótico 0.1 Poder Corrupto 3s. Dura 20s |
+| Muro de Huesos | 20 | Estático | 40s | Invoca un muro de huesos alrededor de una invocación o aliado 10s. Daña con 0.2 Poder Corrupto a quien lo golpee o atraviese |
+| Miasma | 25 | Estático | 45s | Nube en área de 6 casillas. 0.5 INT de daño físico/s durante 5s. Cada golpe recibido aplica veneno necrótico 3s adicionales |
+| Ejército de la Muerte | 30 | Estático | 120s | Invoca 3 Zombies y 3 Esqueletos durante 1 minuto. Stats escalan con los del Nigromante |
+| Pacto Oscuro | 35 | Móvil | — | Sacrifica todas las invocaciones activas (bloqueadas 2,5 min). A cambio: +600 vida y +300 en todos los stats durante 2 min |
 
 </details>
 

@@ -1,0 +1,31 @@
+id: disparo-necrotico
+name: Disparo Necrotico
+description: Proyectil de magia oscura hasta 6 casillas que inflige daño magico y aplica veneno necrótico que hace daño corrupto por segundo
+class: nigromante
+damage-type: magical
+required-level: 1
+mana-cost: "20"
+mana-cost-percent: 10
+material: BONE
+custom-model-data: 0
+particle: WITCH
+particle-count: 15
+particle-speed: 0.3
+required-weapon: "STAFF,WAND,SWORD"
+range: 6
+area-of-effect: 0
+cast-time: 1
+cast-mode: static
+cooldown: 10
+dot-type: necrotic
+dot-duration: 5
+dot-scaling:
+  corrupt-power: 0.1
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.2
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

@@ -1,0 +1,31 @@
+id: miasma
+name: Miasma
+description: Nube de miasma en área de 6 casillas que inflige daño físico por segundo durante 5 segundos. Cada golpe recibido en el área aplica veneno necrótico durante 3 segundos adicionales
+class: nigromante
+damage-type: physical
+required-level: 25
+mana-cost: "90"
+mana-cost-percent: 30
+material: SLIME_BALL
+custom-model-data: 0
+particle: SLIME
+particle-count: 30
+particle-speed: 0.1
+required-weapon: "STAFF,WAND,SWORD"
+range: 0
+area-of-effect: 6
+cast-time: 3
+cast-mode: static
+cooldown: 45
+dot-type: necrotic
+dot-duration: 3
+dot-on-hit: true
+buff-duration: 5
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.5
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
