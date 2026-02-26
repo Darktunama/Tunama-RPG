@@ -278,7 +278,7 @@ El Druida puede transformarse en **6 formas animales**, cada una con habilidades
 | Muro de Huesos | 20 | Estático | 40s | Invoca un muro de huesos alrededor de una invocación o aliado 10s. Daña con 0.2 Poder Corrupto a quien lo golpee o atraviese |
 | Miasma | 25 | Estático | 45s | Nube en área de 6 casillas. 0.5 INT de daño físico/s durante 5s. Cada golpe recibido aplica veneno necrótico 3s adicionales |
 | Ejército de la Muerte | 30 | Estático | 120s | Invoca 3 Zombies y 3 Esqueletos durante 1 minuto. Stats escalan con los del Nigromante |
-| Pacto Oscuro | 35 | Móvil | — | Sacrifica todas las invocaciones activas (bloqueadas 2,5 min). A cambio: +600 vida y +300 en todos los stats durante 2 min |
+| Pacto Oscuro | 35 | Móvil | 150s | Sacrifica todas las invocaciones activas (bloqueadas 2,5 min). A cambio: +600 vida y +300 en todos los stats durante 2 min |
 
 </details>
 

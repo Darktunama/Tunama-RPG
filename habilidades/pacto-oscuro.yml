@@ -16,7 +16,7 @@ range: 0
 area-of-effect: 0
 cast-time: 5
 cast-mode: mobile
-cooldown: 0
+cooldown: 150
 buff-duration: 120
 sacrifice-summons: true
 summon-block-duration: 150
