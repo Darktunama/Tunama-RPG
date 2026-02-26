@@ -1,0 +1,40 @@
+id: invocar-zombi-guardian
+name: Invocar Zombi Guardian
+description: Invoca un Zombi Guardian que defiende al Nigromante. Sus stats escalan con los del invocador. Dura hasta que muere. Cooldown se activa al morir
+class: nigromante
+damage-type: physical
+required-level: 5
+mana-cost: "30"
+mana-cost-percent: 20
+material: ROTTEN_FLESH
+custom-model-data: 0
+particle: LARGE_SMOKE
+particle-count: 20
+particle-speed: 0.2
+required-weapon: "STAFF,WAND,SWORD"
+range: 0
+area-of-effect: 0
+cast-time: 3
+cast-mode: static
+cooldown: 30
+summon-type: ZOMBIE
+summon-duration: 0
+summon-limit: 1
+cooldown-on-death: true
+minion-damage-scaling:
+  intelligence: 0.1
+  corrupt-power: 0.1
+minion-health-scaling:
+  health: 0.1
+  intelligence: 0.05
+minion-armor-scaling:
+  agility: 0.1
+  intelligence: 0.02
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

@@ -1,0 +1,37 @@
+id: pacto-oscuro
+name: Pacto Oscuro
+description: Sacrifica todas tus invocaciones activas (mueren al instante) y bloquea reinvocarlas durante 2,5 minutos. A cambio ganas 600 puntos de vida y 300 en el resto de stats durante 2 minutos
+class: nigromante
+damage-type: physical
+required-level: 35
+mana-cost: "100"
+mana-cost-percent: 90
+material: NETHER_STAR
+custom-model-data: 0
+particle: EXPLOSION_EMITTER
+particle-count: 5
+particle-speed: 0.1
+required-weapon: "STAFF,WAND,SWORD"
+range: 0
+area-of-effect: 0
+cast-time: 5
+cast-mode: mobile
+cooldown: 0
+buff-duration: 120
+sacrifice-summons: true
+summon-block-duration: 150
+temp-health: 600
+temp-strength: 300
+temp-agility: 300
+temp-intelligence: 300
+temp-sacred-power: 300
+temp-corrupt-power: 300
+temp-nature-power: 300
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

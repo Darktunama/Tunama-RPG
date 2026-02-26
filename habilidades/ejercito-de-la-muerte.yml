@@ -1,0 +1,39 @@
+id: ejercito-de-la-muerte
+name: Ejercito de la Muerte
+description: Invoca 3 Zombies y 3 Esqueletos que luchan para el Nigromante durante 1 minuto. Sus stats escalan con los del invocador
+class: nigromante
+damage-type: physical
+required-level: 30
+mana-cost: "100"
+mana-cost-percent: 50
+material: ZOMBIE_HEAD
+custom-model-data: 0
+particle: LARGE_SMOKE
+particle-count: 40
+particle-speed: 0.3
+required-weapon: "STAFF,WAND,SWORD"
+range: 0
+area-of-effect: 0
+cast-time: 4
+cast-mode: static
+cooldown: 120
+summon-type: ZOMBIE,SKELETON
+summon-count: 3
+summon-duration: 60
+minion-damage-scaling:
+  intelligence: 0.2
+  corrupt-power: 0.2
+minion-health-scaling:
+  health: 0.5
+  intelligence: 0.05
+minion-armor-scaling:
+  agility: 0.3
+  intelligence: 0.3
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0

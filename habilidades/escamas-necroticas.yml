@@ -1,0 +1,34 @@
+id: escamas-necroticas
+name: Escamas Necroticas
+description: Aplica armadura necróptica sobre ti y tus invocaciones. Golpear cuerpo a cuerpo aplica daño necrótico corrupto durante 3 segundos. Dura 20 segundos
+class: nigromante
+damage-type: necrotic
+required-level: 15
+mana-cost: "40"
+mana-cost-percent: 10
+material: NETHERITE_SCRAP
+custom-model-data: 0
+particle: ENCHANTED_HIT
+particle-count: 20
+particle-speed: 0.2
+required-weapon: "STAFF,WAND,SWORD"
+range: 0
+area-of-effect: 0
+cast-time: 1
+cast-mode: mobile
+cooldown: 60
+buff-duration: 20
+armor-scaling:
+  intelligence: 0.2
+thorns-type: necrotic
+thorns-duration: 3
+thorns-scaling:
+  corrupt-power: 0.1
+damage-scaling:
+  health: 0.0
+  strength: 0.0
+  agility: 0.0
+  intelligence: 0.0
+  sacred-power: 0.0
+  corrupt-power: 0.0
+  nature-power: 0.0
